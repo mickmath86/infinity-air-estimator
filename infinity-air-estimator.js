@@ -16,7 +16,7 @@
     {
       key: 'projectType',
       eyebrow: 'Let’s get started',
-      title: 'What can we help you withs?',
+      title: 'What can we help you with?',
       subtitle: 'Choose the option that best describes your project.',
       options: [
         ['replacement', 'Replace or install a system', 'Get a budget range for new HVAC equipment.'],
