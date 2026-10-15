@@ -2,6 +2,7 @@
   const script = document.currentScript;
   const config = {
     webhookUrl: script?.dataset.webhookUrl || '',
+    googleMapsKey: script?.dataset.googleMapsKey || '',
     phone: script?.dataset.phone || '(909) 975-2391',
     title: script?.dataset.title || 'Get Your HVAC Estimate',
     source: script?.dataset.source || window.location.href
@@ -12,6 +13,7 @@
 
   const root = mount.attachShadow ? mount.attachShadow({ mode: 'open' }) : mount;
   const state = { step: 0, answers: {}, estimate: null };
+  let googleMapsPromise;
   const questions = [
     {
       key: 'projectType',
@@ -175,11 +177,47 @@
     root.querySelectorAll('.option').forEach(el => el.addEventListener('click', () => { state.answers[q.key] = el.dataset.value; state.step += 1; renderQuestion(); }));
     root.querySelector('.back')?.addEventListener('click', () => { state.step -= 1; renderQuestion(); });
   }
+  function loadGoogleMaps() {
+    if (!config.googleMapsKey || /^(YOUR|PASTE_)/.test(config.googleMapsKey)) return Promise.resolve(null);
+    if (window.google?.maps?.places) return Promise.resolve(window.google);
+    if (googleMapsPromise) return googleMapsPromise;
+    googleMapsPromise = new Promise((resolve, reject) => {
+      const callback = `infinityAirMapsReady${Date.now()}`;
+      window[callback] = () => { delete window[callback]; resolve(window.google); };
+      const mapsScript = document.createElement('script');
+      mapsScript.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(config.googleMapsKey)}&libraries=places&callback=${callback}`;
+      mapsScript.async = true;
+      mapsScript.onerror = () => { delete window[callback]; reject(new Error('Google Maps failed to load.')); };
+      document.head.appendChild(mapsScript);
+    });
+    return googleMapsPromise;
+  }
+  async function initAddressAutocomplete() {
+    const input = root.querySelector('#ia-address');
+    if (!input || !config.googleMapsKey || /^(YOUR|PASTE_)/.test(config.googleMapsKey)) return;
+    try {
+      const google = await loadGoogleMaps();
+      const autocomplete = new google.maps.places.Autocomplete(input, { types:['address'], componentRestrictions:{ country:'us' }, fields:['address_components'] });
+      autocomplete.addListener('place_changed', () => {
+        const components = autocomplete.getPlace().address_components || [];
+        const get = type => components.find(component => component.types.includes(type));
+        const number = get('street_number')?.long_name || '';
+        const route = get('route')?.long_name || '';
+        input.value = [number, route].filter(Boolean).join(' ');
+        root.querySelector('#ia-city').value = get('locality')?.long_name || get('sublocality')?.long_name || '';
+        root.querySelector('#ia-state').value = get('administrative_area_level_1')?.short_name || '';
+        root.querySelector('#ia-zip').value = get('postal_code')?.long_name || '';
+      });
+    } catch (error) {
+      console.warn('Infinity Air address autocomplete:', error.message);
+    }
+  }
   function renderResult() {
     calculate();
     root.innerHTML = `<style>${styles}</style><div class="shell">${header(100)}<main class="body"><div class="eyebrow">Your estimate is ready</div><h2>Where should we send your estimate?</h2><p class="subtitle">Enter your details below to view your personalized project range.</p><form class="lead"><div class="field"><label for="ia-first-name">First name *</label><input id="ia-first-name" name="firstName" autocomplete="given-name" required></div><div class="field"><label for="ia-last-name">Last name *</label><input id="ia-last-name" name="lastName" autocomplete="family-name" required></div><div class="field"><label for="ia-phone">Phone *</label><input id="ia-phone" name="phone" type="tel" autocomplete="tel" required></div><div class="field"><label for="ia-email">Email</label><input id="ia-email" name="email" type="email" autocomplete="email"></div><div class="field full"><label for="ia-address">Street address</label><input id="ia-address" name="address" autocomplete="address-line1"></div><div class="field"><label for="ia-city">City</label><input id="ia-city" name="city" autocomplete="address-level2"></div><div class="field"><label for="ia-state">State</label><input id="ia-state" name="state" autocomplete="address-level1" maxlength="2" placeholder="CA"></div><div class="field"><label for="ia-zip">ZIP code</label><input id="ia-zip" name="zip" autocomplete="postal-code" inputmode="numeric"></div><div class="field full"><label for="ia-notes">Anything else we should know?</label><textarea id="ia-notes" name="notes" maxlength="500"></textarea></div><div class="error" hidden></div><button class="submit" type="submit">See My Estimate</button></form><div class="nav"><button class="back" type="button">← Change answers</button></div></main></div>`;
     root.querySelector('.back').addEventListener('click', () => { state.step = Math.max(0, visibleQuestions().length - 1); renderQuestion(); });
     root.querySelector('.lead').addEventListener('submit', submitLead);
+    initAddressAutocomplete();
   }
   async function submitLead(event) {
     event.preventDefault();
