@@ -26,6 +26,16 @@
       ]
     },
     {
+      key: 'propertyType',
+      eyebrow: 'Property type',
+      title: 'Is this for a home or business?',
+      subtitle: 'This helps us tailor the estimate to your property and equipment needs.',
+      options: [
+        ['residential', 'Residential', 'A house, condominium, or other residential property.'],
+        ['commercial', 'Commercial', 'An office, retail space, or other commercial property.']
+      ]
+    },
+    {
       key: 'systemType',
       when: a => a.projectType === 'replacement',
       eyebrow: 'System type',
