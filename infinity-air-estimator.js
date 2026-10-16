@@ -42,7 +42,7 @@
     {
       key: 'projectType',
       eyebrow: 'Let’s get started',
-      title: 'What can we help you withs?',
+      title: 'What can we help you with?',
       subtitle: 'Choose the option that best describes your project.',
       options: [
         ['replacement', 'Replace or install a system', 'Get a budget range for new HVAC equipment.'],
@@ -271,15 +271,27 @@
   }
   function renderResult() {
     calculate();
-    root.innerHTML = `<style>${styles}</style><div class="shell">${header(100)}<main class="body"><div class="eyebrow">Your estimate is ready</div><h2>Where should we send your estimate?</h2><p class="subtitle">Enter your details below to view your personalized project range.</p><form class="lead"><div class="field"><label for="ia-first-name">First name *</label><input id="ia-first-name" name="firstName" autocomplete="given-name" required></div><div class="field"><label for="ia-last-name">Last name *</label><input id="ia-last-name" name="lastName" autocomplete="family-name" required></div><div class="field"><label for="ia-phone">Phone *</label><input id="ia-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(909) 555-1234" required></div><div class="field"><label for="ia-email">Email</label><input id="ia-email" name="email" type="email" autocomplete="email"></div><div class="field full"><label for="ia-address">Street address</label><input id="ia-address" name="address" autocomplete="address-line1"></div><div class="field"><label for="ia-city">City</label><input id="ia-city" name="city" autocomplete="address-level2"></div><div class="field"><label for="ia-state">State</label><input id="ia-state" name="state" autocomplete="address-level1" maxlength="2" placeholder="CA"></div><div class="field"><label for="ia-zip">ZIP code</label><input id="ia-zip" name="zip" autocomplete="postal-code" inputmode="numeric"></div><div class="field full"><label for="ia-notes">Anything else we should know?</label><textarea id="ia-notes" name="notes" maxlength="500"></textarea></div><div class="error" hidden></div><button class="submit" type="submit">See My Estimate</button></form><div class="nav"><button class="back" type="button">← Change answers</button></div></main></div>`;
+    root.innerHTML = `<style>${styles}</style><div class="shell">${header(100)}<main class="body"><div class="eyebrow">Your estimate is ready</div><h2>Where should we send your estimate?</h2><p class="subtitle">Enter your details below to view your personalized project range.</p><form class="lead"><div class="field"><label for="ia-first-name">First name *</label><input id="ia-first-name" name="firstName" autocomplete="given-name" required></div><div class="field"><label for="ia-last-name">Last name *</label><input id="ia-last-name" name="lastName" autocomplete="family-name" required></div><div class="field"><label for="ia-phone">Phone *</label><input id="ia-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(909) 555-1234" maxlength="14" required></div><div class="field"><label for="ia-email">Email</label><input id="ia-email" name="email" type="email" autocomplete="email"></div><div class="field full"><label for="ia-address">Street address</label><input id="ia-address" name="address" autocomplete="address-line1"></div><div class="field"><label for="ia-city">City</label><input id="ia-city" name="city" autocomplete="address-level2"></div><div class="field"><label for="ia-state">State</label><input id="ia-state" name="state" autocomplete="address-level1" maxlength="2" placeholder="CA"></div><div class="field"><label for="ia-zip">ZIP code</label><input id="ia-zip" name="zip" autocomplete="postal-code" inputmode="numeric"></div><div class="field full"><label for="ia-notes">Anything else we should know?</label><textarea id="ia-notes" name="notes" maxlength="500"></textarea></div><div class="error" hidden></div><button class="submit" type="submit">See My Estimate</button></form><div class="nav"><button class="back" type="button">← Change answers</button></div></main></div>`;
     root.querySelector('.back').addEventListener('click', () => { state.step = Math.max(0, visibleQuestions().length - 1); renderQuestion(); });
     root.querySelector('.lead').addEventListener('submit', submitLead);
+    root.querySelector('#ia-phone').addEventListener('input', event => {
+      event.target.value = formatUsPhoneForDisplay(event.target.value);
+    });
     initAddressAutocomplete();
   }
+  function phoneDigits(value) {
+    const digits = value.replace(/\D/g, '');
+    return digits.length === 11 && digits.startsWith('1') ? digits.slice(1) : digits.slice(0, 10);
+  }
+  function formatUsPhoneForDisplay(value) {
+    const digits = phoneDigits(value);
+    if (digits.length < 4) return digits ? `(${digits}` : '';
+    if (digits.length < 7) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+  }
   function normalizeUsPhone(value) {
-    let digits = value.replace(/\D/g, '');
-    if (digits.length === 10) digits = `1${digits}`;
-    return digits.length === 11 && digits.startsWith('1') ? digits : null;
+    const digits = phoneDigits(value);
+    return digits.length === 10 ? digits : null;
   }
   async function submitLead(event) {
     event.preventDefault();
