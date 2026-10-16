@@ -279,7 +279,7 @@
   function normalizeUsPhone(value) {
     let digits = value.replace(/\D/g, '');
     if (digits.length === 10) digits = `1${digits}`;
-    return digits.length === 11 && digits.startsWith('1') ? `+${digits}` : null;
+    return digits.length === 11 && digits.startsWith('1') ? digits : null;
   }
   async function submitLead(event) {
     event.preventDefault();
