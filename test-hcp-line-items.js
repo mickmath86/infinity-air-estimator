@@ -1,5 +1,5 @@
 const assert = require('node:assert/strict');
-const { buildHcpLineItems } = require('./infinity-air-estimator.js');
+const { buildHcpLineItems, buildHcpLineItemPackages } = require('./infinity-air-estimator.js');
 
 const multiple = buildHcpLineItems([
   { name: 'Equipment', description: 'Heat pump', quantity: 1, unitPrice: 8500, priceUnit: 'dollars' },
@@ -65,5 +65,21 @@ assert.deepEqual(withoutTotals, [
 assert.throws(() => buildHcpLineItems([
   { kind: 'subtotal', name: 'Subtotal', description: '', quantity: 1, unitPrice: 250, priceUnit: 'dollars' }
 ]), /priced line item is required/);
+
+const packages = buildHcpLineItemPackages('Heat Pump Installation Package', [
+  { name: 'Heat pump installation', description: 'Install high-efficiency equipment.', quantity: 1, unitPrice: 12500, priceUnit: 'dollars' },
+  { name: 'Labor warranty', description: 'Included at no charge.', quantity: 1, unitPrice: 0, priceUnit: 'dollars' }
+]);
+assert.deepEqual(packages, [{
+  name: 'Heat Pump Installation Package',
+  line_items: [
+    { name: 'Heat pump installation', description: 'Install high-efficiency equipment.', quantity: 1, unit_price: 1250000 },
+    { name: 'Labor warranty', description: 'Included at no charge.', quantity: 1, unit_price: 0 }
+  ]
+}]);
+assert.deepEqual(JSON.parse(JSON.stringify(packages)), packages);
+assert.throws(() => buildHcpLineItemPackages('', [
+  { name: 'Service', description: '', quantity: 1, unitPrice: 100, priceUnit: 'dollars' }
+]), /package name is required/);
 
 console.log('Housecall Pro line-item tests passed.');

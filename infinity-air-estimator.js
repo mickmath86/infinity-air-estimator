@@ -18,8 +18,14 @@
     return lineItems;
   }
 
+  function buildHcpLineItemPackages(packageName, items) {
+    const name = typeof packageName === 'string' ? packageName.trim() : '';
+    if (!name) throw new TypeError('Line-item package name is required.');
+    return [{ name, line_items: buildHcpLineItems(items) }];
+  }
+
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { buildHcpLineItems };
+    module.exports = { buildHcpLineItems, buildHcpLineItemPackages };
     return;
   }
 
@@ -193,12 +199,25 @@
     const options = question?.dynamicOptions ? question.dynamicOptions(state.answers) : question?.options;
     return options?.find(option => option[0] === value)?.[1] || value;
   }
-  function createEstimateLineItems() {
+  function createEstimateLineItemPackages() {
     const projectNames = {
       replacement: 'HVAC replacement estimate',
       repair: 'HVAC repair estimate',
       maintenance: 'HVAC maintenance estimate',
       'air-quality': 'Ductwork and air quality estimate'
+    };
+    const replacementPackageNames = {
+      complete: 'Complete HVAC Installation Package',
+      'heat-pump': 'Heat Pump Installation Package',
+      'ac-only': 'Air Conditioner Installation Package',
+      'furnace-only': 'Furnace Installation Package',
+      'mini-split': 'Ductless Mini-Split Installation Package'
+    };
+    const packageNames = {
+      replacement: replacementPackageNames[state.answers.systemType] || 'HVAC Replacement Package',
+      repair: 'HVAC Repair Estimate Package',
+      maintenance: 'HVAC Maintenance Estimate Package',
+      'air-quality': 'Ductwork and Air Quality Estimate Package'
     };
     const fieldNames = {
       projectType: 'Service', propertyType: 'Property type', systemType: 'System type', homeSize: 'Home size',
@@ -207,7 +226,7 @@
     const selections = Object.entries(state.answers)
       .map(([key, value]) => `${fieldNames[key] || key}: ${getAnswerLabel(key, value)}`)
       .join('\n');
-    return buildHcpLineItems([{
+    return buildHcpLineItemPackages(packageNames[state.answers.projectType] || 'HVAC Service Estimate Package', [{
       name: projectNames[state.answers.projectType] || 'HVAC service estimate',
       description: `Preliminary estimate based on these selections:\n${selections}`,
       quantity: 1,
@@ -303,7 +322,7 @@
       return;
     }
     data.phone = phone;
-    const hcpLineItems = createEstimateLineItems();
+    const hcpLineItemPackages = createEstimateLineItemPackages();
     const payload = {
       event: 'estimator.completed',
       submittedAt: new Date().toISOString(),
@@ -311,8 +330,8 @@
       contact: data,
       answers: state.answers,
       estimate: state.estimate,
-      hcp_line_items: hcpLineItems,
-      hcp_line_items_json: JSON.stringify(hcpLineItems)
+      hcp_line_items: hcpLineItemPackages,
+      hcp_line_items_json: JSON.stringify(hcpLineItemPackages)
     };
     error.hidden = true; button.disabled = true; button.textContent = 'Sending…';
     try {
