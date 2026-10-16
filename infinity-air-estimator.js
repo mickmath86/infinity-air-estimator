@@ -1,4 +1,28 @@
 (() => {
+  function buildHcpLineItems(items) {
+    if (!Array.isArray(items) || !items.length) throw new TypeError('At least one line item is required.');
+    const lineItems = items
+      .filter(item => !['subtotal', 'grand_total'].includes(item.kind))
+      .map(item => {
+        const name = typeof item.name === 'string' ? item.name.trim() : '';
+        const description = typeof item.description === 'string' ? item.description : '';
+        const quantity = Number(item.quantity);
+        if (!name) throw new TypeError('Line item name is required.');
+        if (!Number.isFinite(quantity) || quantity <= 0) throw new TypeError(`Invalid quantity for ${name}.`);
+        if (!Number.isFinite(item.unitPrice)) throw new TypeError(`Invalid unit price for ${name}.`);
+        const unitPrice = item.priceUnit === 'cents' ? item.unitPrice : Math.round(item.unitPrice * 100);
+        if (!Number.isInteger(unitPrice) || unitPrice < 0) throw new TypeError(`Invalid unit price for ${name}.`);
+        return { name, description, quantity, unit_price: unitPrice };
+      });
+    if (!lineItems.length) throw new TypeError('At least one priced line item is required.');
+    return lineItems;
+  }
+
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { buildHcpLineItems };
+    return;
+  }
+
   const script = document.currentScript;
   const config = {
     webhookUrl: script?.dataset.webhookUrl || '',
@@ -164,6 +188,33 @@
     }
     state.estimate = { low, high, label, currency: 'USD' };
   }
+  function getAnswerLabel(key, value) {
+    const question = questions.find(item => item.key === key);
+    const options = question?.dynamicOptions ? question.dynamicOptions(state.answers) : question?.options;
+    return options?.find(option => option[0] === value)?.[1] || value;
+  }
+  function createEstimateLineItems() {
+    const projectNames = {
+      replacement: 'HVAC replacement estimate',
+      repair: 'HVAC repair estimate',
+      maintenance: 'HVAC maintenance estimate',
+      'air-quality': 'Ductwork and air quality estimate'
+    };
+    const fieldNames = {
+      projectType: 'Service', propertyType: 'Property type', systemType: 'System type', homeSize: 'Home size',
+      efficiency: 'Efficiency', repairIssue: 'System issue', systemAge: 'System age', serviceDetail: 'Service detail', urgency: 'Timing'
+    };
+    const selections = Object.entries(state.answers)
+      .map(([key, value]) => `${fieldNames[key] || key}: ${getAnswerLabel(key, value)}`)
+      .join('\n');
+    return buildHcpLineItems([{
+      name: projectNames[state.answers.projectType] || 'HVAC service estimate',
+      description: `Preliminary estimate based on these selections:\n${selections}`,
+      quantity: 1,
+      unitPrice: (state.estimate.low + state.estimate.high) / 2,
+      priceUnit: 'dollars'
+    }]);
+  }
   function header(progress) {
     return `<div class="top"><img class="logo" src="https://infinityairservices.com/wp-content/themes/infinity-air-child/assets/img/logo.png" alt="Infinity Air Heating and Cooling"><div class="trust"><strong>Free estimates · Honest pricing</strong>Licensed, bonded & insured · C-20 #1134070</div></div><div class="progress"><span style="width:${progress}%"></span></div>`;
   }
@@ -240,7 +291,17 @@
       return;
     }
     data.phone = phone;
-    const payload = { event: 'estimator.completed', submittedAt: new Date().toISOString(), source: config.source, contact: data, answers: state.answers, estimate: state.estimate };
+    const hcpLineItems = createEstimateLineItems();
+    const payload = {
+      event: 'estimator.completed',
+      submittedAt: new Date().toISOString(),
+      source: config.source,
+      contact: data,
+      answers: state.answers,
+      estimate: state.estimate,
+      hcp_line_items: hcpLineItems,
+      hcp_line_items_json: JSON.stringify(hcpLineItems)
+    };
     error.hidden = true; button.disabled = true; button.textContent = 'Sending…';
     try {
       if (!config.webhookUrl) throw new Error('Webhook URL is not configured.');
