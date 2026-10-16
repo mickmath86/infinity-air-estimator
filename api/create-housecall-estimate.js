@@ -62,7 +62,7 @@ function validatePayload(payload) {
 }
 
 function createHcpClient(apiKey, fetchImpl = fetch) {
-  async function request(path, options = {}) {
+  async function request(path, options = {}, operation = 'Housecall Pro request') {
     const response = await fetchImpl(`${HCP_BASE_URL}${path}`, {
       ...options,
       headers: {
@@ -75,6 +75,7 @@ function createHcpClient(apiKey, fetchImpl = fetch) {
     if (!response.ok) {
       const error = new Error(body.message || body.error || `Housecall Pro returned ${response.status}.`);
       error.status = response.status;
+      error.operation = operation;
       throw error;
     }
     return body;
@@ -86,7 +87,7 @@ function createHcpClient(apiKey, fetchImpl = fetch) {
 async function findCustomer(client, contact) {
   const queries = [contact.phone, contact.email].filter(Boolean);
   for (const query of queries) {
-    const result = await client.request(`/customers?q=${encodeURIComponent(query)}&page_size=50`);
+    const result = await client.request(`/customers?q=${encodeURIComponent(query)}&page_size=50`, {}, 'customer lookup');
     const customer = matchingCustomer(result.customers || [], contact);
     if (customer) return customer;
   }
@@ -103,7 +104,7 @@ async function createCustomer(client, contact, address) {
   if (contact.email) body.email = normalizeEmail(contact.email);
   if (contact.notes) body.notes = String(contact.notes).trim();
   if (address) body.addresses = [address];
-  return client.request('/customers', { method: 'POST', body: JSON.stringify(body) });
+  return client.request('/customers', { method: 'POST', body: JSON.stringify(body) }, 'customer creation');
 }
 
 async function ensureAddress(client, customer, address) {
@@ -113,7 +114,7 @@ async function ensureAddress(client, customer, address) {
   return client.request(`/customers/${encodeURIComponent(customer.id)}/addresses`, {
     method: 'POST',
     body: JSON.stringify(address)
-  });
+  }, 'address creation');
 }
 
 async function createHousecallEstimate(payload, apiKey, fetchImpl = fetch) {
@@ -138,7 +139,7 @@ async function createHousecallEstimate(payload, apiKey, fetchImpl = fetch) {
   const estimate = await client.request('/estimates', {
     method: 'POST',
     body: JSON.stringify(estimateBody)
-  });
+  }, 'estimate creation');
   if (!estimate?.id) throw new Error('Housecall Pro did not return an estimate ID.');
   return { customerId: customer.id, estimateId: estimate.id };
 }
@@ -161,7 +162,12 @@ async function handler(request, response) {
     return response.status(201).json({ ok: true, ...result });
   } catch (error) {
     const status = error instanceof SyntaxError || error instanceof TypeError ? 400 : 502;
-    return response.status(status).json({ error: status === 400 ? error.message : 'Unable to create the Housecall Pro estimate.' });
+    if (status === 502) console.error('Housecall Pro integration failed.', { operation: error.operation, status: error.status, message: error.message });
+    return response.status(status).json({
+      error: status === 400 ? error.message : 'Unable to create the Housecall Pro estimate.',
+      ...(error.operation && { operation: error.operation }),
+      ...(error.status && { providerStatus: error.status })
+    });
   }
 }
 
