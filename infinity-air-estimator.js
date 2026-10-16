@@ -179,13 +179,13 @@
   }
   function loadGoogleMaps() {
     if (!config.googleMapsKey || /^(YOUR|PASTE_)/.test(config.googleMapsKey)) return Promise.resolve(null);
-    if (window.google?.maps?.places) return Promise.resolve(window.google);
+    if (window.google?.maps?.importLibrary) return Promise.resolve(window.google);
     if (googleMapsPromise) return googleMapsPromise;
     googleMapsPromise = new Promise((resolve, reject) => {
       const callback = `infinityAirMapsReady${Date.now()}`;
       window[callback] = () => { delete window[callback]; resolve(window.google); };
       const mapsScript = document.createElement('script');
-      mapsScript.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(config.googleMapsKey)}&libraries=places&callback=${callback}`;
+      mapsScript.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(config.googleMapsKey)}&v=weekly&loading=async&callback=${callback}`;
       mapsScript.async = true;
       mapsScript.onerror = () => { delete window[callback]; reject(new Error('Google Maps failed to load.')); };
       document.head.appendChild(mapsScript);
@@ -197,16 +197,22 @@
     if (!input || !config.googleMapsKey || /^(YOUR|PASTE_)/.test(config.googleMapsKey)) return;
     try {
       const google = await loadGoogleMaps();
-      const autocomplete = new google.maps.places.Autocomplete(input, { types:['address'], componentRestrictions:{ country:'us' }, fields:['address_components'] });
-      autocomplete.addListener('place_changed', () => {
-        const components = autocomplete.getPlace().address_components || [];
+      const { PlaceAutocompleteElement } = await google.maps.importLibrary('places');
+      const autocomplete = new PlaceAutocompleteElement({ includedRegionCodes:['us'] });
+      autocomplete.style.width = '100%';
+      input.hidden = true;
+      input.before(autocomplete);
+      autocomplete.addEventListener('gmp-select', async event => {
+        const place = event.placePrediction.toPlace();
+        await place.fetchFields({ fields:['addressComponents'] });
+        const components = place.addressComponents || [];
         const get = type => components.find(component => component.types.includes(type));
-        const number = get('street_number')?.long_name || '';
-        const route = get('route')?.long_name || '';
+        const number = get('street_number')?.longText || '';
+        const route = get('route')?.longText || '';
         input.value = [number, route].filter(Boolean).join(' ');
-        root.querySelector('#ia-city').value = get('locality')?.long_name || get('sublocality')?.long_name || '';
-        root.querySelector('#ia-state').value = get('administrative_area_level_1')?.short_name || '';
-        root.querySelector('#ia-zip').value = get('postal_code')?.long_name || '';
+        root.querySelector('#ia-city').value = get('locality')?.longText || get('sublocality_level_1')?.longText || '';
+        root.querySelector('#ia-state').value = get('administrative_area_level_1')?.shortText || '';
+        root.querySelector('#ia-zip').value = get('postal_code')?.longText || '';
       });
     } catch (error) {
       console.warn('Infinity Air address autocomplete:', error.message);
