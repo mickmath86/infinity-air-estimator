@@ -2,6 +2,7 @@ const assert = require('node:assert/strict');
 const {
   completeAddress,
   createHousecallEstimate,
+  errorMessage,
   matchingCustomer,
   sendGhlWebhook,
   validatePayload
@@ -37,6 +38,8 @@ assert.deepEqual(completeAddress(payload().contact), {
   type: 'service', street: '123 Main St', city: 'Ontario', state: 'CA', zip: '91761', country: 'US'
 });
 assert.equal(completeAddress({ address: '123 Main St', city: '', state: 'CA', zip: '91761' }), null);
+assert.equal(errorMessage({ mobile_number: ['is invalid'] }, 'fallback'), '{"mobile_number":["is invalid"]}');
+assert.equal(errorMessage(null, 'fallback'), 'fallback');
 assert.equal(matchingCustomer([{ id: 'cus_phone', mobile_number: '(555) 490-2486' }], payload().contact).id, 'cus_phone');
 assert.equal(matchingCustomer([{ id: 'cus_email', email: 'AVA@EXAMPLE.COM' }], payload().contact).id, 'cus_email');
 assert.throws(() => validatePayload(payload({ contact: { firstName: 'Ava', lastName: 'Chen', phone: '123' } })), /10-digit/);

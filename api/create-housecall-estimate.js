@@ -61,6 +61,12 @@ function validatePayload(payload) {
   return contact;
 }
 
+function errorMessage(value, fallback) {
+  if (typeof value === 'string') return value;
+  if (value && typeof value === 'object') return JSON.stringify(value);
+  return fallback;
+}
+
 function createHcpClient(apiKey, fetchImpl = fetch) {
   async function request(path, options = {}, operation = 'Housecall Pro request') {
     const response = await fetchImpl(`${HCP_BASE_URL}${path}`, {
@@ -73,7 +79,7 @@ function createHcpClient(apiKey, fetchImpl = fetch) {
     });
     const body = await response.json().catch(() => ({}));
     if (!response.ok) {
-      const error = new Error(body.message || body.error || `Housecall Pro returned ${response.status}.`);
+      const error = new Error(errorMessage(body.message || body.error, `Housecall Pro returned ${response.status}.`));
       error.status = response.status;
       error.operation = operation;
       throw error;
@@ -191,6 +197,7 @@ async function handler(request, response) {
 module.exports = handler;
 module.exports.createHousecallEstimate = createHousecallEstimate;
 module.exports.completeAddress = completeAddress;
+module.exports.errorMessage = errorMessage;
 module.exports.matchingCustomer = matchingCustomer;
 module.exports.sendGhlWebhook = sendGhlWebhook;
 module.exports.validatePayload = validatePayload;
