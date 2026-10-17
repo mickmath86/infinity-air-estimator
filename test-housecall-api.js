@@ -3,6 +3,7 @@ const {
   completeAddress,
   createHousecallEstimate,
   matchingCustomer,
+  sendGhlWebhook,
   validatePayload
 } = require('./api/create-housecall-estimate.js');
 
@@ -42,6 +43,18 @@ assert.throws(() => validatePayload(payload({ contact: { firstName: 'Ava', lastN
 assert.throws(() => validatePayload(payload({ hcp_line_items: [] })), /estimate option/);
 
 (async () => {
+  let ghlRequest;
+  await sendGhlWebhook(payload(), 'https://example.test/webhook', async (url, options) => {
+    ghlRequest = { url, options };
+    return response(200, { ok: true });
+  });
+  assert.equal(ghlRequest.url, 'https://example.test/webhook');
+  assert.deepEqual(JSON.parse(ghlRequest.options.body), payload());
+  await assert.rejects(
+    sendGhlWebhook(payload(), 'https://example.test/webhook', async () => response(500, {})),
+    error => error.operation === 'GHL webhook' && error.status === 500
+  );
+
   const existingCalls = [];
   const existingFetch = async (url, options = {}) => {
     existingCalls.push({ url, options });

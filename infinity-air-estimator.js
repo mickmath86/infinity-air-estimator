@@ -336,13 +336,10 @@
     };
     error.hidden = true; button.disabled = true; button.textContent = 'Sending…';
     try {
-      if (!config.webhookUrl && !config.housecallEndpoint) throw new Error('No submission endpoint is configured.');
-      const requests = [];
-      if (config.webhookUrl) requests.push(fetch(config.webhookUrl, { method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify(payload) }));
-      if (config.housecallEndpoint) requests.push(fetch(config.housecallEndpoint, { method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify(payload) }));
-      const responses = await Promise.all(requests);
-      const failed = responses.find(response => !response.ok);
-      if (failed) throw new Error(`Submission service returned ${failed.status}.`);
+      const endpoint = config.housecallEndpoint || config.webhookUrl;
+      if (!endpoint) throw new Error('No submission endpoint is configured.');
+      const response = await fetch(endpoint, { method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify(payload) });
+      if (!response.ok) throw new Error(`Submission service returned ${response.status}.`);
       const e = state.estimate;
       root.innerHTML = `<style>${styles}</style><div class="shell">${header(100)}<main class="body"><div class="eyebrow">Your personalized estimate</div><h2>Thank you, ${escapeHtml(data.firstName)}.</h2><p class="subtitle">Based on the details you shared, here’s a realistic starting range.</p><div class="result"><div class="result-label">${e.label}</div><div class="price">${money(e.low)}–${money(e.high)}</div><p>Final pricing depends on an on-site evaluation, equipment selection, access, permits, and project requirements.</p></div><p class="notice">This is a planning estimate, not a binding quote. Infinity Air will confirm your options and provide upfront pricing before work begins.</p><a class="submit" href="tel:+19099752391" style="display:block;text-align:center;text-decoration:none">Call ${config.phone}</a></main></div>`;
       mount.dispatchEvent(new CustomEvent('infinity-air:completed', { detail: payload }));

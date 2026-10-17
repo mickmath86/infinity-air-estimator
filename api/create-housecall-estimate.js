@@ -144,6 +144,20 @@ async function createHousecallEstimate(payload, apiKey, fetchImpl = fetch) {
   return { customerId: customer.id, estimateId: estimate.id };
 }
 
+async function sendGhlWebhook(payload, webhookUrl, fetchImpl = fetch) {
+  const response = await fetchImpl(webhookUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!response.ok) {
+    const error = new Error(`GHL webhook returned ${response.status}.`);
+    error.status = response.status;
+    error.operation = 'GHL webhook';
+    throw error;
+  }
+}
+
 function setCors(response) {
   response.setHeader('Access-Control-Allow-Origin', '*');
   response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -155,16 +169,19 @@ async function handler(request, response) {
   if (request.method === 'OPTIONS') return response.status(204).end();
   if (request.method !== 'POST') return response.status(405).json({ error: 'Method not allowed.' });
   if (!process.env.HOUSECALL_PRO_API_KEY) return response.status(500).json({ error: 'Housecall Pro is not configured.' });
+  if (!process.env.GHL_WEBHOOK_URL) return response.status(500).json({ error: 'GHL is not configured.' });
 
   try {
     const payload = typeof request.body === 'string' ? JSON.parse(request.body) : request.body;
+    validatePayload(payload);
+    await sendGhlWebhook(payload, process.env.GHL_WEBHOOK_URL);
     const result = await createHousecallEstimate(payload, process.env.HOUSECALL_PRO_API_KEY);
     return response.status(201).json({ ok: true, ...result });
   } catch (error) {
     const status = error instanceof SyntaxError || error instanceof TypeError ? 400 : 502;
-    if (status === 502) console.error('Housecall Pro integration failed.', { operation: error.operation, status: error.status, message: error.message });
+    if (status === 502) console.error('Estimator integration failed.', { operation: error.operation, status: error.status, message: error.message });
     return response.status(status).json({
-      error: status === 400 ? error.message : 'Unable to create the Housecall Pro estimate.',
+      error: status === 400 ? error.message : `Unable to complete the ${error.operation || 'CRM integration'}.`,
       ...(error.operation && { operation: error.operation }),
       ...(error.status && { providerStatus: error.status })
     });
@@ -175,4 +192,5 @@ module.exports = handler;
 module.exports.createHousecallEstimate = createHousecallEstimate;
 module.exports.completeAddress = completeAddress;
 module.exports.matchingCustomer = matchingCustomer;
+module.exports.sendGhlWebhook = sendGhlWebhook;
 module.exports.validatePayload = validatePayload;
