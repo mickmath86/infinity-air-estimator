@@ -79,7 +79,7 @@ assert.throws(() => validatePayload(payload({ hcp_line_items: [] })), /estimate 
   assert.equal(existingEstimate.customer_id, 'cus_existing');
   assert.equal(existingEstimate.address_id, 'adr_existing');
   assert.deepEqual(existingEstimate.options, payload().hcp_line_items);
-  assert.equal(existingEstimate.lead_source, undefined);
+  assert.equal(existingEstimate.lead_source, 'Kickbord Estimator Tool');
 
   const newCalls = [];
   const newFetch = async (url, options = {}) => {
@@ -98,7 +98,7 @@ assert.throws(() => validatePayload(payload({ hcp_line_items: [] })), /estimate 
   const customerRequest = JSON.parse(newCalls[2].options.body);
   assert.equal(customerRequest.mobile_number, '5554902486');
   assert.equal(customerRequest.addresses[0].country, 'US');
-  assert.equal(customerRequest.lead_source, undefined);
+  assert.equal(customerRequest.lead_source, 'Kickbord Estimator Tool');
   assert.equal(JSON.parse(newCalls[3].options.body).address_id, 'adr_new');
 
   console.log('Housecall Pro API tests passed.');

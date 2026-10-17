@@ -104,7 +104,8 @@ async function createCustomer(client, contact, address) {
   const body = {
     first_name: String(contact.firstName).trim(),
     last_name: String(contact.lastName).trim(),
-    mobile_number: digits(contact.phone)
+    mobile_number: digits(contact.phone),
+    lead_source: 'Kickbord Estimator Tool'
   };
   if (contact.email) body.email = normalizeEmail(contact.email);
   if (contact.notes) body.notes = String(contact.notes).trim();
@@ -139,6 +140,7 @@ async function createHousecallEstimate(payload, apiKey, fetchImpl = fetch) {
   };
   if (serviceAddress?.id) estimateBody.address_id = serviceAddress.id;
   if (contact.notes) estimateBody.note = String(contact.notes).trim();
+  estimateBody.lead_source = 'Kickbord Estimator Tool';
 
   const estimate = await client.request('/estimates', {
     method: 'POST',
