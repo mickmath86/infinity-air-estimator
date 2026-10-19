@@ -34,6 +34,8 @@
     webhookUrl: script?.dataset.webhookUrl || '',
     housecallEndpoint: script?.dataset.housecallEndpoint || '',
     googleMapsKey: script?.dataset.googleMapsKey || '',
+    clientKey: script?.dataset.clientKey || '',
+    api: script?.dataset.api || 'https://rtlhldhumcmzgbvkqmnm.supabase.co/functions/v1/estimator-public',
     phone: script?.dataset.phone || '(909) 975-2391',
     title: script?.dataset.title || 'Get Your HVAC Estimate',
     source: script?.dataset.source || window.location.href
@@ -45,126 +47,36 @@
   const root = mount.attachShadow ? mount.attachShadow({ mode: 'open' }) : mount;
   const state = { step: 0, answers: {}, estimate: null };
   let googleMapsPromise;
-  const questions = [
-    {
-      key: 'projectType',
-      eyebrow: 'Let’s get started',
-      title: 'What can we help you with?',
-      subtitle: 'Choose the option that best describes your project.',
-      options: [
-        ['replacement', 'Replace or install a system', 'Get a budget range for new HVAC equipment.'],
-        ['repair', 'Repair a system', 'Troubleshoot cooling or heating problems.'],
-        ['maintenance', 'Maintenance or tune-up', 'Keep your system efficient and reliable.'],
-        ['air-quality', 'Ductwork or air quality', 'Improve airflow and indoor comfort.']
-      ]
-    },
-    {
-      key: 'propertyType',
-      eyebrow: 'Property type',
-      title: 'Is this for a home or business?',
-      subtitle: 'This helps us tailor the estimate to your property and equipment needs.',
-      options: [
-        ['residential', 'Residential', 'A house, condominium, or other residential property.'],
-        ['commercial', 'Commercial', 'An office, retail space, or other commercial property.']
-      ]
-    },
-    {
-      key: 'systemType',
-      when: a => a.projectType === 'replacement',
-      eyebrow: 'System type',
-      title: 'What would you like to install?',
-      subtitle: 'Not sure? Choose the closest option and we’ll confirm it on-site.',
-      options: [
-        ['complete', 'Complete heating & cooling', 'Outdoor AC plus furnace or air handler.'],
-        ['heat-pump', 'Heat pump system', 'High-efficiency, all-electric heating and cooling.'],
-        ['ac-only', 'Air conditioner only', 'Replace the outdoor cooling equipment.'],
-        ['furnace-only', 'Furnace only', 'Replace the home’s heating equipment.'],
-        ['mini-split', 'Ductless mini-split', 'Flexible comfort without traditional ductwork.']
-      ]
-    },
-    {
-      key: 'homeSize',
-      when: a => a.projectType === 'replacement',
-      eyebrow: 'Home size',
-      title: 'Approximately how large is the space?',
-      subtitle: 'Square footage helps us estimate equipment capacity.',
-      options: [
-        ['under-1200', 'Under 1,200 sq. ft.', 'Smaller home or single-zone project.'],
-        ['1200-1800', '1,200–1,800 sq. ft.', 'Typical two- to three-bedroom home.'],
-        ['1800-2500', '1,800–2,500 sq. ft.', 'Larger home or multi-level layout.'],
-        ['over-2500', 'Over 2,500 sq. ft.', 'Large home; a load calculation is recommended.']
-      ]
-    },
-    {
-      key: 'efficiency',
-      when: a => a.projectType === 'replacement',
-      eyebrow: 'Comfort goals',
-      title: 'Which efficiency level fits your priorities?',
-      subtitle: 'Higher efficiency can lower utility costs and improve comfort.',
-      options: [
-        ['standard', 'Reliable & budget-friendly', 'Dependable comfort with standard efficiency.'],
-        ['enhanced', 'Balanced performance', 'Better efficiency, comfort, and noise control.'],
-        ['premium', 'Maximum efficiency', 'Premium comfort and energy-saving features.']
-      ]
-    },
-    {
-      key: 'repairIssue',
-      when: a => a.projectType === 'repair',
-      eyebrow: 'System issue',
-      title: 'What is your system doing?',
-      subtitle: 'Choose the main symptom you’re experiencing.',
-      options: [
-        ['no-cooling', 'Not cooling', 'The system runs but the home stays warm.'],
-        ['no-heating', 'Not heating', 'The system runs but the home stays cold.'],
-        ['not-running', 'Not running at all', 'The equipment will not start.'],
-        ['noise-leak', 'Noise, odor, or leak', 'Something unusual needs inspection.'],
-        ['other', 'Something else', 'A technician can diagnose the issue.']
-      ]
-    },
-    {
-      key: 'systemAge',
-      when: a => a.projectType === 'repair',
-      eyebrow: 'System age',
-      title: 'How old is the equipment?',
-      subtitle: 'Age can affect repair options and part availability.',
-      options: [
-        ['under-5', 'Under 5 years', 'Newer equipment.'],
-        ['5-10', '5–10 years', 'Mid-life equipment.'],
-        ['11-15', '11–15 years', 'Older equipment.'],
-        ['over-15', 'Over 15 years', 'Near or beyond typical service life.'],
-        ['unknown', 'I’m not sure', 'We’ll determine age during the visit.']
-      ]
-    },
-    {
-      key: 'serviceDetail',
-      when: a => ['maintenance', 'air-quality'].includes(a.projectType),
-      eyebrow: 'Project details',
-      title: 'What service are you interested in?',
-      subtitle: 'Choose the closest match for a preliminary range.',
-      dynamicOptions: a => a.projectType === 'maintenance' ? [
-        ['single-tuneup', 'One-system tune-up', 'Seasonal inspection and maintenance.'],
-        ['two-tuneup', 'Two-system tune-up', 'Maintenance for two HVAC systems.'],
-        ['plan', 'Maintenance plan', 'Ongoing preventive service and priority care.']
-      ] : [
-        ['duct-repair', 'Duct repair or sealing', 'Address leaks, damage, or airflow issues.'],
-        ['duct-replace', 'Ductwork replacement', 'Replace aging or poorly designed ductwork.'],
-        ['air-quality', 'Indoor air quality', 'Filtration, purification, or humidity options.'],
-        ['airflow', 'Comfort or airflow issue', 'Diagnose hot spots and uneven airflow.']
-      ]
-    },
-    {
-      key: 'urgency',
-      eyebrow: 'Timing',
-      title: 'When do you need help?',
-      subtitle: 'Emergency service is available 24/7.',
-      options: [
-        ['emergency', 'As soon as possible', 'My system is down or the issue is urgent.'],
-        ['week', 'Within a week', 'I’d like to schedule service soon.'],
-        ['month', 'Within a month', 'I’m planning and comparing options.'],
-        ['researching', 'Just researching', 'I’m gathering information for later.']
-      ]
-    }
-  ];
+  // Questions come from the client's database record (identified by data-client-key), not from this file.
+  let questions = [];
+  let settings = {};
+  function matchesWhen(when, answers) {
+    return Object.entries(when || {}).every(([key, allowed]) => Array.isArray(allowed) ? allowed.includes(answers[key]) : answers[key] === allowed);
+  }
+  function effectiveBrand(answers) {
+    return answers.brand === 'no-preference' ? settings.default_brand : answers.brand;
+  }
+  function buildQuestions(rows) {
+    return rows.map(row => ({
+      key: row.key,
+      eyebrow: row.eyebrow || '',
+      title: row.title,
+      subtitle: row.subtitle || '',
+      when: answers => matchesWhen(row.show_when, answers),
+      dynamicOptions: answers => row.options
+        .filter(option => matchesWhen(option.show_when, answers))
+        .map(option => {
+          const byKey = Object.entries(option.label_by || {}).find(([key, map]) => map && map[key === 'brand' ? effectiveBrand(answers) : answers[key]]);
+          const label = byKey ? byKey[1][byKey[0] === 'brand' ? effectiveBrand(answers) : answers[byKey[0]]] : option.label;
+          return [option.value, label, option.description || ''];
+        })
+    }));
+  }
+  async function api(action, extra) {
+    const response = await fetch(config.api, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action, public_key: config.clientKey, ...extra }) });
+    if (!response.ok) throw new Error(`Estimator service returned ${response.status}.`);
+    return response.json();
+  }
 
   const styles = `
     @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap');
@@ -174,26 +86,12 @@
 
   function visibleQuestions() { return questions.filter(q => !q.when || q.when(state.answers)); }
   function money(value) { return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value); }
-  function calculate() {
-    const a = state.answers;
-    let low = 0, high = 0, label = 'Preliminary project range';
-    if (a.projectType === 'replacement') {
-      const systems = { complete:[9500,16500], 'heat-pump':[10500,18500], 'ac-only':[6200,10500], 'furnace-only':[4800,8500], 'mini-split':[5500,14500] };
-      const size = { 'under-1200':.88, '1200-1800':1, '1800-2500':1.18, 'over-2500':1.42 }[a.homeSize] || 1;
-      const efficiency = { standard:1, enhanced:1.18, premium:1.42 }[a.efficiency] || 1;
-      [low, high] = systems[a.systemType] || [7500,15000]; low *= size * efficiency; high *= size * efficiency;
-      low = Math.round(low / 100) * 100; high = Math.round(high / 100) * 100;
-    } else if (a.projectType === 'repair') {
-      const repairs = { 'no-cooling':[180,2200], 'no-heating':[180,1900], 'not-running':[180,2500], 'noise-leak':[180,1800], other:[180,2400] };
-      [low, high] = repairs[a.repairIssue] || [180,2400]; label = 'Typical diagnostic & repair range';
-    } else if (a.projectType === 'maintenance') {
-      const maintenance = { 'single-tuneup':[89,189], 'two-tuneup':[175,349], plan:[180,450] };
-      [low, high] = maintenance[a.serviceDetail] || [89,450]; label = 'Typical service range';
-    } else {
-      const iaq = { 'duct-repair':[450,2800], 'duct-replace':[3500,12000], 'air-quality':[650,3500], airflow:[180,1800] };
-      [low, high] = iaq[a.serviceDetail] || [180,12000]; label = 'Preliminary project range';
-    }
-    state.estimate = { low, high, label, currency: 'USD' };
+  async function calculate() {
+    const quote = await api('quote', { answers: state.answers });
+    state.quote = quote;
+    state.estimate = quote.status === 'price'
+      ? { low: quote.low, high: quote.high, label: 'Your estimated range', currency: 'USD' }
+      : null;
   }
   function getAnswerLabel(key, value) {
     const question = questions.find(item => item.key === key);
@@ -222,7 +120,7 @@
     };
     const fieldNames = {
       projectType: 'Service', propertyType: 'Property type', systemType: 'System type', homeSize: 'Home size',
-      efficiency: 'Efficiency', repairIssue: 'System issue', systemAge: 'System age', serviceDetail: 'Service detail', urgency: 'Timing'
+      efficiency: 'Level', brand: 'Brand', miniSplitRooms: 'Rooms', has220: '220V outlet at outdoor unit', repairIssue: 'System issue', systemAge: 'System age', serviceDetail: 'Service detail', urgency: 'Timing'
     };
     const selections = Object.entries(state.answers)
       .map(([key, value]) => `${fieldNames[key] || key}: ${getAnswerLabel(key, value)}`)
@@ -289,9 +187,10 @@
       console.warn('Infinity Air address autocomplete:', error.message);
     }
   }
-  function renderResult() {
-    calculate();
-    root.innerHTML = `<style>${styles}</style><div class="shell">${header(100)}<main class="body"><div class="eyebrow">Your estimate is ready</div><h2>Where should we send your estimate?</h2><p class="subtitle">Enter your details below to view your personalized project range.</p><form class="lead"><div class="field"><label for="ia-first-name">First name *</label><input id="ia-first-name" name="firstName" autocomplete="given-name" required></div><div class="field"><label for="ia-last-name">Last name *</label><input id="ia-last-name" name="lastName" autocomplete="family-name" required></div><div class="field"><label for="ia-phone">Phone *</label><input id="ia-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(909) 555-1234" maxlength="14" required></div><div class="field"><label for="ia-email">Email</label><input id="ia-email" name="email" type="email" autocomplete="email"></div><div class="field full"><label for="ia-address">Street address</label><input id="ia-address" name="address" autocomplete="address-line1"></div><div class="field"><label for="ia-city">City</label><input id="ia-city" name="city" autocomplete="address-level2"></div><div class="field"><label for="ia-state">State</label><input id="ia-state" name="state" autocomplete="address-level1" maxlength="2" placeholder="CA"></div><div class="field"><label for="ia-zip">ZIP code</label><input id="ia-zip" name="zip" autocomplete="postal-code" inputmode="numeric"></div><div class="field full"><label for="ia-notes">Anything else we should know?</label><textarea id="ia-notes" name="notes" maxlength="500"></textarea></div><div class="error" hidden></div><button class="submit" type="submit">See My Estimate</button></form><div class="nav"><button class="back" type="button">← Change answers</button></div></main></div>`;
+  async function renderResult() {
+    root.innerHTML = `<style>${styles}</style><div class="shell">${header(100)}<main class="body"><p class="subtitle">Preparing your estimate…</p></main></div>`;
+    try { await calculate(); } catch (err) { state.quote = { status: 'unavailable', message: '' }; state.estimate = null; }
+    root.innerHTML = `<style>${styles}</style><div class="shell">${header(100)}<main class="body"><div class="eyebrow">Your estimate is ready</div><h2>Where should we send your estimate?</h2><p class="subtitle">Enter your details below and we will show your personalized project range.</p><form class="lead"><div class="field"><label for="ia-first-name">First name *</label><input id="ia-first-name" name="firstName" autocomplete="given-name" required></div><div class="field"><label for="ia-last-name">Last name *</label><input id="ia-last-name" name="lastName" autocomplete="family-name" required></div><div class="field"><label for="ia-phone">Phone *</label><input id="ia-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(909) 555-1234" maxlength="14" required></div><div class="field"><label for="ia-email">Email</label><input id="ia-email" name="email" type="email" autocomplete="email"></div><div class="field full"><label for="ia-address">Street address</label><input id="ia-address" name="address" autocomplete="address-line1"></div><div class="field"><label for="ia-city">City</label><input id="ia-city" name="city" autocomplete="address-level2"></div><div class="field"><label for="ia-state">State</label><input id="ia-state" name="state" autocomplete="address-level1" maxlength="2" placeholder="CA"></div><div class="field"><label for="ia-zip">ZIP code</label><input id="ia-zip" name="zip" autocomplete="postal-code" inputmode="numeric"></div><div class="field full"><label for="ia-notes">Anything else we should know?</label><textarea id="ia-notes" name="notes" maxlength="500"></textarea></div><div class="error" hidden></div><button class="submit" type="submit">See My Estimate</button></form><div class="nav"><button class="back" type="button">← Change answers</button></div></main></div>`;
     root.querySelector('.back').addEventListener('click', () => { state.step = Math.max(0, visibleQuestions().length - 1); renderQuestion(); });
     root.querySelector('.lead').addEventListener('submit', submitLead);
     root.querySelector('#ia-phone').addEventListener('input', event => {
@@ -323,13 +222,17 @@
       return;
     }
     data.phone = phone;
-    const hcpLineItemPackages = createEstimateLineItemPackages();
+    const priced = state.quote?.status === 'price' && state.estimate;
+    const hcpLineItemPackages = priced ? createEstimateLineItemPackages() : [];
     const payload = {
       event: 'estimator.completed',
       submittedAt: new Date().toISOString(),
       source: config.source,
       contact: data,
       answers: state.answers,
+      client_key: config.clientKey,
+      quote_status: state.quote?.status || 'unavailable',
+      pricing_version: state.quote?.pricing_version ?? null,
       estimate: state.estimate,
       hcp_line_items: hcpLineItemPackages,
       hcp_line_items_json: JSON.stringify(hcpLineItemPackages)
@@ -340,13 +243,30 @@
       if (!endpoint) throw new Error('No submission endpoint is configured.');
       const response = await fetch(endpoint, { method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify(payload) });
       if (!response.ok) throw new Error(`Submission service returned ${response.status}.`);
-      const e = state.estimate;
-      root.innerHTML = `<style>${styles}</style><div class="shell">${header(100)}<main class="body"><div class="eyebrow">Your personalized estimate</div><h2>Thank you, ${escapeHtml(data.firstName)}.</h2><p class="subtitle">Based on the details you shared, here’s a realistic starting range.</p><div class="result"><div class="result-label">${e.label}</div><div class="price">${money(e.low)}–${money(e.high)}</div><p>Final pricing depends on an on-site evaluation, equipment selection, access, permits, and project requirements.</p></div><p class="notice">This is a planning estimate, not a binding quote. Infinity Air will confirm your options and provide upfront pricing before work begins.</p><a class="submit" href="tel:+19099752391" style="display:block;text-align:center;text-decoration:none">Call ${config.phone}</a></main></div>`;
+      const e = state.estimate, q = state.quote || {};
+      const disclaimer = escapeHtml(q.disclaimer || 'This is a planning estimate, not a binding quote.');
+      const body = e
+        ? `<p class="subtitle">Based on the details you shared, here’s a realistic range.</p><div class="result"><div class="result-label">${escapeHtml(e.label)}</div><div class="price">${money(e.low)}–${money(e.high)}</div>${(q.notes || []).length ? `<p>${q.notes.map(escapeHtml).join('<br>')}</p>` : ''}${q.valid_days ? `<p>Good for ${Number(q.valid_days)} days.</p>` : ''}</div>${q.financing ? `<p class="notice">${escapeHtml(q.financing)}</p>` : ''}`
+        : `<div class="result"><p>${escapeHtml(q.message || 'Thanks. We received your details and will contact you shortly with your price.')}</p></div>`;
+      root.innerHTML = `<style>${styles}</style><div class="shell">${header(100)}<main class="body"><div class="eyebrow">${e ? 'Your personalized estimate' : 'We received your request'}</div><h2>Thank you, ${escapeHtml(data.firstName)}.</h2>${body}<p class="notice">${disclaimer}</p><a class="submit" href="tel:+19099752391" style="display:block;text-align:center;text-decoration:none">Call ${config.phone}</a></main></div>`;
       mount.dispatchEvent(new CustomEvent('infinity-air:completed', { detail: payload }));
     } catch (err) {
       error.textContent = `${err.message} Please call ${config.phone} or try again.`; error.hidden = false; button.disabled = false; button.textContent = 'See My Estimate';
     }
   }
   function escapeHtml(value) { const div = document.createElement('div'); div.textContent = value; return div.innerHTML; }
-  renderQuestion();
+  (async () => {
+    root.innerHTML = `<style>${styles}</style><div class="shell">${header(0)}<main class="body"><p class="subtitle">Loading…</p></main></div>`;
+    try {
+      if (!config.clientKey) throw new Error('Missing data-client-key.');
+      const loaded = await api('config');
+      settings = loaded.settings || {};
+      questions = buildQuestions(loaded.questions || []);
+      if (!questions.length) throw new Error('No questions configured.');
+      renderQuestion();
+    } catch (err) {
+      console.warn('Infinity Air estimator:', err.message);
+      root.innerHTML = `<style>${styles}</style><div class="shell">${header(0)}<main class="body"><h2>We could not load the estimator.</h2><p class="subtitle">Please call us at ${config.phone} and we will help right away.</p></main></div>`;
+    }
+  })();
 })();
