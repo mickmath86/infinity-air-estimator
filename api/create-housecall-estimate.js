@@ -45,6 +45,8 @@ function validatePayload(payload) {
     throw new TypeError('First and last name are required.');
   }
   if (digits(contact.phone).length !== 10) throw new TypeError('A valid 10-digit phone number is required.');
+  const unpriced = payload.quote_status && payload.quote_status !== 'price';
+  if (unpriced) return contact;
   if (!Array.isArray(payload.hcp_line_items) || !payload.hcp_line_items.length) {
     throw new TypeError('At least one estimate option is required.');
   }
@@ -133,6 +135,8 @@ async function createHousecallEstimate(payload, apiKey, fetchImpl = fetch) {
 
   let serviceAddress = matchingAddress(customer.addresses, address);
   if (!serviceAddress && address) serviceAddress = await ensureAddress(client, customer, address);
+
+  if (payload.quote_status && payload.quote_status !== 'price') return { customerId: customer.id, estimateId: null };
 
   const estimateBody = {
     customer_id: customer.id,
