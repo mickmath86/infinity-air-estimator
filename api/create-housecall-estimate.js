@@ -143,7 +143,11 @@ async function createHousecallEstimate(payload, apiKey, fetchImpl = fetch) {
     options: payload.hcp_line_items
   };
   if (serviceAddress?.id) estimateBody.address_id = serviceAddress.id;
-  if (contact.notes) estimateBody.note = String(contact.notes).trim();
+  const note = [contact.notes, payload.selection_summary]
+    .map(value => String(value || '').trim())
+    .filter(Boolean)
+    .join('\n\n');
+  if (note) estimateBody.note = note;
   estimateBody.lead_source = 'Kickbord Estimator Tool';
 
   const estimate = await client.request('/estimates', {

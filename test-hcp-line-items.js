@@ -1,5 +1,5 @@
 const assert = require('node:assert/strict');
-const { buildHcpLineItems, buildHcpLineItemPackages } = require('./infinity-air-estimator.js');
+const { buildHcpLineItems, buildHcpLineItemPackages, buildHcpOptions } = require('./infinity-air-estimator.js');
 
 const multiple = buildHcpLineItems([
   { name: 'Equipment', description: 'Heat pump', quantity: 1, unitPrice: 8500, priceUnit: 'dollars' },
@@ -81,5 +81,14 @@ assert.deepEqual(JSON.parse(JSON.stringify(packages)), packages);
 assert.throws(() => buildHcpLineItemPackages('', [
   { name: 'Service', description: '', quantity: 1, unitPrice: 100, priceUnit: 'dollars' }
 ]), /package name is required/);
+
+const tierOptions = buildHcpOptions([
+  { name: 'Bronze', lineItems: [{ name: 'Bronze system', description: 'Price book row', quantity: 1, unitPrice: 12.5, priceUnit: 'dollars' }] },
+  { name: 'Gold dual fuel', lineItems: [{ name: 'Gold system', description: 'Dual fuel: heat pump with gas furnace backup.', quantity: 1, unitPrice: 20, priceUnit: 'dollars' }] }
+]);
+assert.equal(tierOptions.length, 2);
+assert.equal(tierOptions[0].line_items[0].unit_price, 1250);
+assert.equal(tierOptions[1].name, 'Gold dual fuel');
+assert.throws(() => buildHcpOptions([]), /estimate option is required/);
 
 console.log('Housecall Pro line-item tests passed.');

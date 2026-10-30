@@ -101,6 +101,42 @@ assert.throws(() => validatePayload(payload({ hcp_line_items: [] })), /estimate 
   assert.equal(customerRequest.lead_source, 'Kickbord Estimator Tool');
   assert.equal(JSON.parse(newCalls[3].options.body).address_id, 'adr_new');
 
+  const tierPayload = payload({
+    selection_summary: 'Property: Residential\nOptions: Bronze $1; Silver $2',
+    hcp_line_items: [
+      { name: 'Bronze', line_items: [{ name: 'Bronze system', description: 'From the price book', quantity: 1, unit_price: 100 }] },
+      { name: 'Silver', line_items: [{ name: 'Silver system', description: 'From the price book', quantity: 1, unit_price: 200 }] },
+      { name: 'Gold dual fuel', line_items: [{ name: 'Gold system', description: 'Dual fuel', quantity: 1, unit_price: 300 }] }
+    ]
+  });
+  assert.doesNotThrow(() => validatePayload(tierPayload));
+  const tierCalls = [];
+  const tierFetch = async (url, options = {}) => {
+    tierCalls.push({ url, options });
+    if (url.includes('/customers?q=')) return response(200, { customers: [{ id: 'cus_tier', mobile_number: '5554902486', addresses: [{ id: 'adr_tier', street: '123 Main St', city: 'Ontario', state: 'CA', zip: '91761' }] }] });
+    if (url.endsWith('/estimates')) return response(201, { id: 'est_tiers' });
+    throw new Error(`Unexpected request: ${url}`);
+  };
+  const tiered = await createHousecallEstimate(tierPayload, 'test-key', tierFetch);
+  assert.deepEqual(tiered, { customerId: 'cus_tier', estimateId: 'est_tiers' });
+  const tierEstimate = JSON.parse(tierCalls[1].options.body);
+  assert.equal(tierEstimate.options.length, 3);
+  assert.equal(tierEstimate.options[2].name, 'Gold dual fuel');
+  assert.match(tierEstimate.note, /Call before arrival/);
+  assert.match(tierEstimate.note, /Bronze/);
+
+  const leadPayload = payload({ quote_status: 'lead', hcp_line_items: [] });
+  assert.doesNotThrow(() => validatePayload(leadPayload));
+  const leadCalls = [];
+  const leadFetch = async (url, options = {}) => {
+    leadCalls.push(url);
+    if (url.includes('/customers?q=')) return response(200, { customers: [{ id: 'cus_lead', mobile_number: '5554902486', addresses: [{ id: 'adr_lead', street: '123 Main St', city: 'Ontario', state: 'CA', zip: '91761' }] }] });
+    throw new Error(`Unexpected request: ${url}`);
+  };
+  const lead = await createHousecallEstimate(leadPayload, 'test-key', leadFetch);
+  assert.deepEqual(lead, { customerId: 'cus_lead', estimateId: null });
+  assert.equal(leadCalls.some(url => url.endsWith('/estimates')), false);
+
   console.log('Housecall Pro API tests passed.');
 })().catch(error => {
   console.error(error);
