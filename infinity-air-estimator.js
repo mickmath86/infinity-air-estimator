@@ -216,7 +216,8 @@
     for (const warning of quote.warnings || []) console.warn('Infinity Air price book conflict', warning);
     const priced = quote.groups && quote.groups.length;
     const message = leadCopy[quote.reason] || leadCopy.incomplete;
-    const tiers = priced ? quote.groups.map(group => `<section class="ton-block"><h3>${escapeHtml(String(group.tons))} ton</h3><div class="tiers">${group.tiers.map(tierCard).join('')}</div></section>`).join('') : `<div class="result"><p>${escapeHtml(message)}</p></div>`;
+    const repairIcon = quote.reason === 'repair' ? '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" focusable="false" style="display:inline-block;vertical-align:-5px;margin-right:8px"><path fill="#F5821F" d="M12 2.2 1.2 21h21.6L12 2.2zm1.1 14.3h-2.2v-2.2h2.2v2.2zm0-4h-2.2V8.5h2.2v4z"/></svg>' : '';
+    const tiers = priced ? quote.groups.map(group => `<section class="ton-block"><h3>${escapeHtml(String(group.tons))} ton</h3><div class="tiers">${group.tiers.map(tierCard).join('')}</div></section>`).join('') : `<div class="result"><p>${repairIcon}${escapeHtml(message)}</p></div>`;
     const climate = quote.climate;
     shell(100, `
       <div class="eyebrow">${priced ? 'Price book options' : 'Contact Ryan'}</div>
