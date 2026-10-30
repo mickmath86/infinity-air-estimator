@@ -48,15 +48,15 @@
     // Customer-facing name for the mid-tier equipment. Do not put the house brand on tier cards.
     valueLineLabel: 'Value line',
     valueLineFeatures: [
-      'Best value for the equipment',
-      'Strong heat pumps',
-      'Higher efficiency for the price'
+      'A practical system that still feels like a real upgrade',
+      'Equipment that both heats and cools the home',
+      'Built to use less electricity than an older unit, so monthly bills can be lower'
     ],
     americanStandardFeatures: [
-      'Premium Trane brand',
-      'Built to be more durable',
-      'Less day-to-day maintenance',
-      'Top-tier equipment'
+      'A premium brand in the Trane family',
+      'Built for a long service life',
+      'Made so routine upkeep is simpler',
+      'The higher-end choice when you want the finest comfort we offer'
     ],
     // Flip to true after Ryan is an authorized dealer (expected January) to price this line from the book.
     americanStandardPricesEnabled: false,
@@ -64,10 +64,21 @@
     // Price-book wording today is the tier word Gold. Change this one string if the gas tier should say Dual fuel.
     goldGasTierLabel: 'Gold',
     tierCopy: {
-      bronze: { fallbackSeries: 'M series', benefit: 'Entry equipment, about 14 SEER2, with a one-year labor warranty.' },
-      silver: { fallbackSeries: 'Inverter', benefit: 'Inverter equipment, about 16 to 18 SEER2.' },
-      gold: { fallbackSeries: 'Inverter', benefit: 'About 19 SEER2.', gasBenefit: 'Two-stage dual fuel, about 19 SEER2.' }
+      bronze: {
+        fallbackSeries: 'M series',
+        benefit: 'A dependable system for everyday comfort, built to keep working season after season. It uses less electricity than a worn-out unit. SEER2 is an efficiency rating: a higher rating means lower monthly bills. Infinity Air installs it, and labor is included in this price.'
+      },
+      silver: {
+        fallbackSeries: 'Inverter',
+        benefit: 'A variable-speed system that holds a steadier temperature instead of only blasting on and off. That steadier run is more comfortable and wastes less energy. SEER2 is an efficiency rating: a higher rating means lower monthly bills. Infinity Air installs it, and labor is included in this price.'
+      },
+      gold: {
+        fallbackSeries: 'Inverter',
+        benefit: 'Our quietest option. It adjusts its speed to hold a precise temperature and uses less energy while it runs, instead of cycling hard on and off. SEER2 is an efficiency rating: a higher rating means lower monthly bills. Infinity Air installs it, and labor is included in this price.',
+        gasBenefit: 'A dual fuel system: a heat pump handles mild days, and a gas furnace takes over when it gets cold, so you get efficient cooling and dependable heat. It runs in stages rather than only at full power, which feels steadier in the home. Infinity Air installs it, and labor is included in this price.'
+      }
     },
+    tierReviewNote: 'Ryan: exact efficiency ratings and warranty lengths differ by model in the price book. Sample rows mention about 13.8–16 SEER2 and a 10-year parts warranty on a bronze model, about 17.7 SEER2 on a silver model, and about 19 SEER2 with a 2-year labor warranty on a gold heat pump. Customer cards stay general until you confirm one wording for every size.',
     addonCategories: ['Ducting', 'IAQ', 'Thermostats and Controls']
   };
 });

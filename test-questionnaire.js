@@ -71,7 +71,15 @@ for (const group of bothSizes.groups) {
 const three = bothSizes.groups.find(group => group.tons === 3);
 const four = bothSizes.groups.find(group => group.tons === 4);
 assert.equal(three.tiers[0].series, 'M series');
+assert.equal(three.tiers[0].systemName, 'Bronze 3 Ton Heat Pump Split System');
+assert.equal(/FAU|R-454|AC\s*Pro/i.test(three.tiers[0].systemName), false);
+assert.match(three.tiers[0].benefit, /lower monthly bills/i);
+assert.equal(/one-year|14 SEER2/i.test(three.tiers[0].benefit), false);
 assert.equal(three.tiers[0].systemPrice, priceOf('Bronze 3 Ton Heat Pump Split System with Core FAU R-454b'));
+assert.equal(flow.tonHeading(5), '5-ton system: the size we matched to your home\'s square footage and location. Tons measure cooling capacity, not weight.');
+assert.equal(flow.tonHeading(3), '3-ton system: the size we matched to your home\'s square footage and location. Tons measure cooling capacity, not weight.');
+assert.match(config.tierReviewNote, /Ryan:/);
+assert.equal(config.showRyanReviewCallouts, true);
 assert.equal(three.tiers[1].series, 'Z series inverter');
 assert.equal(three.tiers[1].systemPrice, priceOf('Silver 3 Ton Heat Pump Split System R454B'));
 assert.match(three.tiers[2].series, /XB series/);

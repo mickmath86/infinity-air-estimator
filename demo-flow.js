@@ -18,7 +18,17 @@
   }
 
   function customerText(value) {
-    return String(value || '').replace(/\bAC\s*Pro\b/gi, ' ').replace(/\s+/g, ' ').replace(/\s+([,.;])/g, '$1').trim();
+    return String(value || '')
+      .replace(/\bAC\s*Pro\b/gi, ' ')
+      .replace(/\bwith\s+Core\s+FAU\b/gi, ' ')
+      .replace(/\bR-?\d{2,4}[a-z]?\b/gi, ' ')
+      .replace(/\s+/g, ' ')
+      .replace(/\s+([,.;])/g, '$1')
+      .trim();
+  }
+
+  function tonHeading(tons) {
+    return `${tons}-ton system: the size we matched to your home's square footage and location. Tons measure cooling capacity, not weight.`;
   }
 
   function seriesNames(text) {
@@ -409,6 +419,7 @@
 
   return {
     customerText,
+    tonHeading,
     seriesNames,
     climateForZip,
     tonnageChoicesForSqft,
