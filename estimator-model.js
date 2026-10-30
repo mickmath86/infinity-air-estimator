@@ -668,7 +668,7 @@
     lines.push('', 'Unmapped priced rows');
     if (!quality.unmapped.length) lines.push('  None');
     for (const item of quality.unmapped) lines.push(`  ${item.reason}  ${item.price}  ${item.category}  |  ${item.name}  |  ${item.uuid}`);
-    lines.push('', 'Home size is not in this price book. Tons come from data/demo-config.js (coastal 500 sq. ft. per ton, inland 400). That ZIP list is unconfirmed.');
+    lines.push('', 'Home size is not in this price book. Tons come from data/demo-config.js (500 sq. ft. per ton near the Orange County coast, 400 inland). The 500 sq ft per ton near the Orange County coast / 400 sq ft per ton inland rule and the ZIP list are a first pass pending Ryan\'s confirmation.');
     return lines.join('\n');
   }
 

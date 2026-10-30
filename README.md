@@ -14,7 +14,7 @@ Screens, in order:
 
 1. **Property.** Residential is the main choice. Commercial is grayed out, labeled Coming soon, and still opens a Contact Ryan form. No price.
 2. **Replacement or repair.** Repair goes straight to Contact Ryan. An on-site visit is required, so there is no estimate. Replacement continues.
-3. **ZIP code.** Coastal Orange County beach ZIPs use 500 sq. ft. per ton. Inland Riverside and San Bernardino ZIPs, and any ZIP not on the list, use 400 sq. ft. per ton. The lists are in `data/demo-config.js` and are not confirmed yet.
+3. **ZIP code.** Coastal Orange County beach ZIPs use 500 sq. ft. per ton. Inland Riverside and San Bernardino ZIPs, and any ZIP not on the list, use 400 sq. ft. per ton. That rule and the ZIP list are a first pass pending Ryan’s confirmation. The questionnaire shows them in a `.ryan-review` callout (`showRyanReviewCallouts` in `data/demo-config.js`, on by default) so they can be hidden for live customers.
 4. **Current system.** Gas furnace + AC split, heat pump split, package unit, or ductless mini-split, from the categories that are actually in the price book.
 5. **Home size.** Square-footage ranges. Tonnage rounds up to the next whole ton. If the home lands between two whole tons, both sizes are shown (3.5 becomes the 3 ton and the 4 ton options, not a single 4 ton). Half tons are never offered. Tons that are not in the price book for that equipment are clamped to the closest size in the book, and a tie stays with the smaller ton.
 6. **Mini-split rooms.** Only when the current system is a ductless mini-split. One, two, three, or four or more rooms.

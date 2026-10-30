@@ -399,6 +399,7 @@
     if (proposal && proposal.climate) {
       lines.push(`Sizing guide: ${proposal.climate.sqftPerTon} sq. ft. per ton (${proposal.climate.id}${proposal.climate.listed ? '' : ', ZIP not on the list'})`);
     }
+    if (config.sizingReviewNote) lines.push(config.sizingReviewNote);
     if (proposal && proposal.tons && proposal.tons.length) lines.push(`Whole tons offered: ${proposal.tons.join(' and ')}`);
     for (const group of (proposal && proposal.groups) || []) {
       lines.push(`${group.tons} ton options: ${group.tiers.map(tier => `${tier.label} ${tier.callForQuote ? 'call for quote' : lib().money(tier.total)}`).join('; ')}`);

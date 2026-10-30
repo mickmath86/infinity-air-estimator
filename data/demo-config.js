@@ -10,7 +10,9 @@
   // A home that falls between two whole tons is offered both sizes. No half tons.
   return {
     unconfirmed: true,
-    notice: 'UNCONFIRMED sizing guide for Ryan Villa. Coastal Orange County beach ZIPs use 500 sq. ft. per ton. Inland Riverside and San Bernardino ZIPs use 400 sq. ft. per ton. Any ZIP not listed uses the inland guide.',
+    showRyanReviewCallouts: true,
+    sizingReviewNote: 'The 500 sq ft per ton near the Orange County coast / 400 sq ft per ton inland rule and the ZIP list are a first pass pending Ryan\'s confirmation.',
+    notice: 'UNCONFIRMED sizing guide for Ryan Villa. Coastal Orange County beach ZIPs use 500 sq. ft. per ton. Inland Riverside and San Bernardino ZIPs use 400 sq. ft. per ton. Any ZIP not listed uses the inland guide. The 500 sq ft per ton near the Orange County coast / 400 sq ft per ton inland rule and the ZIP list are a first pass pending Ryan\'s confirmation.',
     coastalSqftPerTon: 500,
     inlandSqftPerTon: 400,
     coastalZips: [

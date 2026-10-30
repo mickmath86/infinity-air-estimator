@@ -130,6 +130,9 @@ function mockRes() {
   assert.match(res.headers['cache-control'], /stale-while-revalidate=300/);
   assert.equal(res.body.source, 'snapshot');
   assert.equal(res.body.config.goldGasTierLabel, 'Gold');
+  assert.equal(res.body.config.showRyanReviewCallouts, true);
+  assert.match(res.body.config.sizingReviewNote, /first pass pending Ryan's confirmation/);
+  assert.match(res.body.config.notice, /first pass pending Ryan's confirmation/);
   assert.equal(JSON.stringify(res.body).includes('"cost"'), false);
 
   const denied = mockRes();
