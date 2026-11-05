@@ -28,7 +28,7 @@
   }
 
   function tonHeading(tons) {
-    return `${tons}-ton system: the size we matched to your home's square footage and location. Tons measure cooling capacity, not weight.`;
+    return `${tons}-ton system, sized from the top of your home's square-footage range and rounded up to a whole ton. Tons measure cooling capacity, not weight.`;
   }
 
   function seriesNames(text) {
@@ -73,12 +73,28 @@
     return [up];
   }
 
+  function roundedUpTon(sqft, sqftPerTon) {
+    const feet = Number(sqft);
+    const ratio = Number(sqftPerTon);
+    if (!(feet > 0) || !(ratio > 0)) return null;
+    const ton = Math.ceil(feet / ratio - 1e-9);
+    return ton >= 1 ? ton : null;
+  }
+
   function tonnageChoicesForRange(low, high, sqftPerTon) {
-    const tons = new Set();
-    for (const sqft of [low, high]) {
-      for (const ton of tonnageChoicesForSqft(sqft, sqftPerTon)) tons.add(ton);
-    }
-    return [...tons].sort((left, right) => left - right);
+    // One ton, from the top of the range. `low` stays in the signature so a range can be passed through unchanged.
+    void low;
+    const ton = roundedUpTon(high, sqftPerTon);
+    return ton ? [ton] : [];
+  }
+
+  function roundUpToOfferedTon(ton, available) {
+    const offered = [...new Set((available || []).filter(value => Number.isInteger(value) && value >= 1))].sort((left, right) => left - right);
+    if (!Number.isInteger(ton) || ton < 1) return [];
+    if (!offered.length) return [ton];
+    if (offered.includes(ton)) return [ton];
+    const nextUp = offered.find(value => value >= ton);
+    return [nextUp == null ? offered[offered.length - 1] : nextUp];
   }
 
   function availableWholeTons(items, family, brand) {
@@ -148,7 +164,9 @@
     const family = answers.systemFamily;
     const brand = catalogBrand(family, answers.brand || 'value');
     const available = availableWholeTons(items, family, brand);
-    return { climate, tons: available.length ? clampTons(raw, available) : raw.filter(ton => Number.isInteger(ton)) };
+    const ton = raw.find(value => Number.isInteger(value));
+    if (!ton) return { climate, tons: [] };
+    return { climate, tons: available.length ? roundUpToOfferedTon(ton, available) : [ton] };
   }
 
   function tierLabel(config, tier, family) {
@@ -171,6 +189,84 @@
 
   function moneyOrQuote(price) {
     return price > 0 ? lib().money(price) : 'Call for quote';
+  }
+
+  const ADDON_CATEGORY_LABELS = {
+    Ducting: 'Ductwork',
+    IAQ: 'Indoor air quality',
+    'Thermostats and Controls': 'Thermostats'
+  };
+  const IAQ_CATEGORY_NOTE = 'Indoor air quality means how clean the air inside your home is. These add-ons filter or clean the air that moves through your heating and cooling system.';
+
+  function addonCategoryLabel(config, category) {
+    const labels = (config && config.addonCategoryLabels) || {};
+    if (labels[category]) return labels[category];
+    return ADDON_CATEGORY_LABELS[category] || category;
+  }
+
+  function addonCategoryNote(config, category) {
+    const notes = (config && config.addonCategoryNotes) || {};
+    if (Object.prototype.hasOwnProperty.call(notes, category)) return notes[category] || '';
+    return String(category || '').toLowerCase() === 'iaq' ? IAQ_CATEGORY_NOTE : '';
+  }
+
+  function addonDescription(item, config) {
+    const byId = (config && config.addonDescriptions) || {};
+    if (item && byId[item.uuid]) return byId[item.uuid];
+    const name = String(item && item.name || '').toLowerCase();
+    const category = String(item && item.category || '');
+    for (const rule of (config && config.addonDescriptionFallbacks) || []) {
+      if (rule.keyword && name.includes(String(rule.keyword).toLowerCase())) return rule.text;
+      if (rule.category && category.toLowerCase() === String(rule.category).toLowerCase()) return rule.text;
+    }
+    if (category.toLowerCase() === 'iaq') return 'A filter or cleaner for the air that moves through the heating and cooling system.';
+    if (category.toLowerCase() === 'ducting') return 'Ductwork or a duct accessory for air moving through the home.';
+    if (category.toLowerCase() === 'thermostats and controls') return 'A control for the heating and cooling system.';
+    return 'An optional extra for the heating and cooling system.';
+  }
+
+  function addonCopy(item, config) {
+    return {
+      categoryLabel: addonCategoryLabel(config, item && item.category),
+      categoryNote: addonCategoryNote(config, item && item.category),
+      description: addonDescription(item, config)
+    };
+  }
+
+  function addonAppliesToAnswers(item, items, config, answers) {
+    if (!item || !answers || answers.projectType !== 'replacement') return false;
+    if (!item.tonnage) return true;
+    const sizing = recommendedTons(items, config, answers);
+    if (!sizing.tons.length) return false;
+    return sizing.tons.some(tons => addonApplies(item, tons));
+  }
+
+  function applicableAddonIds(items, config, answers) {
+    const byId = new Map(addonItems(items, config).map(item => [item.uuid, item]));
+    return (answers && answers.addons || []).filter(id => addonAppliesToAnswers(byId.get(id), items, config, answers));
+  }
+
+  function pruneAddonAnswers(items, config, answers) {
+    const next = { ...(answers || {}) };
+    next.addons = applicableAddonIds(items, config, next);
+    return next;
+  }
+
+  function answersAfterChange(items, config, answers, key, value) {
+    const nextAnswers = { ...(answers || {}) };
+    if (Array.isArray(nextAnswers.addons)) nextAnswers.addons = nextAnswers.addons.slice();
+    nextAnswers[key] = value;
+    const questions = visibleQuestions(items, config, nextAnswers);
+    const index = questions.findIndex(item => item.key === key);
+    const keep = new Set(questions.slice(0, Math.max(index, 0) + 1).map(item => item.key));
+    if (questions.some(item => item.key === 'addons')) keep.add('addons');
+    for (const answerKey of Object.keys(nextAnswers)) {
+      if (!keep.has(answerKey)) delete nextAnswers[answerKey];
+    }
+    if (!Array.isArray(nextAnswers.addons)) nextAnswers.addons = [];
+    if (!keep.has('addons')) nextAnswers.addons = [];
+    else nextAnswers.addons = applicableAddonIds(items, config, nextAnswers);
+    return nextAnswers;
   }
 
   function questionDefinitions(items, config) {
@@ -227,7 +323,7 @@
         summaryLabel: 'Home size',
         eyebrow: 'Home size',
         title: 'About how large is the home?',
-        subtitle: 'Size is rounded up to the next whole ton. If the home could use either of two sizes, both are shown. No half tons.',
+        subtitle: 'We size from the top of the range, round up to one whole ton, and stay within the sizes in the price book. No half tons.',
         when: answers => answers.projectType === 'replacement' && Boolean(answers.systemFamily),
         options: () => (config.squareFootageRanges || []).map(range => [range.id, range.label, 'Whole-ton options are calculated from this range and the ZIP.'])
       },
@@ -268,7 +364,7 @@
         summaryLabel: 'Add-ons',
         eyebrow: 'Add-ons',
         title: 'Any add-ons or extras?',
-        subtitle: 'These rows come from the price book. A selected add-on is added to each Bronze, Silver, and Gold option. A blank price becomes Call for quote.',
+        subtitle: 'Choose any that fit this home. Each one has a short description. A selected add-on is added to Bronze, Silver, and Gold. A blank price becomes Call for quote.',
         when: answers => answers.projectType === 'replacement' && addons.length > 0,
         items: () => addons
       },
@@ -396,7 +492,10 @@
       const value = completed[question.key];
       if (value == null || value === '' || (Array.isArray(value) && !value.length)) continue;
       if (question.key === 'addons') {
-        const names = addonItems(items, config).filter(item => value.includes(item.uuid)).map(item => customerText(item.name));
+        const names = applicableAddonIds(items, config, completed)
+          .map(id => addonItems(items, config).find(item => item.uuid === id))
+          .filter(Boolean)
+          .map(item => customerText(item.name));
         if (names.length) lines.push(`Add-ons: ${names.join('; ')}`);
         continue;
       }
@@ -424,10 +523,16 @@
     climateForZip,
     tonnageChoicesForSqft,
     tonnageChoicesForRange,
+    roundUpToOfferedTon,
     availableWholeTons,
     clampTons,
     catalogBrand,
     addonItems,
+    addonCopy,
+    addonAppliesToAnswers,
+    applicableAddonIds,
+    pruneAddonAnswers,
+    answersAfterChange,
     recommendedTons,
     questionDefinitions,
     visibleQuestions,

@@ -27,10 +27,18 @@ assert.deepEqual(flow.tonnageChoicesForSqft(1600, 500), [3, 4]);
 assert.deepEqual(flow.tonnageChoicesForSqft(2000, 500), [4]);
 assert.deepEqual(flow.tonnageChoicesForSqft(2000, 400), [5]);
 assert.deepEqual(flow.tonnageChoicesForSqft(2500, 500), [5]);
-assert.deepEqual(flow.tonnageChoicesForRange(1600, 2000, 500), [3, 4]);
-assert.deepEqual(flow.tonnageChoicesForRange(1600, 2000, 400), [4, 5]);
-assert.deepEqual(flow.tonnageChoicesForRange(2000, 2500, 500), [4, 5]);
+assert.deepEqual(flow.tonnageChoicesForRange(1600, 2000, 500), [4]);
+assert.deepEqual(flow.tonnageChoicesForRange(1600, 2000, 400), [5]);
+assert.deepEqual(flow.tonnageChoicesForRange(2000, 2500, 500), [5]);
+assert.deepEqual(flow.tonnageChoicesForRange(1200, 1600, 500), [4]);
+assert.deepEqual(flow.tonnageChoicesForRange(2000, 2500, 400), [7]);
+assert.deepEqual(flow.tonnageChoicesForRange(800, 3600, 400), [9]);
 assert.ok(flow.tonnageChoicesForRange(800, 3600, 400).every(ton => Number.isInteger(ton)));
+assert.equal(flow.tonnageChoicesForRange(800, 3600, 400).length, 1);
+assert.deepEqual(flow.roundUpToOfferedTon(7, [2, 3, 4, 5]), [5]);
+assert.deepEqual(flow.roundUpToOfferedTon(4, [3, 5]), [5]);
+assert.deepEqual(flow.roundUpToOfferedTon(2, [3, 4, 5]), [3]);
+assert.deepEqual(flow.roundUpToOfferedTon(4, [2, 3, 4, 5]), [4]);
 assert.equal(flow.climateForZip('92648', config).sqftPerTon, 500);
 assert.equal(flow.climateForZip('91761', config).id, 'inland');
 assert.equal(flow.climateForZip('92501', config).listed, true);
@@ -58,26 +66,29 @@ assert.ok(!keys({ ...withSystem, systemFamily: 'mini-split', homeSize: '1200-160
 const valueAnswers = { ...withSystem, homeSize: '1200-1600', systemAge: '5-10', addons: [], brand: 'value' };
 assert.ok(keys(valueAnswers).includes('brand'));
 assert.equal(flow.visibleQuestions(items, config, valueAnswers).find(question => question.key === 'brand').options()[0][1], 'Value line');
-const bothSizes = proposal(valueAnswers);
-assert.deepEqual(bothSizes.tons, [3, 4]);
-assert.equal(bothSizes.groups.length, 2);
-for (const group of bothSizes.groups) {
+const fourTonProposal = proposal(valueAnswers);
+assert.deepEqual(fourTonProposal.tons, [4]);
+assert.equal(fourTonProposal.groups.length, 1);
+const threeTonProposal = proposal({ ...valueAnswers, homeSize: 'under-1200' });
+assert.deepEqual(threeTonProposal.tons, [3]);
+assert.equal(threeTonProposal.groups.length, 1);
+for (const group of [...fourTonProposal.groups, ...threeTonProposal.groups]) {
   assert.deepEqual(group.tiers.map(tier => tier.tier), ['bronze', 'silver', 'gold']);
   for (const tier of group.tiers) {
     assert.equal(/AC\s*Pro/i.test(cardText(tier)), false);
     assert.match(tier.label, /Bronze|Silver|Gold/);
   }
 }
-const three = bothSizes.groups.find(group => group.tons === 3);
-const four = bothSizes.groups.find(group => group.tons === 4);
+const three = threeTonProposal.groups[0];
+const four = fourTonProposal.groups[0];
 assert.equal(three.tiers[0].series, 'M series');
 assert.equal(three.tiers[0].systemName, 'Bronze 3 Ton Heat Pump Split System');
 assert.equal(/FAU|R-454|AC\s*Pro/i.test(three.tiers[0].systemName), false);
 assert.match(three.tiers[0].benefit, /lower monthly bills/i);
 assert.equal(/one-year|14 SEER2/i.test(three.tiers[0].benefit), false);
 assert.equal(three.tiers[0].systemPrice, priceOf('Bronze 3 Ton Heat Pump Split System with Core FAU R-454b'));
-assert.equal(flow.tonHeading(5), '5-ton system: the size we matched to your home\'s square footage and location. Tons measure cooling capacity, not weight.');
-assert.equal(flow.tonHeading(3), '3-ton system: the size we matched to your home\'s square footage and location. Tons measure cooling capacity, not weight.');
+assert.equal(flow.tonHeading(5), '5-ton system, sized from the top of your home\'s square-footage range and rounded up to a whole ton. Tons measure cooling capacity, not weight.');
+assert.equal(flow.tonHeading(3), '3-ton system, sized from the top of your home\'s square-footage range and rounded up to a whole ton. Tons measure cooling capacity, not weight.');
 assert.match(config.tierReviewNote, /Ryan:/);
 assert.equal(config.showRyanReviewCallouts, true);
 assert.equal(three.tiers[1].series, 'Z series inverter');
@@ -104,16 +115,48 @@ assert.equal(exact.tons.includes(2.5), false);
 const duct = items.find(item => item.name === '3 Ton Duct System');
 const thermostat = items.find(item => item.name === 'Honeywell ElitePRO S1200 Smart Thermostat');
 const nest = items.find(item => item.name === 'Nest Thermostat');
-const withAddons = proposal({ ...valueAnswers, addons: [duct.uuid, thermostat.uuid] });
-const threeBronze = withAddons.groups.find(group => group.tons === 3).tiers[0];
-const fourBronze = withAddons.groups.find(group => group.tons === 4).tiers[0];
+const threeWithAddons = proposal({ ...valueAnswers, homeSize: 'under-1200', addons: [duct.uuid, thermostat.uuid] });
+const threeBronze = threeWithAddons.groups[0].tiers[0];
 assert.equal(threeBronze.total, threeBronze.systemPrice + duct.price + thermostat.price);
+const fourWithStaleDuct = proposal({ ...valueAnswers, addons: [duct.uuid, thermostat.uuid] });
+const fourBronze = fourWithStaleDuct.groups[0].tiers[0];
 assert.equal(fourBronze.addons.some(addon => addon.uuid === duct.uuid), false);
+assert.equal(fourBronze.addons.some(addon => addon.uuid === thermostat.uuid), true);
 assert.equal(fourBronze.total, fourBronze.systemPrice + thermostat.price);
-const hcp = model.buildHcpOptions(withAddons.packages);
+const hcp = model.buildHcpOptions(threeWithAddons.packages);
 const threePackage = hcp.find(option => option.name === 'Bronze 3 ton');
 assert.ok(threePackage.line_items.some(line => line.name === duct.name && line.unit_price === Math.round(duct.price * 100)));
-assert.equal(hcp.find(option => option.name === 'Bronze 4 ton').line_items.some(line => line.name === duct.name), false);
+const fourHcp = model.buildHcpOptions(fourWithStaleDuct.packages);
+assert.equal(fourHcp.find(option => option.name === 'Bronze 4 ton').line_items.some(line => line.name === duct.name), false);
+assert.equal(fourHcp.some(option => option.name.includes('3 ton')), false);
+
+// Regression: a duct chosen for one size must not survive a later size, ZIP, or system change,
+// and it must not appear in the summary or the Housecall payload when it does not fit.
+const sizedForThree = { ...valueAnswers, homeSize: 'under-1200', addons: [duct.uuid, thermostat.uuid] };
+const afterSize = flow.answersAfterChange(items, config, sizedForThree, 'homeSize', '1200-1600');
+assert.equal(afterSize.homeSize, '1200-1600');
+assert.deepEqual(afterSize.addons, [thermostat.uuid]);
+const afterSizeQuote = proposal(afterSize);
+const afterSizeSummary = flow.selectionSummary(items, config, afterSize, afterSizeQuote);
+assert.equal(afterSizeSummary.includes('3 Ton Duct'), false);
+assert.match(afterSizeSummary, /ElitePRO S1200/);
+assert.ok(afterSizeQuote.packages.every(option => option.lineItems.every(line => !line.name.includes('3 Ton Duct'))));
+const staleSummary = flow.selectionSummary(items, config, { ...valueAnswers, addons: [duct.uuid, thermostat.uuid] }, fourWithStaleDuct);
+assert.equal(staleSummary.includes('Add-ons:'), true);
+assert.equal(staleSummary.includes('3 Ton Duct'), false);
+assert.match(staleSummary, /ElitePRO S1200/);
+const afterZip = flow.answersAfterChange(items, config, sizedForThree, 'zip', '92648');
+assert.equal(afterZip.zip, '92648');
+assert.equal(afterZip.homeSize, undefined);
+assert.deepEqual(afterZip.addons, [thermostat.uuid]);
+const afterFamily = flow.answersAfterChange(items, config, sizedForThree, 'systemFamily', 'gas-split');
+assert.equal(afterFamily.systemFamily, 'gas-split');
+assert.equal(afterFamily.addons.includes(duct.uuid), false);
+assert.ok(afterFamily.addons.includes(thermostat.uuid));
+const afterRepair = flow.answersAfterChange(items, config, sizedForThree, 'projectType', 'repair');
+assert.deepEqual(afterRepair.addons, []);
+const repairSummary = flow.selectionSummary(items, config, { ...sizedForThree, projectType: 'repair' }, proposal({ ...sizedForThree, projectType: 'repair' }));
+assert.equal(repairSummary.includes('Add-ons:'), false);
 
 const quotedAddon = proposal({ ...valueAnswers, addons: [nest.uuid] });
 const quotedTier = quotedAddon.groups[0].tiers[0];
@@ -131,10 +174,38 @@ assert.equal(silver.total, null);
 const standard = proposal({ ...valueAnswers, brand: 'american-standard' });
 assert.equal(standard.reason, 'american-standard');
 assert.equal(standard.groups.length, 0);
-assert.equal(/AC\s*Pro/i.test(flow.selectionSummary(items, config, valueAnswers, bothSizes)), false);
+assert.equal(/AC\s*Pro/i.test(flow.selectionSummary(items, config, valueAnswers, fourTonProposal)), false);
+assert.equal(flow.selectionSummary(items, config, valueAnswers, fourTonProposal).includes('Whole tons offered: 4'), true);
+assert.equal(flow.selectionSummary(items, config, valueAnswers, fourTonProposal).includes('3 and 4'), false);
+
+const iaqNote = 'Indoor air quality means how clean the air inside your home is. These add-ons filter or clean the air that moves through your heating and cooling system.';
+for (const item of flow.addonItems(items, config)) {
+  const copy = flow.addonCopy(item, config);
+  assert.equal(copy.description, config.addonDescriptions[item.uuid], item.name);
+  assert.equal(/\$|\bSEER\b|ENERGY STAR|\d+\s*%/i.test(copy.description), false, copy.description);
+  assert.ok(copy.description.length > 20 && copy.description.length < 160, copy.description);
+  assert.equal(copy.categoryLabel === item.category && item.category === 'IAQ', false);
+}
+const iaqItem = items.find(item => item.category === 'IAQ');
+assert.equal(flow.addonCopy(iaqItem, config).categoryLabel, 'Indoor air quality');
+assert.equal(flow.addonCopy(iaqItem, config).categoryNote, iaqNote);
+assert.equal(flow.addonCopy(duct, config).categoryLabel, 'Ductwork');
+const editable = {
+  ...config,
+  addonDescriptions: { ...config.addonDescriptions, [duct.uuid]: 'Custom duct note for Ryan.' },
+  addonCategoryLabels: { ...config.addonCategoryLabels, Ducting: 'Air ducts' }
+};
+assert.equal(flow.addonCopy(duct, editable).description, 'Custom duct note for Ryan.');
+assert.equal(flow.addonCopy(duct, editable).categoryLabel, 'Air ducts');
+const bare = { ...config, addonDescriptions: {}, addonCategoryLabels: {}, addonCategoryNotes: {} };
+assert.match(flow.addonCopy({ uuid: 'missing', name: 'Whole-home air purifier', category: 'IAQ' }, bare).description, /purifier/i);
+assert.equal(flow.addonCopy({ uuid: 'missing', name: 'Whole-home air purifier', category: 'IAQ' }, bare).categoryLabel, 'Indoor air quality');
+assert.equal(flow.addonCopy({ uuid: 'missing', name: 'Whole-home air purifier', category: 'IAQ' }, bare).categoryNote, iaqNote);
+assert.match(flow.addonCopy({ uuid: 'missing', name: 'Custom duct booster', category: 'Ducting' }, bare).description, /duct/i);
+assert.equal(flow.addonCopy({ uuid: 'missing', name: 'Mystery extra', category: 'IAQ' }, bare).description, config.addonDescriptionFallbacks.find(rule => rule.category === 'IAQ').text);
 
 const results = {
-  inland1200to1600Tons: bothSizes.tons,
+  inland1200to1600Tons: fourTonProposal.tons,
   bronze3: { series: three.tiers[0].series, price: three.tiers[0].systemPrice },
   silver3: { series: three.tiers[1].series, price: three.tiers[1].systemPrice },
   gold3: { series: three.tiers[2].series, price: three.tiers[2].systemPrice },

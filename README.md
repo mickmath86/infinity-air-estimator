@@ -16,12 +16,12 @@ Screens, in order:
 2. **Replacement or repair.** Repair goes straight to Contact Ryan. An on-site visit is required, so there is no estimate. Replacement continues.
 3. **ZIP code.** Coastal Orange County beach ZIPs use 500 sq. ft. per ton. Inland Riverside and San Bernardino ZIPs, and any ZIP not on the list, use 400 sq. ft. per ton. That rule and the ZIP list are a first pass pending Ryan’s confirmation. The questionnaire shows them in a `.ryan-review` callout (`showRyanReviewCallouts` in `data/demo-config.js`, on by default) so they can be hidden for live customers.
 4. **Current system.** Gas furnace + AC split, heat pump split, package unit, or ductless mini-split, from the categories that are actually in the price book.
-5. **Home size.** Square-footage ranges. Tonnage rounds up to the next whole ton. If the home lands between two whole tons, both sizes are shown (3.5 becomes the 3 ton and the 4 ton options, not a single 4 ton). Half tons are never offered. Tons that are not in the price book for that equipment are clamped to the closest size in the book, and a tie stays with the smaller ton.
+5. **Home size.** Square-footage ranges. Each answer shows one ton, taken from the top of the range and rounded up to the next whole ton. Half tons are never offered. If that ton is not in the price book, the next larger size the book offers is used. If the home is larger than every size in the book, the largest offered ton is used.
 6. **Mini-split rooms.** Only when the current system is a ductless mini-split. One, two, three, or four or more rooms.
 7. **System age.** Recorded for Ryan. It does not change the price.
-8. **Add-ons.** Multi-select rows from the price-book categories Ducting, IAQ, and Thermostats and Controls. A chosen add-on is priced onto each Bronze, Silver, and Gold card for the ton it fits. A zero or blank price is Call for quote, never $0.
+8. **Add-ons.** Multi-select rows from the price-book categories Ducting, IAQ, and Thermostats and Controls. Only rows that fit the chosen ton are shown. A chosen add-on is priced onto each Bronze, Silver, and Gold card. A zero or blank price is Call for quote, never $0. Going back and changing ZIP, system type, or home size drops an add-on that no longer fits, including from the summary and the Housecall Pro payload. Card descriptions and the IAQ heading live in `data/demo-config.js` (`addonDescriptions`, keyed by price-book item id, with keyword and category fallbacks).
 9. **Equipment preference.** Two cards: Value line (the label is `valueLineLabel` in `data/demo-config.js`) and American Standard. The value line is the mid-tier book used for Bronze, Silver, and Gold. American Standard is call for quote until `americanStandardPricesEnabled` is set to `true`.
-10. **Proposal or contact.** The value line shows a color-coded Bronze, Silver, and Gold card for each whole ton, with a series name (for example M series or Z series inverter), the system price, the add-on subtotal, and the total. The customer-facing cards do not use the house brand name. Gas Gold keeps the tier label `Gold` until `goldGasTierLabel` is edited. Missing prices say Call for quote. The lead form under the cards creates the Housecall Pro estimate and sends the GHL webhook. Commercial, repair, mini-split, and American Standard stop on Contact Ryan and still capture the lead.
+10. **Contact, then the proposal.** The customer-info form comes first. Bronze, Silver, and Gold cards are shown only after the lead is sent. A failed submit stays on the form, shows an error, and can be tried again. The same `/api/create-housecall-estimate` request creates the Housecall Pro estimate and sends the GHL webhook. The value line then shows one color-coded Bronze, Silver, and Gold set for that ton, with a series name (for example M series or Z series inverter), the system price, the add-on subtotal, and the total. The customer-facing cards do not use the house brand name. Gas Gold keeps the tier label `Gold` until `goldGasTierLabel` is edited. Missing prices say Call for quote. Commercial, repair, mini-split, and American Standard stop on Contact Ryan and still capture the lead. There is no price to reveal on those paths.
 
 ## Price book
 
@@ -47,13 +47,16 @@ The add-on question uses these categories:
 
 - **Ducting** — duct repair, ton-sized duct systems, return air, and zone controls.
 - **IAQ** — air purifier and filter cabinets.
-- **Thermostats and Controls** — Nest and Honeywell controls.
+- **Thermostats and Controls** — Nest and Honeywell controls. The heading on the form says Thermostats. The IAQ heading says Indoor air quality and includes a short definition.
+
+Card copy is in `data/demo-config.js`. Each price-book item id can have its own sentence. If an id is missing, the first matching keyword or category fallback is used. The sentences do not include prices or ratings.
 
 Gaps worth cleaning up in the Sheet:
 
 - Several add-on rows are $0 (Nest thermostat, iWave purifier, 4 ton duct system, both zone-control rows). Those cards say Call for quote.
 - Duct repair is listed twice ($500 and $700). 5 ton ducting is listed twice ($5,200 and $4,050). Both rows are shown so the price is not guessed.
 - Permits and HERS fees sit under Custom Services and Air Conditioning, not in an add-on category, so they are not on the add-on step.
+- Pro T701, Honeywell FocusPRO, and Sensi Touch ll are filed under Air Conditioning in the price book, so they do not appear on the add-on step. Move those rows to Thermostats and Controls in Housecall Pro when they should be offered here.
 - 3 ton ductwork is also listed twice, at $4,000 and $3,500.
 
 ## Housecall Pro and the webhook
@@ -79,7 +82,7 @@ node scripts/data-quality-report.js "https://docs.google.com/spreadsheets/d/1QXm
 node scripts/dev-server.js
 ```
 
-The dev server uses the snapshot when `PRICEBOOK_SHEET_CSV_URL` is unset. Without the Housecall Pro and GHL variables it accepts the lead form locally and marks the response as a preview so the tier screen can be reviewed.
+The dev server uses the snapshot when `PRICEBOOK_SHEET_CSV_URL` is unset. Without the Housecall Pro and GHL variables it accepts the lead form locally and marks the response as a preview. The tier cards appear after that preview submit.
 
 ## Embed
 

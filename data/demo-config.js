@@ -7,7 +7,8 @@
   // sq-ft-per-ton numbers. Prices do not live in this file.
   // Coastal = Orange County near the beach, 500 sq. ft. per ton.
   // Inland = Riverside / San Bernardino (and the default for any ZIP not listed), 400 sq. ft. per ton.
-  // A home that falls between two whole tons is offered both sizes. No half tons.
+  // One whole ton per answer, taken from the top of the square-footage range and rounded up.
+  // If that ton is not in the price book, the next larger offered ton is used, or the largest offered ton when the home is bigger than the book. No half tons.
   return {
     unconfirmed: true,
     showRyanReviewCallouts: true,
@@ -79,6 +80,52 @@
       }
     },
     tierReviewNote: 'Ryan: exact efficiency ratings and warranty lengths differ by model in the price book. Sample rows mention about 13.8–16 SEER2 and a 10-year parts warranty on a bronze model, about 17.7 SEER2 on a silver model, and about 19 SEER2 with a 2-year labor warranty on a gold heat pump. Customer cards stay general until you confirm one wording for every size.',
-    addonCategories: ['Ducting', 'IAQ', 'Thermostats and Controls']
+    addonCategories: ['Ducting', 'IAQ', 'Thermostats and Controls'],
+    // Customer-facing category headings. Keys are the price-book category names.
+    addonCategoryLabels: {
+      Ducting: 'Ductwork',
+      IAQ: 'Indoor air quality',
+      'Thermostats and Controls': 'Thermostats'
+    },
+    // Shown under the category heading. IAQ is spelled out so the abbreviation is not the only label.
+    addonCategoryNotes: {
+      IAQ: 'Indoor air quality means how clean the air inside your home is. These add-ons filter or clean the air that moves through your heating and cooling system.'
+    },
+    // Short card copy keyed by the price-book item id (uuid column). No prices and no ratings.
+    // Ryan can edit these strings. A missing id uses the first matching addonDescriptionFallbacks rule.
+    addonDescriptions: {
+      olit_6b38015bc940427797b499305a45d17f: 'New ducts sized for a 2-ton system, including supply runs and a return.',
+      olit_ba1fdfffb7314e19aa6b8a5cd6ea5a58: 'New ducts sized for a 3-ton system, with supply runs and a return.',
+      olit_a384b20239e54779a448f984a85d0c6d: 'New ducts sized for a 3-ton system, with supply runs and a return.',
+      olit_02c58512bac6431db446923499bc8ba9: 'New ducts sized for a 4-ton system.',
+      olit_11dc6d19115945429ee001d405de0e9e: 'New ducts sized for a 5-ton system.',
+      olit_4d5970245bfe46d1ae7543b732e5ca9b: 'New ducts sized for a 5-ton system.',
+      olit_627b2c16c0ac4b42b19f98933ac47786: 'Repair a damaged return duct so air can get back to the system.',
+      olit_8b10021929dc467eb253b4868a2c88f0: 'Replace a damaged section of duct so air can move through the system.',
+      olit_192e9cd118674adb9f6127ce85cc7e9e: 'An extra return so air can get back to the heating and cooling system.',
+      olit_b4c1a2e937f649b7b5b0e4e6d2074c60: 'Controls that send heating and cooling to different areas of the home.',
+      olit_1a759a62e3ff4c7e9032a6320b176ebf: 'A damper that opens and closes to control airflow in one duct.',
+      olit_d2cce72f616d469e961c0f11ad035139: 'A cabinet that holds a filter on the system.',
+      olit_4316891c6fd6473b972cd7f424d22618: 'A thicker filter in a cabinet on the furnace or air handler.',
+      olit_e83104e8c3f7439d817dfbf9129ef442: 'An air purifier that mounts in the duct.',
+      olit_203b23d0d81b462e967829d24099cd86: 'A dehumidifier connected to a thermostat, for a home that needs drier air.',
+      olit_3a534fdac4ed45058cfa0c10084fc3a3: 'A touchscreen thermostat that connects to Wi-Fi.',
+      olit_bbc1c1da050b4c19b616d11a8f64c474: 'A Wi-Fi thermostat you can adjust from a phone.'
+    },
+    addonDescriptionFallbacks: [
+      { keyword: 'duct repair', text: 'Repair or replace a damaged section of duct.' },
+      { keyword: 'return air', text: 'An extra return so air can get back to the heating and cooling system.' },
+      { keyword: 'zone damper', text: 'A damper that opens and closes to control airflow in one duct.' },
+      { keyword: 'zone', text: 'Controls that send heating and cooling to different areas of the home.' },
+      { keyword: 'duct', text: 'Ductwork that carries heated and cooled air through the home.' },
+      { keyword: 'purifier', text: 'An air purifier that mounts in the duct.' },
+      { keyword: 'dehumidifier', text: 'A dehumidifier connected to the heating and cooling system.' },
+      { keyword: 'filter', text: 'A filter for air that moves through the heating and cooling system.' },
+      { keyword: 'media', text: 'A filter for air that moves through the heating and cooling system.' },
+      { keyword: 'thermostat', text: 'A thermostat that sets the temperature for heating and cooling.' },
+      { category: 'IAQ', text: 'A filter or cleaner for the air that moves through the heating and cooling system.' },
+      { category: 'Ducting', text: 'Ductwork or a duct accessory for air moving through the home.' },
+      { category: 'Thermostats and Controls', text: 'A control for the heating and cooling system.' }
+    ]
   };
 });

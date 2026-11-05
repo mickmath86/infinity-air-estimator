@@ -40,7 +40,7 @@
   const styles = `
     @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap');
     :host{--navy:#0F2440;--deep:#0A1A30;--orange:#F5821F;--orange-dark:#D96D0E;--cyan:#5BC6E8;--ink:#16283E;--muted:#5C7590;--line:#D7DFE8;display:block;font-family:Barlow,Arial,sans-serif;color:var(--ink);font-size:16px}
-    *{box-sizing:border-box}.shell{max-width:980px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 24px 70px rgba(6,18,34,.18);overflow:hidden;border:1px solid #e3eaf0}.top{background:var(--navy);padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}.logo{height:54px;width:auto;display:block}.trust{color:#c7d6e6;font-size:13px;text-align:right;line-height:1.45}.trust strong{color:#fff;display:block}.progress{height:5px;background:#dfe7ee}.progress span{display:block;height:100%;background:var(--orange);transition:width .3s ease}.body{padding:44px 48px 48px;min-height:510px}.eyebrow{color:var(--orange);font-weight:700;text-transform:uppercase;letter-spacing:1.8px;font-size:13px;margin-bottom:9px}h2,h3{font-family:'Barlow Condensed',Arial,sans-serif;color:var(--navy);text-transform:uppercase;letter-spacing:.3px}h2{font-size:38px;line-height:1.05;margin:0 0 9px}h3{font-size:28px;margin:8px 0 12px}.subtitle{color:var(--muted);font-size:16px;margin:0 0 28px}.options{display:grid;grid-template-columns:1fr 1fr;gap:13px}.option{appearance:none;width:100%;font:inherit;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:18px 44px 18px 18px;cursor:pointer;position:relative;color:var(--ink);transition:.15s}.option:hover,.option:focus{border-color:var(--cyan);box-shadow:0 5px 16px rgba(15,36,64,.09);outline:none;transform:translateY(-1px)}.option.selected{border-color:var(--orange);background:#fff8f2}.option strong{display:block;color:var(--navy);font-size:17px;margin-bottom:4px}.option small{display:block;color:var(--muted);font-size:13.5px;line-height:1.35}.option.coming-soon{background:#f6f8fb;color:#6d7f93}.option.coming-soon strong{color:#6d7f93}.badge{display:inline-block;margin-top:8px;background:#e7edf4;color:#5c7590;font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;border-radius:999px;padding:4px 8px}.features{margin:8px 0 0;padding-left:18px}.features li{margin:4px 0;color:var(--ink)}.arrow{position:absolute;right:17px;top:18px;color:var(--orange);font-size:22px}.nav{display:flex;justify-content:space-between;align-items:center;margin-top:30px}.back{border:0;background:none;color:var(--muted);font:600 15px Barlow,Arial;cursor:pointer;padding:10px 0}.back:hover{color:var(--navy)}.ton-block{margin:0 0 22px}.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px;align-items:stretch}.tier{border:1.5px solid var(--line);border-radius:12px;padding:18px;background:#fff;display:flex;flex-direction:column;gap:8px;height:100%}.tier-bronze{border-color:#A56B3C;background:#FBF6F1}.tier-silver{border-color:#B7C0C8;background:#F4F6F8}.tier-gold{border-color:#C6A15B;background:#FFF8EC}.tier-kicker{font-family:'Barlow Condensed',Arial,sans-serif;font-size:28px;letter-spacing:.4px;text-transform:uppercase;line-height:1}.tier-bronze .tier-kicker,.tier-bronze .money{color:#7A4E24}.tier-silver .tier-kicker,.tier-silver .money{color:#5C6770}.tier-gold .tier-kicker,.tier-gold .money{color:#8A6110}.series{margin:0;font-weight:700;color:var(--navy)}.benefit,.addon-lines{margin:0;color:var(--muted);font-size:13.5px;line-height:1.45}.price-row{display:flex;justify-content:space-between;gap:12px;font-size:14px}.price-row.total{border-top:1px solid var(--line);padding-top:8px;font-weight:700;color:var(--navy);margin-top:auto}.addon-lines{padding-left:16px}.result{background:linear-gradient(135deg,var(--deep),var(--navy));border-radius:12px;padding:28px;color:#fff;margin:0 0 22px}.result p{color:#c7d6e6;margin:0;line-height:1.5}.notice{font-size:12.5px;color:var(--muted);line-height:1.45;margin:12px 0 24px}.ryan-review{margin:0 0 22px;padding:12px 14px;border:1.5px dashed #b45309;background:#fff7ed;border-radius:8px}.ryan-review-label{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;font-weight:700;letter-spacing:.04em;color:#9a3412;margin:0 0 6px}.ryan-review p{margin:0;font-size:13.5px;line-height:1.45;color:#7c2d12}.lead{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-weight:600;color:var(--navy);font-size:14px}.field input,.field textarea{width:100%;font:15px Barlow,Arial;border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--ink);outline:none}.field input:focus,.field textarea:focus{border-color:var(--cyan)}.field textarea{min-height:82px;resize:vertical}.submit{grid-column:1/-1;border:0;border-radius:9px;padding:15px 22px;background:var(--orange);color:#fff;font:700 16px Barlow,Arial;cursor:pointer;box-shadow:0 5px 16px rgba(245,130,31,.32)}.submit:hover{background:var(--orange-dark)}.submit:disabled{opacity:.65;cursor:wait}.error{grid-column:1/-1;color:#b42318;font-size:14px}.call{display:block;text-align:center;text-decoration:none}.cat{grid-column:1/-1;margin:8px 0 0;color:var(--navy);font-weight:700}@media(max-width:650px){.top{padding:16px 18px}.logo{height:43px}.trust{display:none}.body{padding:30px 20px 34px;min-height:0}h2{font-size:32px}.options,.lead,.tiers{grid-template-columns:1fr}.field.full,.submit{grid-column:auto}}h3.ton-heading{text-transform:none;font-family:Barlow,Arial,sans-serif;font-size:18px;font-weight:600;letter-spacing:0;line-height:1.35;margin:0 0 12px}.product-name{margin:0;font-weight:700;color:var(--navy);font-size:16px;line-height:1.35}
+    *{box-sizing:border-box}.shell{max-width:980px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 24px 70px rgba(6,18,34,.18);overflow:hidden;border:1px solid #e3eaf0}.top{background:var(--navy);padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}.logo{height:54px;width:auto;display:block}.trust{color:#c7d6e6;font-size:13px;text-align:right;line-height:1.45}.trust strong{color:#fff;display:block}.progress{height:5px;background:#dfe7ee}.progress span{display:block;height:100%;background:var(--orange);transition:width .3s ease}.body{padding:44px 48px 48px;min-height:510px}.eyebrow{color:var(--orange);font-weight:700;text-transform:uppercase;letter-spacing:1.8px;font-size:13px;margin-bottom:9px}h2,h3{font-family:'Barlow Condensed',Arial,sans-serif;color:var(--navy);text-transform:uppercase;letter-spacing:.3px}h2{font-size:38px;line-height:1.05;margin:0 0 9px}h3{font-size:28px;margin:8px 0 12px}.subtitle{color:var(--muted);font-size:16px;margin:0 0 28px}.options{display:grid;grid-template-columns:1fr 1fr;gap:13px}.option{appearance:none;width:100%;font:inherit;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:18px 44px 18px 18px;cursor:pointer;position:relative;color:var(--ink);transition:.15s}.option:hover,.option:focus{border-color:var(--cyan);box-shadow:0 5px 16px rgba(15,36,64,.09);outline:none;transform:translateY(-1px)}.option.selected{border-color:var(--orange);background:#fff8f2}.option strong{display:block;color:var(--navy);font-size:17px;margin-bottom:4px}.option small{display:block;color:var(--muted);font-size:13.5px;line-height:1.35}.option.coming-soon{background:#f6f8fb;color:#6d7f93}.option.coming-soon strong{color:#6d7f93}.badge{display:inline-block;margin-top:8px;background:#e7edf4;color:#5c7590;font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;border-radius:999px;padding:4px 8px}.features{margin:8px 0 0;padding-left:18px}.features li{margin:4px 0;color:var(--ink)}.arrow{position:absolute;right:17px;top:18px;color:var(--orange);font-size:22px}.nav{display:flex;justify-content:space-between;align-items:center;margin-top:30px}.back{border:0;background:none;color:var(--muted);font:600 15px Barlow,Arial;cursor:pointer;padding:10px 0}.back:hover{color:var(--navy)}.ton-block{margin:0 0 22px}.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px;align-items:stretch}.tier{border:1.5px solid var(--line);border-radius:12px;padding:18px;background:#fff;display:flex;flex-direction:column;gap:8px;height:100%}.tier-bronze{border-color:#A56B3C;background:#FBF6F1}.tier-silver{border-color:#B7C0C8;background:#F4F6F8}.tier-gold{border-color:#C6A15B;background:#FFF8EC}.tier-kicker{font-family:'Barlow Condensed',Arial,sans-serif;font-size:28px;letter-spacing:.4px;text-transform:uppercase;line-height:1}.tier-bronze .tier-kicker,.tier-bronze .money{color:#7A4E24}.tier-silver .tier-kicker,.tier-silver .money{color:#5C6770}.tier-gold .tier-kicker,.tier-gold .money{color:#8A6110}.series{margin:0;font-weight:700;color:var(--navy)}.benefit,.addon-lines{margin:0;color:var(--muted);font-size:13.5px;line-height:1.45}.price-row{display:flex;justify-content:space-between;gap:12px;font-size:14px}.price-row.total{border-top:1px solid var(--line);padding-top:8px;font-weight:700;color:var(--navy);margin-top:auto}.addon-lines{padding-left:16px}.result{background:linear-gradient(135deg,var(--deep),var(--navy));border-radius:12px;padding:28px;color:#fff;margin:0 0 22px}.result p{color:#c7d6e6;margin:0;line-height:1.5}.notice{font-size:12.5px;color:var(--muted);line-height:1.45;margin:12px 0 24px}.ryan-review{margin:0 0 22px;padding:12px 14px;border:1.5px dashed #b45309;background:#fff7ed;border-radius:8px}.ryan-review-label{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;font-weight:700;letter-spacing:.04em;color:#9a3412;margin:0 0 6px}.ryan-review p{margin:0;font-size:13.5px;line-height:1.45;color:#7c2d12}.lead{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-weight:600;color:var(--navy);font-size:14px}.field input,.field textarea{width:100%;font:15px Barlow,Arial;border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--ink);outline:none}.field input:focus,.field textarea:focus{border-color:var(--cyan)}.field textarea{min-height:82px;resize:vertical}.submit{grid-column:1/-1;border:0;border-radius:9px;padding:15px 22px;background:var(--orange);color:#fff;font:700 16px Barlow,Arial;cursor:pointer;box-shadow:0 5px 16px rgba(245,130,31,.32)}.submit:hover{background:var(--orange-dark)}.submit:disabled{opacity:.65;cursor:wait}.error{grid-column:1/-1;color:#b42318;font-size:14px}.call{display:block;text-align:center;text-decoration:none}.cat{grid-column:1/-1;margin:8px 0 0;color:var(--navy);font-weight:700}@media(max-width:650px){.top{padding:16px 18px}.logo{height:43px}.trust{display:none}.body{padding:30px 20px 34px;min-height:0}h2{font-size:32px}.options,.lead,.tiers{grid-template-columns:1fr}.field.full,.submit{grid-column:auto}}h3.ton-heading{text-transform:none;font-family:Barlow,Arial,sans-serif;font-size:18px;font-weight:600;letter-spacing:0;line-height:1.35;margin:0 0 12px}.product-name{margin:0;font-weight:700;color:var(--navy);font-size:16px;line-height:1.35}.error{background:#fef3f2;border:1px solid #fecdca;border-radius:8px;padding:10px 12px;line-height:1.45}.cat{margin:18px 0 0}.cat-label{font-family:'Barlow Condensed',Arial,sans-serif;font-size:26px;letter-spacing:.3px;text-transform:uppercase;line-height:1}.cat-note{margin:6px 0 0;color:var(--muted);font-size:14.5px;line-height:1.45;font-weight:400;max-width:68ch}.addon-desc{display:block;color:var(--ink);font-size:13.5px;line-height:1.4;margin-top:2px}.addon-price{display:block;margin-top:6px;font-weight:600;color:var(--navy)}
   `;
 
   const leadCopy = {
@@ -82,14 +82,9 @@
   function priceText(price) { return price > 0 ? model.money(price) : 'Call for quote'; }
 
   function advance(key, value) {
-    state.answers[key] = value;
+    state.answers = flow.answersAfterChange(state.items, state.config, state.answers, key, value);
     const next = visible();
-    const index = next.findIndex(item => item.key === key);
-    const keep = new Set(next.slice(0, Math.max(index, 0) + 1).map(item => item.key));
-    keep.add('addons');
-    for (const answerKey of Object.keys(state.answers)) if (!keep.has(answerKey)) delete state.answers[answerKey];
-    if (!Array.isArray(state.answers.addons)) state.answers.addons = [];
-    state.step = index + 1;
+    state.step = next.findIndex(item => item.key === key) + 1;
     render();
   }
 
@@ -115,10 +110,9 @@
   function sizeDescription(option) {
     const range = state.config.squareFootageRanges.find(entry => entry.id === option[0]);
     if (!range || !state.answers.zip) return option[2] || '';
-    const climate = flow.climateForZip(state.answers.zip, state.config);
-    const tons = flow.tonnageChoicesForRange(range.low, range.high, climate.sqftPerTon);
-    if (!tons.length) return option[2] || '';
-    return tons.length > 1 ? `Shows the ${tons.join(' and ')} ton options` : `Shows the ${tons[0]} ton option`;
+    const sizing = flow.recommendedTons(state.items, state.config, { ...state.answers, homeSize: option[0] });
+    if (!sizing.tons.length) return option[2] || '';
+    return `Shows the ${sizing.tons[0]} ton option`;
   }
 
   function renderCards(list, question) {
@@ -172,12 +166,17 @@
   }
 
   function renderAddons(list, question) {
-    const selected = new Set(state.answers.addons || []);
+    state.answers.addons = flow.applicableAddonIds(state.items, state.config, state.answers);
+    const selected = new Set(state.answers.addons);
+    const visibleItems = question.items().filter(item => flow.addonAppliesToAnswers(item, state.items, state.config, state.answers));
     let category = '';
-    const cards = question.items().map(item => {
-      const heading = item.category !== category ? `<div class="cat">${escapeHtml(item.category)}</div>` : '';
+    const cards = visibleItems.map(item => {
+      const copy = flow.addonCopy(item, state.config);
+      const heading = item.category !== category
+        ? `<div class="cat"><div class="cat-label">${escapeHtml(copy.categoryLabel)}</div>${copy.categoryNote ? `<p class="cat-note">${escapeHtml(copy.categoryNote)}</p>` : ''}</div>`
+        : '';
       category = item.category;
-      return `${heading}<button class="option ${selected.has(item.uuid) ? 'selected' : ''}" type="button" data-value="${escapeHtml(item.uuid)}"><strong>${escapeHtml(flow.customerText(item.name))}</strong><small>${escapeHtml(priceText(item.price))}</small></button>`;
+      return `${heading}<button class="option ${selected.has(item.uuid) ? 'selected' : ''}" type="button" data-value="${escapeHtml(item.uuid)}"><strong>${escapeHtml(flow.customerText(item.name))}</strong><small class="addon-desc">${escapeHtml(copy.description)}</small><small class="addon-price">${escapeHtml(priceText(item.price))}</small></button>`;
     }).join('');
     shell((state.step / list.length) * 100, `
       <div class="eyebrow">${escapeHtml(question.eyebrow)} · Step ${state.step + 1} of ${list.length}</div>
@@ -216,34 +215,65 @@
       <div class="field"><label for="ia-state">State</label><input id="ia-state" name="state" autocomplete="address-level1" maxlength="2" placeholder="CA"></div>
       <div class="field"><label for="ia-zip">ZIP code</label><input id="ia-zip" name="zip" autocomplete="postal-code" inputmode="numeric" value="${escapeHtml(state.answers.zip || '')}"></div>
       <div class="field full"><label for="ia-notes">Anything else we should know?</label><textarea id="ia-notes" name="notes" maxlength="500"></textarea></div>
-      <div class="error" hidden></div>
+      <div class="error" role="alert" hidden></div>
       <button class="submit" type="submit">${escapeHtml(buttonLabel)}</button>
     </form>`;
+  }
+
+  function wireLeadForm() {
+    root.querySelector('.back')?.addEventListener('click', () => { state.step = Math.max(0, visible().length - 1); render(); });
+    root.querySelector('.lead').addEventListener('submit', submitLead);
+    root.querySelector('#ia-phone').addEventListener('input', event => { event.target.value = formatUsPhoneForDisplay(event.target.value); });
+    initAddressAutocomplete();
+  }
+
+  function pricedResultsMarkup(quote) {
+    const climate = quote.climate;
+    const tiers = quote.groups.map(group => `<section class="ton-block"><h3 class="ton-heading">${escapeHtml(flow.tonHeading(group.tons))}</h3><div class="tiers">${group.tiers.map(tierCard).join('')}</div></section>`).join('');
+    return `${tiers}
+      ${climate ? reviewCallout(sizingReviewText(`${climate.listed ? '' : 'This ZIP is not on the confirmed list. '}${climate.id === 'coastal' ? 'Coastal' : 'Inland'} sizing uses ${climate.sqftPerTon} sq. ft. per ton and only whole tons.`)) : ''}
+      ${reviewCallout(state.config && state.config.tierReviewNote)}
+      <p class="notice">Call for an official quote. These are planning prices from the price book, not a binding quote. A missing price is shown as Call for quote instead of a zero.</p>`;
+  }
+
+  function renderPricedResults(firstName, preview) {
+    const quote = proposal();
+    shell(100, `
+      <div class="eyebrow">Request received</div>
+      <h2>Thank you, ${escapeHtml(firstName)}.</h2>
+      <p class="subtitle">${preview ? 'Preview only. Nothing was sent to Infinity Air. These are the options for the answers you entered.' : 'Ryan has your options. Prices come from the current price book. Labor is included. Call for an official quote before work begins.'}</p>
+      ${pricedResultsMarkup(quote)}
+      <a class="submit call" href="tel:+19099752391">Call ${escapeHtml(configAttr.phone)}</a>
+      <div class="nav"><button class="back" type="button">← Change answers</button></div>`);
+    root.querySelector('.back').addEventListener('click', () => { state.step = Math.max(0, visible().length - 1); render(); });
   }
 
   function renderFinish() {
     const quote = proposal();
     for (const warning of quote.warnings || []) console.warn('Infinity Air price book conflict', warning);
     const priced = quote.groups && quote.groups.length;
+    if (priced) {
+      shell(100, `
+        <div class="eyebrow">Your details</div>
+        <h2>Where should we send your options?</h2>
+        <p class="subtitle">Tell us how to reach you. Bronze, Silver, and Gold prices are shown after this is sent.</p>
+        ${leadFields('Send and see my options')}
+        <div class="nav"><button class="back" type="button">← Change answers</button></div>`);
+      wireLeadForm();
+      return;
+    }
     const message = leadCopy[quote.reason] || leadCopy.incomplete;
     const repairIcon = quote.reason === 'repair' ? '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" focusable="false" style="display:inline-block;vertical-align:-5px;margin-right:8px"><path fill="#F5821F" d="M12 2.2 1.2 21h21.6L12 2.2zm1.1 14.3h-2.2v-2.2h2.2v2.2zm0-4h-2.2V8.5h2.2v4z"/></svg>' : '';
-    const tiers = priced ? quote.groups.map(group => `<section class="ton-block"><h3 class="ton-heading">${escapeHtml(flow.tonHeading(group.tons))}</h3><div class="tiers">${group.tiers.map(tierCard).join('')}</div></section>`).join('') : `<div class="result"><p>${repairIcon}${escapeHtml(message)}</p></div>`;
-    const climate = quote.climate;
     shell(100, `
-      <div class="eyebrow">${priced ? 'Price book options' : 'Contact Ryan'}</div>
-      <h2>${priced ? 'Bronze, Silver, and Gold' : 'How should Ryan reach you?'}</h2>
-      <p class="subtitle">${priced ? 'Prices come from the current price book. Labor is included. Call for an official quote before work begins.' : escapeHtml(message)}</p>
-      ${tiers}
-      ${climate ? reviewCallout(sizingReviewText(`${climate.listed ? '' : 'This ZIP is not on the confirmed list. '}${climate.id === 'coastal' ? 'Coastal' : 'Inland'} sizing uses ${climate.sqftPerTon} sq. ft. per ton and only whole tons.`)) : ''}
-      ${reviewCallout(state.config && state.config.tierReviewNote)}
-      ${priced ? '<p class="notice">Call for an official quote. These are planning prices from the price book, not a binding quote. A missing price is shown as Call for quote instead of a zero.</p>' : `<p class="notice">Call Ryan at ${escapeHtml(configAttr.phone)} or send your details below.</p>`}
-      <h2 style="font-size:32px;margin-top:8px">${priced ? 'Send this to Ryan' : 'Your details'}</h2>
-      ${leadFields(priced ? 'Send my options' : 'Contact Ryan')}
+      <div class="eyebrow">Contact Ryan</div>
+      <h2>How should Ryan reach you?</h2>
+      <p class="subtitle">${escapeHtml(message)}</p>
+      <div class="result"><p>${repairIcon}${escapeHtml(message)}</p></div>
+      <p class="notice">Call Ryan at ${escapeHtml(configAttr.phone)} or send your details below.</p>
+      <h2 style="font-size:32px;margin-top:8px">Your details</h2>
+      ${leadFields('Contact Ryan')}
       <div class="nav"><button class="back" type="button">← Change answers</button></div>`);
-    root.querySelector('.back').addEventListener('click', () => { state.step = Math.max(0, visible().length - 1); render(); });
-    root.querySelector('.lead').addEventListener('submit', submitLead);
-    root.querySelector('#ia-phone').addEventListener('input', event => { event.target.value = formatUsPhoneForDisplay(event.target.value); });
-    initAddressAutocomplete();
+    wireLeadForm();
   }
 
   function loadGoogleMaps() {
@@ -312,6 +342,7 @@
       return;
     }
     data.phone = phone;
+    state.answers = flow.pruneAddonAnswers(state.items, state.config, state.answers);
     const quote = proposal();
     const hcpLineItems = quote.status === 'price' ? model.buildHcpOptions(quote.packages) : [];
     const payload = {
@@ -356,14 +387,17 @@
         if (!response.ok) throw new Error(body.error || `Submission service returned ${response.status}.`);
         preview = Boolean(body.preview);
       }
-      const name = escapeHtml(data.firstName);
-      shell(100, `<div class="eyebrow">Request received</div><h2>Thank you, ${name}.</h2><p class="subtitle">${preview ? 'Preview only. Nothing was sent to Infinity Air.' : `Ryan has your ${quote.status === 'price' ? 'options' : 'request'}.`}</p><a class="submit call" href="tel:+19099752391">Call ${escapeHtml(configAttr.phone)}</a>`);
+      if (quote.groups && quote.groups.length) renderPricedResults(data.firstName, preview);
+      else {
+        const name = escapeHtml(data.firstName);
+        shell(100, `<div class="eyebrow">Request received</div><h2>Thank you, ${name}.</h2><p class="subtitle">${preview ? 'Preview only. Nothing was sent to Infinity Air.' : 'Ryan has your request.'}</p><a class="submit call" href="tel:+19099752391">Call ${escapeHtml(configAttr.phone)}</a>`);
+      }
       mount.dispatchEvent(new CustomEvent('infinity-air:completed', { detail: payload }));
     } catch (err) {
-      error.textContent = `${err.message} Please call ${configAttr.phone} or try again.`;
+      error.textContent = `We could not send your information. ${err.message} You can try again, or call ${configAttr.phone}.`;
       error.hidden = false;
       button.disabled = false;
-      button.textContent = quote.groups && quote.groups.length ? 'Send my options' : 'Contact Ryan';
+      button.textContent = quote.groups && quote.groups.length ? 'Send and see my options' : 'Contact Ryan';
     }
   }
 
