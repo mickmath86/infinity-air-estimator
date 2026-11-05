@@ -1,0 +1,1343 @@
+industry,industry_uuid,category,uuid,name,description,price,cost,taxable,unit_of_measure,task_code,online_booking_enabled
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Custom Services,olit_e580c209e2fa448093b6a33ae4575fe2,Custom Job,"Pro will provide you a quote if the work you need does not fit into one of our standard categories.
+
+Please provide as much detail as possible, including pictures.",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Booking,olit_409b84826f8d4fbfb69e5b405f3c3430,A/C Service Call,A service pro will come to your home to diagnose your Air Conditioner problem.,$79.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_3e91f630189e421f9f8df68ac05ab53c,A/C tune up,"An A/C tune-up keeps your air conditioning system in good working order. It includes:
+
+• Inspect coolant levels & pressure
+• Check & adjust thermostat
+• Inspect wiring, contacts, capacitors & relays
+• Inspect evaporator coil
+• Inspect and clean condenser
+• Inspect condensate drain
+• Inspect outdoor disconnect
+• Inspect condenser fan motor & blades
+• Inspect compressor at startup
+
+When completed you will receive a recommendation for any further maintenance or repair needs of your system.",$79.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_e5c0d044556c45569dbe45fe1d169732,A/C filter replacement,"Air Conditioner filters should be replaced several times a year depending on usage. Clean filters allow your air conditioner to run more efficiently, which can save you money on energy bills and help you avoid a costly repairs or replacement. 
+
+There are several filter types (disposable, washable, allergy, HEPA). Your service professional will discuss your options prior to service.",$10.00,$10.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_dbca63882c8d4ef18d5b6495bb15f201,A/C repair,"Initial air conditioning repair service call to diagnose AC system issues and identify the cause of cooling problems. A certified HVAC technician will perform a complete AC system inspection, test electrical and mechanical components, check refrigerant levels, evaluate airflow, and assess overall system performance. Service includes troubleshooting common air conditioner problems such as lack of cooling, system not turning on, unusual noises, and reduced efficiency. Technician will provide repair recommendations and options to restore proper air conditioning operation.
+  
+",$79.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heater / Furnace,olit_42ae3a5dafb34fb19dafdf860d944521,Furnace Service Call,A service pro will come to your home to diagnose your furnace problem.,$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heater / Furnace,olit_e51676abbf864be38d3ef69852351a42,Furnace tune-up,"A furnace tune-up keeps your heating system in good working order. It includes:
+
+• Clean blower
+• Clean & adjust burners
+• Inspect heat exchange
+• Inspect gas pressure & flame
+• Inspect igniter/pilot light
+• Inspect filter
+• Check airflow
+
+When completed you will receive a recommendation for any further maintenance or repair needs of your system.",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heater / Furnace,olit_c93bca80719c4bf2bd24aa1158d0ca6d,Furnace filter replacement,"Furnace filters should be replaced several times a year depending on usage. Clean filters allow your heater to run more efficiently, which can save you money on energy bills and help you avoid a costly repairs or replacement. 
+
+There are several filter types (disposable, washable, allergy, HEPA). Your service professional will discuss your options prior to service.",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heater / Furnace,olit_484a7c3385504907adb42bb755c15e8b,Furnace repair,"Repairs on any make or any model, no hourly fees.
+
+Sign up for a Heating Protection Plan. For only $14.99 per month, never worry about most repair bills again.",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heater / Furnace,olit_7641373fd77e46fe9ab449e3786e1050,Furnace tune-up,"We know how inconvenient it is when your Furnace breaks down on one of the coldest days of winter! Avoid the problem by keeping your equipment in top condition to maximize performance with our 21 point tune up.
+
+• Check thermostat
+• Inspect heat exchanger
+• Check / lubricate fan or pump motor
+• Check blower motor amps
+• Check filter system (clean / replace filter)
+• Check & clean pilot burner / flame rod
+• Check safety controls
+• Check & adjust heat rise
+• Test for carbon monoxide
+• Check humidifier damper
+• Inspect gas piping
+• Inspect chimney / venting system
+• Clean burners
+• Clean blower
+• Clean secondary heat exchanger
+• Check & clean condensate pump / lines
+• Check & adjust firing rate
+• Inspect & adjust electrical connections
+• Check system airflow
+• Identify system switch and/or breaker
+• Camera inspection",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Thermostats and Controls,olit_bbc1c1da050b4c19b616d11a8f64c474,Nest Thermostat,"Control your A/C and Heat from your smartphone with Nest.
+
+The 2nd generation Nest Learning Thermostat learns what temperatures you like, turns itself down when you're away and can be controlled from anywhere over Wi-Fi. By programming itself, the Nest thermostat can save up to 20% on your heating and cooling bill.",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heater / Furnace,olit_95e5fa8a43de4d0690dec7266cece275,No Heat,"Our skilled technicians service or repair any brand of furnace. We will visit your home and diagnose your problem. No hourly fees.  
+
+We'll tell you how much your service will cost before we undertake any repairs, and your price will be based on a straightforward pricing list.",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heater / Furnace,olit_185495438238450dbb6542839d16455c,Too much heat,"Our skilled technicians service or repair any brand of furnace. We will visit your home and diagnose your problem. No hourly fees.
+
+We'll tell you how much your service will cost before we undertake any repairs, and your price will be based on a straightforward pricing list. ",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heater / Furnace,olit_62d39e2ca6e543acb935aa5bcb2548be,Noise,"Our skilled technicians service or repair any brand of furnace. We will visit your home and diagnose your problem. No hourly fees. 
+ 
+We'll tell you how much your service will cost before we undertake any repairs, and your price will be based on a straightforward pricing list.",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heater / Furnace,olit_b9032ffa17554b7fa95038cd03de6893,Leaking,"Our skilled technicians service or repair any brand of furnace. We will visit your home and diagnose your problem. No hourly fees. 
+ 
+We'll tell you how much your service will cost before we undertake any repairs, and your price will be based on a straightforward pricing list.",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heater / Furnace,olit_9e6e4952be744de2a4318bc6ce17963d,Preventative maintenance,"Our skilled technicians tune up any brand of furnace. Keep your furnace running smoothly
+with a tune-up.",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Booking,olit_a5ced3e7e09444409669b27e7bde993c,No cooling,"Our skilled technicians service or repair any brand of air conditioner. We will visit your home and diagnose your problem. No hourly fees.  
+
+We'll tell you how much your service will cost before we undertake any repairs, and your price will be based on a straightforward pricing list.",$79.00,$0.00,false,,"",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Booking,olit_de13b0840b7d4a76ae769ab9d63d2069,Not enough cooling,"Our skilled technicians service or repair any brand of air conditoner. We will visit your home and diagnose your problem. No hourly fees.  
+
+We'll tell you how much your service will cost before we undertake any repairs, and your price will be based on a straightforward pricing list.",$79.00,$0.00,false,,"",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_65d240e192eb4914a8e74de30f9243a4,Preventative maintenance,"Comprehensive preventative maintenance service for residential HVAC systems designed to improve efficiency, extend equipment lifespan, and reduce unexpected breakdowns. Service includes a full HVAC system inspection, cleaning of critical components, testing of electrical connections, safety checks, airflow evaluation, thermostat calibration, and performance optimization of heating or cooling equipment. Preventative HVAC maintenance helps ensure reliable operation, lower energy costs, and year-round comfort for homeowners.",$79.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heater / Furnace,olit_a80a8081b9874c64a4de99706307970a,No heat,"Our skilled technicians will diagnose the problem, and repair your furnace. ",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Custom Services,olit_74aa5ce6731b40958ebaf3decb701560,Standard Install,Install new equipment/fixtures.,$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Booking,olit_7b4b7f2d9a0643079b39538b034f4840,Diagnostic Visit,Something in your home malfunctioning? One of our skilled technicians will come to your house and investigate the issue.,$49.00,$49.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Booking,olit_b482f29a828e43c3b76a20d1697edd45,Service Visit,Something in your home malfunctioning? One of our skilled technicians will come to your house and investigate the issue.,$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,olit_9086ed425ffc4a44bbb65b0b0bf7e938,Preventative Maintenance,Keep your equipment running smoothly with regular maintenance.,$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heater / Furnace,olit_2dda154f28bf4443ba4722a41d9e581f,"AC Pro 100,000 BTU Furnace","AC Pro Low Nox 100,000 BTU 80% AFUE Furnace to be installed in a horizontal or vertical application. New sediment trap with gas flex line and gas valve is included. Vents will be reconnected with the appropriate piping and pitched for proper ventilation. New pigtail and any other electrical connections included.",$5100.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_f21ca3c93d9e47f481f7c7c62a8a9e6b,Dual Run 440/370V Capacitor Replacement,"Ensure your HVAC system runs smoothly with a Dual Run 440/370V Capacitor Replacement. This vital component helps power your unit’s motor efficiently, ensuring reliable performance. Replacing a failing capacitor prevents breakdowns, improves energy efficiency, and extends system lifespan.
+1 year warranty",$319.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_a92bae5e47db42e8840aeb5ff77e81e0,Single 440/370V Capacitor,"Ensure your HVAC system runs efficiently with a high-quality single 440/370V capacitor replacement. This vital component helps your motor start and run smoothly, preventing performance issues. Regular maintenance protects your system, extends its lifespan, and improves reliability.
+1 year warranty
+",$240.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_223778b374cf4c4cb824d344e273721e,Condenser Fan Motor (Aftermarket),"The condenser fan motor is vital for your AC Condenser to operate. Replacing it with a reliable aftermarket option restores efficiency, prevents your compressor from failure and extends system life. Enjoy consistent comfort with this essential repair service.
+1 year parts warranty
+1 year labor warranty ",$760.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_c70c6c0673ee44c6b2917f8302679a59,Blower Motor Replacement (Aftermarket),"Removal and replacement of failed blower motor and/or blower assembly in forced air unit (FAU). Service includes diagnosis of blower failure, removal of defective blower components, installation of OEM-compatible replacement blower motor or blower wheel, verification of proper airflow, electrical testing, and system operation check. Repair restores proper air circulation, heating and cooling performance, and overall HVAC system efficiency.
+
+1 year warranty ",$810.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_bf3d86b2056b459aa453f853189c39b2,24v Transformer Replacement,"Removal and replacement of failed low-voltage transformer in forced air unit (FAU). Service includes diagnosis of electrical failure, safe disconnection of defective transformer, installation of OEM-compatible HVAC transformer, verification of proper voltage to thermostat and control circuits, and system testing to ensure reliable heating and cooling operation. Repair restores correct low-voltage power and normal HVAC system functionality.
+ 
+1 year warranty",$319.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_69d01ed596104d86a745d16996023d2c,5-2-1 Hard Start Kit,"Installation of 5-2-1 hard start kit on outdoor air conditioning condenser unit to improve compressor starting performance and reduce electrical strain. Service includes mounting hard start device, proper wiring to compressor and start components, electrical testing, and system startup verification. Hard start kit installation helps extend compressor life, improve reliability, and support proper AC condenser operation.
+
+1 Year Warranty ",$333.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_3aff9283830740b08efebc6a11a79da7,Disconnect w/ Whip Replacement,"Ensure your HVAC system operates safely and efficiently with a Disconnect & Whip Replacement. This service replaces worn or damaged electrical components connecting your unit to power. Protect your system from electrical hazards, improve reliability, and maintain peak performance.
+1 year warranty",$310.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heater / Furnace,olit_fab8c4111c4e414b80d7493d55dee58a,"Tempstar 60,000 BTU Furnace ","Tempstar 60,000 btu 80% AFUE furnace installation. Installation includes hung-rite rack system to reduce noise and vibration, reconnect b-vent pipe, new gas sediment trap with gas flex, reconnect existing return plenum, new pigtail and 24v wire reconnected. 
+10 year parts warranty 
+20 year heat exchanger warranty 
+1 year labor warranty ",$0.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heater / Furnace,olit_98f766a5a2c440d7ad959d6170decb7d,"AC Pro 60,000 BTU Furnace","Full installation of an ACPro 60,000 BTU furnace. Installation includes new filter rack, gas flex, sediment trap, and pigtail. Exhaust vent will be reconnected to existing b-vent.",$4600.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Other System Installations,olit_33b197bb17da4b82b52a972eab253191,Goodman 3 Ton R-32 Split System,"Ensure year-round comfort with the Goodman 3 Ton Split System. Designed for efficient cooling and heating, this system offers reliable performance and energy savings. Perfect for medium to large homes, it ensures even temperature control and improved air quality.
+System Includes:
+
+New Goodman 60,000 BTU 80% AFUE Furnace:
+Includes new Pro 701 thermostat, sediment trap with new flex line and ball valve, reconnect return plenum, 24v electrical will be wired to manufacture spec, new pigtail, b-vent pipe will be reconnected to manufacture spec.
+
+New Goodman 3 Ton Evaporator Coil:
+New safety float switch, reconnect primary drain with p-trap and secondary drain to secondary pan, seal evaporator to furnace with rolled mastic tape.
+
+Goodman 3 Ton Condenser
+New composite pad, whip and disconnect, UV jacket and seal-tight for 24v wire.
+
+
+10 Year Manufacture Parts Warranty
+2 Year Labor Warranty",$9100.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Other System Installations,olit_8352085b68ae4005a6009dd719fb6677,Goodman 3 Ton R-32 Condenser and Evaporator Coil,"Ensure year-round comfort with the Goodman 3 Ton Condenser and evaporator coil. Designed for efficient cooling, this system offers reliable performance and energy savings. Perfect for medium homes, it ensures even temperature control and improved air quality.
+System Includes:
+
+New 3 Ton Evaporator Coil:
+New safety float switch, reconnect primary drain with p-trap and secondary drain to secondary pan, seal evaporator to furnace with rolled mastic tape.
+
+Goodman 3 Ton Condenser
+New composite pad, whip and disconnect, UV jacket and seal-tight for 24v wire.
+
+
+10 Year Manufacture Parts Warranty
+2 Year Labor Warranty",$7160.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_3d254d60d9d14841ab7e25ce3ecc4839,3 Ton Evaporator Coil (Upflow),"Replacement of a 3 ton Upflow evaporator coil. Includes reconnection of primary drain plus secondary safe-t-switch, vacuum the line set below 500 microns and pressure test with nitrogen. 
+10 year manufacture warranty
+2 year labor warranty ",$2600.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Ducting,olit_8b10021929dc467eb253b4868a2c88f0,Duct Repair,Cut out section of 9” ducting out from under home and replaced with new r-8 duct. Metal coupling used in the splice and strapped up ducting.,$700.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Custom Services,olit_acc167726c3d4df38b816dd7b6a54075,High Flow Bar Type Grill,Installation of a high flow bar type grill. This grill is designed to produce more airflow and able to easily direct air.,$75.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Other System Installations,olit_4e05a3f01d5c45978c248803b67158f4,Innovair Gold Series 4 Ton Split System,"Our Innovair 4 Ton Gold-Series Split System ensures reliable, energy-efficient cooling for your home. Perfect for larger spaces, it provides consistent comfort, improved air quality, and quiet operation. Trust in professional installation for optimal performance and long-term savings.
+System Includes:
+
+Goodman 80,000 BTU 80% AFUE Ultra Low NOx Furnace:
+Includes new Pro 701 thermostat, sediment trap with new flex line and ball valve, reconnect return plenum, 24v electrical will be wired to manufacture spec, new pigtail, b-vent pipe will be reconnected to manufacture spec.
+
+New 4 Ton Evaporator Coil:
+New safety float switch, reconnect primary drain with p-trap and secondary drain to secondary pan, seal evaporator to furnace with rolled mastic tape.
+
+Innovair Gold-Series Condenser
+New composite pad, whip and disconnect, UV jacket and seal-tight for 24v wire.
+
+
+10 Year Manufacture Parts Warranty
+2 Year Labor Warranty",$8900.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Other System Installations,olit_1cd0eb9dbc574e3d9540b80654140b05,York 2 1/2 Ton Split System,"Our York 2 1/2 Ton 14.3 SEER2 Split System ensures reliable, energy-efficient cooling for your home. Perfect for larger spaces, it provides consistent comfort, improved air quality, and quiet operation. Trust in professional installation for optimal performance and long-term savings.
+
+System Includes:
+
+York 60,000 BTU 80% AFUE Ultra Low NOx Furnace:
+Includes new Pro 701 thermostat, sediment trap with new flex line and ball valve, reconnect return plenum, 24v electrical will be wired to manufacture spec, new pigtail, b-vent pipe will be reconnected to manufacture spec.
+
+ADP 3 Ton Evaporator Coil:
+New safety float switch, reconnect primary drain with p-trap and secondary drain to secondary pan, seal evaporator to furnace with rolled mastic tape.
+
+York 2 1/2 Ton 14.3 SEER2 Condenser
+New composite pad, whip and disconnect, UV jacket and seal-tight for 24v wire.
+
+
+10 Year Manufacture Parts Warranty
+2 Year Labor Warranty",$8275.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Custom Services,olit_3bcd00b3b7b442dfa437745e5290d88e,Navien 210s2 Tankless Wateheater,"Full installation of a Navien 210s2 tankless water heater. Includes scale remover, re-vent with 2” pvc, converted from tank. Ran new 1/2 condensation pvc line. Ran pressure relief valve in 3/4 copper to exterior",$3400.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Ducting,olit_627b2c16c0ac4b42b19f98933ac47786,Duct Repair ,Repaired 18” return duct. System is operational ,$500.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Custom Services,olit_737989dffa5f48ecb439b9ffda790505,Refco Gobi ll Pump,Installation of a mini split Gobi ll pump. Comes with 1 year warranty.,$400.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Other System Installations,olit_307e7fd589874ba09b4ba5f71a32b8b2,"Fujitsu Airstage 12,000 BTU Mini SplitR-32 (Direct swap)","A change out of a Fujitsu Airstage 12,000 btu mini split. System includes reconnection of drains, electrical, backplate, whip and disconnect. Quote includes everything except line set and communication wire. Any lines aor communication wire is subject to change order. 
+System includes:
+10 year manufacture parts warranty
+2 year labor warranty 
+",$4160.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Custom Services,olit_9e9bab795e4747938e86e92635b45d65,Mini Split Repair,"Repaired flair fittings on Gree 3 ton mini split. Charged to delta-t. 
+1 year warranty ",$350.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Custom Services,olit_f7bbc67bdbef46849e3cf82c55113e02,Furnace removal,Removal of furnace while suspending the evaporator coil. Gas will be shut off at the service valve. Vent will be removed or moved out of way. 24v wires will be disconnected as well. Furnace will be relocated to garage.,$600.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Custom Services,olit_615d59ceb30644beae7d96596a457400,Service Disconnect ,Replace service disconnect and replaced fuses 50 amp,$100.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Ducting,olit_ba1fdfffb7314e19aa6b8a5cd6ea5a58,3 Ton Duct System,8 boots cut in with 1 return,$4000.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_2e5d77c5e3bc40e48f8dd18338c0cca7,Pro T701 Thermostat,"4 sq. inch display with back light button. 1 heat and 1 cool settings with 5 minute compressor delay protection
+1 year warranty",$225.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Other System Installations,olit_47542c0e8fcb42d3b442659c59665044,Innovair Slim Series 3 Ton  16 SEER2 Split System R-454b,"Our Innovair 3 Ton Slim-Series Split System ensures reliable, energy-efficient cooling for your home. Perfect for larger spaces, it provides consistent comfort, improved air quality, and quiet operation. Trust in professional installation for optimal performance and long-term savings.
+System Includes:
+
+Goodman 80,000 BTU 80% AFUE Ultra Low NOx Furnace:
+Includes new Honeywell T4 Pro thermostat, sediment trap with new flex line and ball valve, reconnect return plenum, 24v electrical will be wired to manufacture spec, new pigtail, b-vent pipe will be reconnected to manufacture spec.
+
+New Innovair 3 Ton Evaporator Coil:
+New safety float switch, reconnect primary drain with p-trap and secondary drain to secondary pan, seal evaporator to furnace with rolled mastic tape.
+
+Innovair 3 ton Slim-Series Condenser
+New composite pad, whip and disconnect, UV jacket and seal-tight for 24v wire. 
+
+System includes new return and supply plenums, hung-rite racking system, and reconnection of all ducts to the plenum sealed with mastic. 
+
+
+10 Year Manufacture Parts Warranty
+2 Year Labor Warranty",$8860.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_456e79f6e75345c098540d5464525636,Evaporator Coil Cleaning (Package Unit),"3 step system for cleaning evaporator coils: brush out any heavy impacted dirt or debris. Washed evaporator coils with pressurized water, then foaming coil cleaner.",$260.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Other System Installations,olit_a3111da902084a8b8f178796e7a26f21,York 4 Ton 16 SEER Split System with Slim Line Condenser R-454b,"Upgrade your home comfort with a York 4 Ton 16 SEER Split System featuring a slim line condenser and eco-friendly R-454b refrigerant. Enjoy reliable cooling, improved energy efficiency, and lower utility costs while reducing your environmental impact. System includes:
+
+York 80,000 BTU 80% AFUE Ultra Low NOx Furnace:
+Includes new Honeywell T4Pro thermostat, sediment trap with new flex line and ball valve, reconnect return plenum, 24v electrical will be wired to manufacture spec, new pigtail, b-vent pipe will be reconnected to manufacture spec.
+
+ADP 4 Ton Evaporator Coil:
+New safety float switch, reconnect primary drain with p-trap and secondary drain to secondary pan, seal evaporator to furnace with rolled mastic tape.
+
+York 4 Ton 16 SEER2 Slimline Condenser
+New composite pad, whip and disconnect, UV jacket and seal-tight for 24v wire.
+
+System includes new return and supply plenums, hung-rite racking system, and reconnection of all ducts to the plenum sealed with mastic. 
+
+10 Year Manufacture Parts Warranty
+2 Year Labor Warranty",$10460.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Other System Installations,olit_3811ca996fd54fedb6e8e1cbd4b4da8e,York 3 Ton 16 SEER Split System with Slim Line Condenser R-454b,"Upgrade your home comfort with a York 4 Ton 16 SEER Split System featuring a slim line condenser and eco-friendly R-454b refrigerant. Enjoy reliable cooling, improved energy efficiency, and lower utility costs while reducing your environmental impact. System includes:
+
+York 60,000 BTU 80% AFUE Ultra Low NOx Furnace:
+Includes new Honeywell T4Pro thermostat, sediment trap with new flex line and ball valve, reconnect return plenum, 24v electrical will be wired to manufacture spec, new pigtail, b-vent pipe will be reconnected to manufacture spec.
+
+ADP 3 Ton Evaporator Coil:
+New safety float switch, reconnect primary drain with p-trap and secondary drain to secondary pan, seal evaporator to furnace with rolled mastic tape.
+
+York 3 Ton 16 SEER2 Slimline Condenser
+New composite pad, whip and disconnect, UV jacket and seal-tight for 24v wire.
+
+System includes new return and supply plenums, hung-rite racking system, and reconnection of all ducts to the plenum sealed with mastic. 
+
+10 Year Manufacture Parts Warranty
+2 Year Labor Warranty",$9810.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_b22b7be501b943e8a0b40d6647e34df0,AC Pro H-Series 2 Ton Heat Pump Split System R454b,"Installation of a high-efficiency AC Pro H-Series 2 Ton Heat Pump Split System with ductwork, delivering reliable heating and cooling throughout your home while improving energy savings and indoor comfort year-round.
+System Includes:
+
+H-Series Air Handler Ducted 24,000 BTU 19 SEER2 12.5 EER2  
+Unit will be hung by floor joists and leveled. New condensation drains will be run. New metal plenums for supply and return. 5 Supply and 1 return will be cut in the floor with ducting attached. 
+
+H-Series Heat Pump Condenser 24,000 BTU 19 SEER2 12.5 EER2 R454B 
+Condenser will be leveled and mounted to a pad. New power will be run to condenser and new line set with communication wire will be run to air handler. System will be charged per manufacture spec.
+
+10 year parts warranty
+1 year labor warranty
+",$9170.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_b167e716af8f49c0a6c2df14b4724f04,Honeywell FocusPRO Thermostat installation ,"Installation of a Honeywell FocusPRO 3 heat 2 cool thermostat.
+1 year warranty ",$320.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_ad754835e34a4ffdb94730932abd7037,Silver 1.5 Heat Pump Split System R454b,"The Z-Series Inverter side-discharge heat pump is designed for effortless installation and optimal home comfort.
+Its intelligent Indoor Air Handler automatically detects and adjusts to either 115V or 230V power, ensuring compatibility with your setup. Enjoy enhanced energy efficiency with variable speed operation, delivering consistent and cost-effective heating and cooling. For added convenience, an optional sleek, modern touchscreen thermostat offers easy control and seamless communication. Plus, with its innovative two-wire connectivity, installation is quicker and simpler, making it a perfect upgrade for any home. Experience reliable, high-performance comfort with the Z-Series Inverter.
+Energy-Efficient Performance
+Delivers 19 SEER2 12.5 EER2 10.1 HSPF2 efficiency, meeting ENERGY STAR® standards and qualifying for tax credits and rebates, helping you save on energy costs. Modern Touchscreen Thermostat is a sleek, communicating touchscreen thermostat for precise temperature control, variable speed operation, and enhanced energy savings. Designed for seamless replacements, the system requires only two wires for indoor-to-outdoor connectivity and fits standard cabinet widths for a smooth installation
+System Includes:
+Z-Series Air Handler Multi Position 1.5 Ton 115/208/230V 14.5"" wide R454B
+System includes Upgraded touchscreen communicating 2H 2C thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new pigtail and/or disconnect.
+Z-Series Condenser Heat Pump 1.5 Ton 19 SEER2 12.5 EER2 10.1 HSPF2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+2 Year Labor Warranty",$9642.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_3f217dbe40764aa687ef90c61cf36302,Bronze 2 Ton Split System Gas R-454B,"ENJOY DEPENDABLE COMFORT AT A VALUE THAT MAKES SENSE
+When you need reliable cooling without delay, choosing an AC Pro M-Series unit is an easy and confident decision. Designed with durable materials and built for long lasting performance, these systems deliver the comfort your home needs—day after day, season after season.
+THE PRACTICAL, EVERYDAY COOLING SOLUTION
+The AC Pro M-Series offers efficient, dependable
+performance with SEER2 ratings from 13.8 to 16,
+making it a smart choice for homeowners looking for
+comfort at an affordable price.
+WHY CHOOSE THE M-SERIES?
+• 10-year limited warranty on compressor and parts provides long-term peace of mind.
+• 100% factory run-tested to ensure consistent performance and reliable operation.
+• Permanently lubricated condenser fan motor requires no annual maintenance.
+• Heavy-duty, single-stage scroll compressor delivers dependable cooling you can count on for years.
+EFFICIENCY THAT WORKS FOR YOUR HOME AND BUDGET
+While SEER2 ratings vary by model, every M-Series unit is
+engineered to deliver dependable cooling with less energy than
+outdated systems—helping lower utility bills and improve everyday
+comfort. Upgrading to an AC Pro M-Series system means
+investing in a cooling solution that works hard, lasts long, and
+keeps your home comfortable through the hottest days—without
+stretching your budget
+System Includes:
+AC Pro A-Series Ultra Low NOx Gas Furnace 80% Single Stage 40,000 BTU 
+Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high/low voltage electrical with new pigtail and existing 24v wiring. Sediment trap w/gas flex included. reconnect vent pipe using new single/double wall when needed.
+AC Pro 2 Ton Evaporator Coil R454B
+Reconnect primary and secondary drains with Safe-T-Switch included. All seems Sealed with Rolled mastic tape and/or mastic if needed.
+AC Pro M-Series Condenser Air Conditioning 2 Ton 14.3 SEER2 11.7 EER2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+1 Year Labor Warranty",$8670.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_f480ec47091c42218466e52736d95647,Silver 2 Ton Heat Pump Split System R454B,"The Z-Series Inverter side-discharge heat pump is designed for effortless installation and optimal home comfort.
+Its intelligent Indoor Air Handler automatically detects and adjusts to either 115V or 230V power, ensuring compatibility with your setup. Enjoy enhanced energy efficiency with variable speed operation, delivering consistent and cost-effective heating and cooling. For added convenience, an optional sleek, modern touchscreen thermostat offers easy control and seamless communication. Plus, with its innovative two-wire connectivity, installation is quicker and simpler, making it a perfect upgrade for any home. Experience reliable, high-performance comfort with the Z-Series Inverter.
+Energy-Efficient Performance
+Delivers 18.6 SEER2 12 EER2 10 HSPF2 efficiency, meeting ENERGY STAR® standards and qualifying for tax credits and rebates, helping you save on energy costs. Modern Touchscreen Thermostat is a sleek, communicating touchscreen thermostat for precise temperature control, variable speed operation, and enhanced energy savings. Designed for seamless replacements, the system requires only two wires for indoor-to-outdoor connectivity and fits standard cabinet widths for a smooth installation
+System Includes:
+Z-Series Air Handler Multi Position 2 Ton 115/208/230V 14.5"" wide R454B
+System includes Upgraded touchscreen communicating 2H 2C thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new pigtail and/or disconnect.
+Z-Series Condenser Heat Pump 2 Ton 18.6 SEER2 12 EER2 10 HSPF2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+2 Year Labor Warranty",$10398.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_e333c8716c5d4dd7949c60986d12c391,Silver 3 Ton Heat Pump Split System R454B,"The Z-Series Inverter side-discharge heat pump is designed for effortless installation and optimal home comfort.
+Its intelligent Indoor Air Handler automatically detects and adjusts to either 115V or 230V power, ensuring compatibility with your setup. Enjoy enhanced energy efficiency with variable speed operation, delivering consistent and cost-effective heating and cooling. For added convenience, an optional sleek, modern touchscreen thermostat offers easy control and seamless communication. Plus, with its innovative two-wire connectivity, installation is quicker and simpler, making it a perfect upgrade for any home. Experience reliable, high-performance comfort with the Z-Series Inverter.
+Energy-Efficient Performance
+Delivers 17.7 SEER2 12 EER2 10 HSPF2 efficiency, meeting ENERGY STAR® standards and qualifying for tax credits and rebates, helping you save on energy costs. Modern Touchscreen Thermostat is a sleek, communicating touchscreen thermostat for precise temperature control, variable speed operation, and enhanced energy savings. Designed for seamless replacements, the system requires only two wires for indoor-to-outdoor connectivity and fits standard cabinet widths for a smooth installation
+System Includes:
+Z-Series Air Handler Multi Position 3 Ton 115/208/230V 17.5"" wide R454B
+System includes Upgraded touchscreen communicating 2H 2C thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new pigtail and/or disconnect.
+Z-Series Condenser Heat Pump 3 Ton 17.7 SEER2 12 EER2 10 HSPF2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+2 Year Labor Warranty
+",$11890.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_81179a8e5fc8460fbf1f44da3dedec85,Silver 4 Ton Heat Pump Split System R454B,"The Z-Series Inverter side-discharge heat pump is designed for effortless installation and optimal home comfort.
+Its intelligent Indoor Air Handler automatically detects and adjusts to either 115V or 230V power, ensuring compatibility with your setup. Enjoy enhanced energy efficiency with variable speed operation, delivering consistent and cost-effective heating and cooling. For added convenience, an optional sleek, modern touchscreen thermostat offers easy control and seamless communication. Plus, with its innovative two-wire connectivity, installation is quicker and simpler, making it a perfect upgrade for any home. Experience reliable, high-performance comfort with the Z-Series Inverter.
+Energy-Efficient Performance
+Delivers 17.5 SEER2 12 EER2 9.5 HSPF2 efficiency, meeting ENERGY STAR® standards and qualifying for tax credits and rebates, helping you save on energy costs. Modern Touchscreen Thermostat is a sleek, communicating touchscreen thermostat for precise temperature control, variable speed operation, and enhanced energy savings. Designed for seamless replacements, the system requires only two wires for indoor-to-outdoor connectivity and fits standard cabinet widths for a smooth installation
+System Includes:
+Z-Series Air Handler Multi Position 4 Ton 115/208/230V 21.5"" wide R454B
+System includes Upgraded touchscreen communicating 2H 2C thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new pigtail and/or disconnect.
+Z-Series Condenser Heat Pump 4 Ton 17.5 SEER2 12 EER2 9.5 HSPF2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+2 Year Labor Warranty
+",$12880.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_c6f434cc91184776890d9cdb72670d27,Silver 5 Ton Heat Pump Split System R454B,"The Z-Series Inverter side-discharge heat pump is designed for effortless installation and optimal home comfort.
+Its intelligent Indoor Air Handler automatically detects and adjusts to either 115V or 230V power, ensuring compatibility with your setup. Enjoy enhanced energy efficiency with variable speed operation, delivering consistent and cost-effective heating and cooling. For added convenience, an optional sleek, modern touchscreen thermostat offers easy control and seamless communication. Plus, with its innovative two-wire connectivity, installation is quicker and simpler, making it a perfect upgrade for any home. Experience reliable, high-performance comfort with the Z-Series Inverter.
+Energy-Efficient Performance
+Delivers 17.5 SEER2 12 EER2 9.5 HSPF2 efficiency, meeting ENERGY STAR® standards and qualifying for tax credits and rebates, helping you save on energy costs. Modern Touchscreen Thermostat is a sleek, communicating touchscreen thermostat for precise temperature control, variable speed operation, and enhanced energy savings. Designed for seamless replacements, the system requires only two wires for indoor-to-outdoor connectivity and fits standard cabinet widths for a smooth installation
+System Includes:
+Z-Series Air Handler Multi Position 5 Ton 115/208/230V 21.5"" wide R454B
+System includes Upgraded touchscreen WIFI communicating 2H 2C thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new pigtail and/or disconnect.
+Z-Series Condenser Heat Pump 5 Ton 17.5 SEER2 12 EER2 9.5 HSPF2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+2 Year Labor Warranty
+",$13640.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_f4f5826f4d444cbfa8d831d05cb0566f,Gold 3 Ton Heat Pump Split System R32,"Ideal for regions with mild, optimal climates like California, the AC Pro XB-Series Heat pump system delivers state-of-the-art heating and air conditioning without the premium price tag. Featuring ultra-efficient inverter technology, quiet operation, and a sleek, compact design, it’s a smart and versatile solution for virtually any home. 
+Technology Compressor Heat Pumps are capable of regulating the compressor motor speed to quickly adjust and maintain a precise temperature at a lower compressor speed while making the unit more energy efficient.
+Increased Comfort Level With the Inverter Technology Compressor adjusting to maintain temperature at a lower operating speed there are no Spikes or dips in temperatures while also reducing humidity in the space. All resulting in an Increased Comfort level and efficiencies with a low sound level as low as 68db. Goldfin coil coating for extended protection and reliability.
+System Includes:
+XB-Series Air Handler Upflow/Horizontal 3 Ton 208/230V R32
+System includes Upgraded touchscreen communicating WIFI thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new disconnect and whip.
+
+XB-Series Condenser Heat Pump 3 Ton 19 SEER2 11.7 EER2 8.3 HSPF2 Inverter R32
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+2 Year Labor Warranty
+",$13680.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_4d62eb0183b74d719cb945aa80d67a74,Gold 2-2 1/2 Ton Heat Pump Split System with Core FAU R-32,"Ideal for regions with mild, optimal climates like California, the AC Pro XB-Series Heat pump system delivers state-of-the-art heating and air conditioning without the premium price tag. Featuring ultra-efficient inverter technology, quiet operation, and a sleek, compact design, it’s a smart and versatile solution for virtually any home. 
+Technology Compressor Heat Pumps are capable of regulating the compressor motor speed to quickly adjust and maintain a precise temperature at a lower compressor speed while making the unit more energy efficient.
+Increased Comfort Level With the Inverter Technology Compressor adjusting to maintain temperature at a lower operating speed there are no Spikes or dips in temperatures while also reducing humidity in the space. All resulting in an Increased Comfort level and efficiencies with a low sound level as low as 68db. Goldfin coil coating for extended protection and reliability.
+System Includes:
+AC Pro Evaporator with Core FAU Upflow/Horizontal 2-2 1/2 Ton 120V R32
+System includes Upgraded touchscreen communicating WIFI thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new disconnect and whip.
+
+XB-Series Condenser Heat Pump 2-2.5 Ton 18.5 SEER2 11.7 EER2 8.3 HSPF2 Inverter R32
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+2 Year Labor Warranty
+",$11390.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_eb7eb778c1ae40a5aa578871fa3accfe,Gold 3 Ton Silver Heat Pump Split System with Core FAU R-32,"Ideal for regions with mild, optimal climates like California, the AC Pro XB-Series Heat pump system delivers state-of-the-art heating and air conditioning without the premium price tag. Featuring ultra-efficient inverter technology, quiet operation, and a sleek, compact design, it’s a smart and versatile solution for virtually any home. 
+Technology Compressor Heat Pumps are capable of regulating the compressor motor speed to quickly adjust and maintain a precise temperature at a lower compressor speed while making the unit more energy efficient.
+Increased Comfort Level With the Inverter Technology Compressor adjusting to maintain temperature at a lower operating speed there are no Spikes or dips in temperatures while also reducing humidity in the space. All resulting in an Increased Comfort level and efficiencies with a low sound level as low as 68db. Goldfin coil coating for extended protection and reliability.
+System Includes:
+AC Pro 3 Ton Evaporator with Core FAU Upflow/Horizontal 120V R32
+System includes Upgraded touchscreen communicating WIFI thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new disconnect and whip.
+
+XB-Series Condenser Heat Pump 3 Ton 19 SEER2 11.7 EER2 8.3 HSPF2 Inverter R32
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+2 Year Labor Warranty
+",$13680.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_9451b187cea9421da1f3824d5c7ab4b1,Gold 4-5 Ton Heat Pump Split System R32,"Ideal for regions with mild, optimal climates like California, the AC Pro XB-Series Heat pump system delivers state-of-the-art heating and air conditioning without the premium price tag. Featuring ultra-efficient inverter technology, quiet operation, and a sleek, compact design, it’s a smart and versatile solution for virtually any home. 
+Technology Compressor Heat Pumps are capable of regulating the compressor motor speed to quickly adjust and maintain a precise temperature at a lower compressor speed while making the unit more energy efficient.
+Increased Comfort Level With the Inverter Technology Compressor adjusting to maintain temperature at a lower operating speed there are no Spikes or dips in temperatures while also reducing humidity in the space. All resulting in an Increased Comfort level and efficiencies with a low sound level as low as 68db. Goldfin coil coating for extended protection and reliability.
+System Includes:
+XB-Series Air Handler Upflow/Horizontal 4-5 Ton 208/230V 24.82"" wide R32
+System includes Upgraded touchscreen communicating WIFI thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new disconnect and whip.
+
+XB-Series Condenser Heat Pump 4-5 Ton 19-20 SEER2 11.7 EER2 9.5 HSPF2 Inverter R32
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+2 Year Labor Warranty
+",$15960.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_ee778a413fa14b13a7647cf60ef23e97,Gold 4-5 Ton Heat Pump Split System with Core FAU R-32,"Ideal for regions with mild, optimal climates like California, the AC Pro XB-Series Heat pump system delivers state-of-the-art heating and air conditioning without the premium price tag. Featuring ultra-efficient inverter technology, quiet operation, and a sleek, compact design, it’s a smart and versatile solution for virtually any home. 
+Technology Compressor Heat Pumps are capable of regulating the compressor motor speed to quickly adjust and maintain a precise temperature at a lower compressor speed while making the unit more energy efficient.
+Increased Comfort Level With the Inverter Technology Compressor adjusting to maintain temperature at a lower operating speed there are no Spikes or dips in temperatures while also reducing humidity in the space. All resulting in an Increased Comfort level and efficiencies with a low sound level as low as 68db. Goldfin coil coating for extended protection and reliability.
+System Includes:
+AC Pro Evaporator with Core FAU Upflow/Horizontal 4-5 Ton 120V R32
+System includes Upgraded touchscreen communicating WIFI thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new disconnect and whip.
+
+XB-Series Condenser Heat Pump 4-5 Ton 19-20 SEER2 11.7 EER2 9.5 HSPF2 Inverter R32
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+2 Year Labor Warranty
+",$15960.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_b661877c30664fec94dd33c79ea0bdb3,Gold 2-2 1/2 Ton Silver Heat Pump Split System with Core FAU R-32,"Ideal for regions with mild, optimal climates like California, the AC Pro XB-Series Heat pump system delivers state-of-the-art heating and air conditioning without the premium price tag. Featuring ultra-efficient inverter technology, quiet operation, and a sleek, compact design, it’s a smart and versatile solution for virtually any home. 
+Technology Compressor Heat Pumps are capable of regulating the compressor motor speed to quickly adjust and maintain a precise temperature at a lower compressor speed while making the unit more energy efficient.
+Increased Comfort Level With the Inverter Technology Compressor adjusting to maintain temperature at a lower operating speed there are no Spikes or dips in temperatures while also reducing humidity in the space. All resulting in an Increased Comfort level and efficiencies with a low sound level as low as 68db. Goldfin coil coating for extended protection and reliability.
+System Includes:
+XB-Series Air Handler Upflow/Horizontal 2-2 1/2 Ton 208/230V R32
+System includes Upgraded touchscreen communicating WIFI thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new disconnect and whip.
+
+XB-Series Condenser Heat Pump 2-2 1/2 Ton 18.5 SEER2 11.7 EER2 8.3 HSPF2 Inverter R32
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+2 Year Labor Warranty
+",$11390.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_d98e80d525fd44edac9130323ce57c77,TXV Replacement (Walk-in Cooler),Custom built txv for 1/2 ton freezer. Current txv is starving evaporator coil and needs replacement. Includes R-404a refrigerant charge to manufacture.,$2160.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_21b03b145b9549ffaf6ae2d4dbe8724d,OEM Circuitboard Replacement,"Replacement and installation of furnace control board (HVAC circuit board) for residential heating system. Service includes diagnosis of faulty furnace electronics, removal of failed control board, installation of OEM-compatible replacement board, system testing, and verification of safe and efficient furnace operation. Repair performed to restore proper heating performance, ignition control, blower operation, and overall HVAC system reliability.",$760.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_f3ee3e98bad5444cb9260c95f4db41f8,Bronze 3 Ton Split System Gas R-454b,"ENJOY DEPENDABLE COMFORT AT A VALUE THAT MAKES SENSE
+When you need reliable cooling without delay, choosing an AC Pro M-Series unit is an easy and confident decision. Designed with durable materials and built for long lasting performance, these systems deliver the comfort your home needs—day after day, season after season.
+THE PRACTICAL, EVERYDAY COOLING SOLUTION
+The AC Pro M-Series offers efficient, dependable
+performance with SEER2 ratings from 13.8 to 16,
+making it a smart choice for homeowners looking for
+comfort at an affordable price.
+WHY CHOOSE THE M-SERIES?
+• 10-year limited warranty on compressor and parts provides long-term peace of mind.
+• 100% factory run-tested to ensure consistent performance and reliable operation.
+• Permanently lubricated condenser fan motor requires no annual maintenance.
+• Heavy-duty, single-stage scroll compressor delivers dependable cooling you can count on for years.
+EFFICIENCY THAT WORKS FOR YOUR HOME AND BUDGET
+While SEER2 ratings vary by model, every M-Series unit is
+engineered to deliver dependable cooling with less energy than
+outdated systems—helping lower utility bills and improve everyday
+comfort. Upgrading to an AC Pro M-Series system means
+investing in a cooling solution that works hard, lasts long, and
+keeps your home comfortable through the hottest days—without
+stretching your budget
+System Includes:
+AC Pro A-Series Ultra Low NOx Gas Furnace 80% Single Stage 60,000 BTU 
+Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high/low voltage electrical with new pigtail and existing 24v wiring. Sediment trap w/gas flex included. reconnect vent pipe using new single/double wall when needed.
+AC Pro 3 Ton Evaporator Coil R454B
+Reconnect primary and secondary drains with Safe-T-Switch included. All seems Sealed with Rolled mastic tape and/or mastic if needed.
+AC Pro M-Series Condenser Air Conditioning 3 Ton 14.3 SEER2 11.7 EER2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+1 Year Labor Warranty",$9272.00,$0.00,false,Each,"",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_18de97e43c76482bbb727dfc5dc9f389,Bronze 5 Ton Split System Gas R-454b,"ENJOY DEPENDABLE COMFORT AT A VALUE THAT MAKES SENSE
+When you need reliable cooling without delay, choosing an AC Pro M-Series unit is an easy and confident decision. Designed with durable materials and built for long lasting performance, these systems deliver the comfort your home needs—day after day, season after season.
+THE PRACTICAL, EVERYDAY COOLING SOLUTION
+The AC Pro M-Series offers efficient, dependable
+performance with SEER2 ratings from 13.8 to 16,
+making it a smart choice for homeowners looking for
+comfort at an affordable price.
+WHY CHOOSE THE M-SERIES?
+• 10-year limited warranty on compressor and parts provides long-term peace of mind.
+• 100% factory run-tested to ensure consistent performance and reliable operation.
+• Permanently lubricated condenser fan motor requires no annual maintenance.
+• Heavy-duty, single-stage scroll compressor delivers dependable cooling you can count on for years.
+EFFICIENCY THAT WORKS FOR YOUR HOME AND BUDGET
+While SEER2 ratings vary by model, every M-Series unit is
+engineered to deliver dependable cooling with less energy than
+outdated systems—helping lower utility bills and improve everyday
+comfort. Upgrading to an AC Pro M-Series system means
+investing in a cooling solution that works hard, lasts long, and
+keeps your home comfortable through the hottest days—without
+stretching your budget
+System Includes:
+AC Pro A-Series Ultra Low NOx Gas Furnace 80% Single Stage 100,000 BTU 
+Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high/low voltage electrical with new pigtail and existing 24v wiring. Sediment trap w/gas flex included. reconnect vent pipe using new single/double wall when needed.
+AC Pro 5 Ton Evaporator Coil R454B
+Reconnect primary and secondary drains with Safe-T-Switch included. All seems Sealed with Rolled mastic tape and/or mastic if needed.
+AC Pro M-Series Condenser Air Conditioning 5 Ton 13.8 SEER2 11.2 EER2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+1 Year Labor Warranty",$10990.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_351bdd1aa7914a988d384befb2578e8b,Bronze 4 Ton Split System Gas R-454b,"ENJOY DEPENDABLE COMFORT AT A VALUE THAT MAKES SENSE
+When you need reliable cooling without delay, choosing an AC Pro M-Series unit is an easy and confident decision. Designed with durable materials and built for long lasting performance, these systems deliver the comfort your home needs—day after day, season after season.
+THE PRACTICAL, EVERYDAY COOLING SOLUTION
+The AC Pro M-Series offers efficient, dependable
+performance with SEER2 ratings from 13.8 to 16,
+making it a smart choice for homeowners looking for
+comfort at an affordable price.
+WHY CHOOSE THE M-SERIES?
+• 10-year limited warranty on compressor and parts provides long-term peace of mind.
+• 100% factory run-tested to ensure consistent performance and reliable operation.
+• Permanently lubricated condenser fan motor requires no annual maintenance.
+• Heavy-duty, single-stage scroll compressor delivers dependable cooling you can count on for years.
+EFFICIENCY THAT WORKS FOR YOUR HOME AND BUDGET
+While SEER2 ratings vary by model, every M-Series unit is
+engineered to deliver dependable cooling with less energy than
+outdated systems—helping lower utility bills and improve everyday
+comfort. Upgrading to an AC Pro M-Series system means
+investing in a cooling solution that works hard, lasts long, and
+keeps your home comfortable through the hottest days—without
+stretching your budget
+System Includes:
+AC Pro A-Series Ultra Low NOx Gas Furnace 80% Single Stage 80,000 BTU 
+Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high/low voltage electrical with new pigtail and existing 24v wiring. Sediment trap w/gas flex included. reconnect vent pipe using new single/double wall when needed.
+AC Pro 4 Ton Evaporator Coil R454B
+Reconnect primary and secondary drains with Safe-T-Switch included. All seems Sealed with Rolled mastic tape and/or mastic if needed.
+AC Pro M-Series Condenser Air Conditioning 4 Ton 14.3 SEER2 11.7 EER2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+1 Year Labor Warranty",$10426.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_3930a72c6e5543c8bf2c42286894a0fd,Bronze 2-2 1/2 Ton Heat Pump Split System with Core FAU R-454b,"ENJOY DEPENDABLE COMFORT AT A VALUE THAT MAKES SENSE
+When you need reliable cooling without delay, choosing an AC Pro M-Series unit is an easy and confident decision. Designed with durable materials and built for long-lasting performance, these systems deliver the comfort your home needs—day after day, season after season.
+THE PRACTICAL, EVERYDAY COOLING SOLUTION
+The AC Pro M-Series offers efficient, dependable performance with SEER2 ratings from 13.8 to 16, making it a smart choice for homeowners looking for comfort at an affordable price.
+WHY CHOOSE THE M-SERIES?
+• Entry-level efficiency with SEER2 ratings from
+13.8–16 helps reduce energy use compared to older
+systems.
+• 10-year limited warranty on compressor and parts
+provides long-term peace of mind.
+• 100% factory run-tested to ensure consistent performance and reliable operation.
+• Permanently lubricated condenser fan motor requires no annual maintenance.
+• Heavy-duty, single-stage scroll compressor delivers dependable cooling you can count on for years.
+** U.S. Average five-year Electric Cumulative Energy Savings for High-Efficiency 14 SEER Air Conditioners vs. 10 SEER. Energy Efficiency and renewable Energy Network, U.S. Department of Energy. The U.S. national average is used for electricity consumption. Actual cost savings may vary depending on personal lifestyle, system settings, equipment maintenance, local climate, actual construction, installation of equipment and duct system, hours of operation and local utility rates. This information is intended as an example of comparison purpose only. New for 2023: SEER2 and HSPF2 are new ratings that reflect changes to national testing standards. Think of it like a highway vs city gas mileage. SEER2 and HSPF2 more closely reflect energy efficiency in real life applications, which is why the rating is slightly lower. Year 1which is why the rating is slightly lower.
+EFFICIENCY THAT WORKS FOR YOUR HOME AND BUDGET
+While SEER2 ratings vary by model, every M-Series unit is engineered to deliver dependable cooling with less energy than outdated systems helping lower utility bills and improve everyday comfort. Upgrading to an AC Pro M-Series system means investing in a cooling solution that works hard, lasts long, and keeps your home comfortable through the hottest days—without
+stretching your budget
+System Includes:
+AC Pro 2 Ton Evaporator coil Upflow/Horizontal with Core FAU
+System includes FocusPro thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new disconnect and whip.
+
+M Series Condenser Heat Pump 2-2 1/2 Ton 15.2 SEER2 12 EER2 R-454b
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+1 Year Labor Warranty
+",$8652.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_84469b4223d248deb8f3fdfe9890281e,Bronze 3 Ton Heat Pump Split System with Core FAU R-454b,"ENJOY DEPENDABLE COMFORT AT A VALUE THAT MAKES SENSE
+When you need reliable cooling without delay, choosing an AC Pro M-Series unit is an easy and confident decision. Designed with durable materials and built for long-lasting performance, these systems deliver the comfort your home needs—day after day, season after season.
+THE PRACTICAL, EVERYDAY COOLING SOLUTION
+The AC Pro M-Series offers efficient, dependable performance with SEER2 ratings from 13.8 to 16, making it a smart choice for homeowners looking for comfort at an affordable price.
+WHY CHOOSE THE M-SERIES?
+• Entry-level efficiency with SEER2 ratings from
+13.8–16 helps reduce energy use compared to older
+systems.
+• 10-year limited warranty on compressor and parts
+provides long-term peace of mind.
+• 100% factory run-tested to ensure consistent performance and reliable operation.
+• Permanently lubricated condenser fan motor requires no annual maintenance.
+• Heavy-duty, single-stage scroll compressor delivers dependable cooling you can count on for years.
+** U.S. Average five-year Electric Cumulative Energy Savings for High-Efficiency 14 SEER Air Conditioners vs. 10 SEER. Energy Efficiency and renewable Energy Network, U.S. Department of Energy. The U.S. national average is used for electricity consumption. Actual cost savings may vary depending on personal lifestyle, system settings, equipment maintenance, local climate, actual construction, installation of equipment and duct system, hours of operation and local utility rates. This information is intended as an example of comparison purpose only. New for 2023: SEER2 and HSPF2 are new ratings that reflect changes to national testing standards. Think of it like a highway vs city gas mileage. SEER2 and HSPF2 more closely reflect energy efficiency in real life applications, which is why the rating is slightly lower. Year 1which is why the rating is slightly lower.
+EFFICIENCY THAT WORKS FOR YOUR HOME AND BUDGET
+While SEER2 ratings vary by model, every M-Series unit is engineered to deliver dependable cooling with less energy than outdated systems helping lower utility bills and improve everyday comfort. Upgrading to an AC Pro M-Series system means investing in a cooling solution that works hard, lasts long, and keeps your home comfortable through the hottest days—without
+stretching your budget
+System Includes:
+AC Pro 3 Ton Evaporator coil Upflow/Horizontal with Core FAU
+System includes FocusPro thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new disconnect and whip.
+
+M Series Condenser Heat Pump 3 Ton 15.2 SEER2 12 EER2 R-454b
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+1 Year Labor Warranty
+",$9160.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_abcde11031444ef1832bbc932b0ccc10,Bronze 4 Ton Heat Pump Split System with Core FAU R-454b,"ENJOY DEPENDABLE COMFORT AT A VALUE THAT MAKES SENSE
+When you need reliable cooling without delay, choosing an AC Pro M-Series unit is an easy and confident decision. Designed with durable materials and built for long-lasting performance, these systems deliver the comfort your home needs—day after day, season after season.
+THE PRACTICAL, EVERYDAY COOLING SOLUTION
+The AC Pro M-Series offers efficient, dependable performance with SEER2 ratings from 13.8 to 16, making it a smart choice for homeowners looking for comfort at an affordable price.
+WHY CHOOSE THE M-SERIES?
+• Entry-level efficiency with SEER2 ratings from
+13.8–16 helps reduce energy use compared to older
+systems.
+• 10-year limited warranty on compressor and parts
+provides long-term peace of mind.
+• 100% factory run-tested to ensure consistent performance and reliable operation.
+• Permanently lubricated condenser fan motor requires no annual maintenance.
+• Heavy-duty, single-stage scroll compressor delivers dependable cooling you can count on for years.
+** U.S. Average five-year Electric Cumulative Energy Savings for High-Efficiency 14 SEER Air Conditioners vs. 10 SEER. Energy Efficiency and renewable Energy Network, U.S. Department of Energy. The U.S. national average is used for electricity consumption. Actual cost savings may vary depending on personal lifestyle, system settings, equipment maintenance, local climate, actual construction, installation of equipment and duct system, hours of operation and local utility rates. This information is intended as an example of comparison purpose only. New for 2023: SEER2 and HSPF2 are new ratings that reflect changes to national testing standards. Think of it like a highway vs city gas mileage. SEER2 and HSPF2 more closely reflect energy efficiency in real life applications, which is why the rating is slightly lower. Year 1which is why the rating is slightly lower.
+EFFICIENCY THAT WORKS FOR YOUR HOME AND BUDGET
+While SEER2 ratings vary by model, every M-Series unit is engineered to deliver dependable cooling with less energy than outdated systems helping lower utility bills and improve everyday comfort. Upgrading to an AC Pro M-Series system means investing in a cooling solution that works hard, lasts long, and keeps your home comfortable through the hottest days—without
+stretching your budget
+System Includes:
+AC Pro 4 Ton Evaporator coil Upflow/Horizontal with Core FAU
+System includes FocusPro thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new disconnect and whip.
+
+M Series Condenser Heat Pump 4 Ton 15.2 SEER2 12 EER2 R-454b
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+1 Year Labor Warranty
+",$9560.00,$42.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_4a9b8a1546784233bd8d328be2163510,Bronze 5 Ton Heat Pump Split System with Core FAU R-454b,"ENJOY DEPENDABLE COMFORT AT A VALUE THAT MAKES SENSE
+When you need reliable cooling without delay, choosing an AC Pro M-Series unit is an easy and confident decision. Designed with durable materials and built for long-lasting performance, these systems deliver the comfort your home needs—day after day, season after season.
+THE PRACTICAL, EVERYDAY COOLING SOLUTION
+The AC Pro M-Series offers efficient, dependable performance with SEER2 ratings from 13.8 to 16, making it a smart choice for homeowners looking for comfort at an affordable price.
+WHY CHOOSE THE M-SERIES?
+• Entry-level efficiency with SEER2 ratings from
+13.8–16 helps reduce energy use compared to older
+systems.
+• 10-year limited warranty on compressor and parts
+provides long-term peace of mind.
+• 100% factory run-tested to ensure consistent performance and reliable operation.
+• Permanently lubricated condenser fan motor requires no annual maintenance.
+• Heavy-duty, single-stage scroll compressor delivers dependable cooling you can count on for years.
+** U.S. Average five-year Electric Cumulative Energy Savings for High-Efficiency 14 SEER Air Conditioners vs. 10 SEER. Energy Efficiency and renewable Energy Network, U.S. Department of Energy. The U.S. national average is used for electricity consumption. Actual cost savings may vary depending on personal lifestyle, system settings, equipment maintenance, local climate, actual construction, installation of equipment and duct system, hours of operation and local utility rates. This information is intended as an example of comparison purpose only. New for 2023: SEER2 and HSPF2 are new ratings that reflect changes to national testing standards. Think of it like a highway vs city gas mileage. SEER2 and HSPF2 more closely reflect energy efficiency in real life applications, which is why the rating is slightly lower. Year 1which is why the rating is slightly lower.
+EFFICIENCY THAT WORKS FOR YOUR HOME AND BUDGET
+While SEER2 ratings vary by model, every M-Series unit is engineered to deliver dependable cooling with less energy than outdated systems helping lower utility bills and improve everyday comfort. Upgrading to an AC Pro M-Series system means investing in a cooling solution that works hard, lasts long, and keeps your home comfortable through the hottest days—without
+stretching your budget
+System Includes:
+AC Pro 5 Ton Evaporator coil Upflow/Horizontal with Core FAU
+System includes FocusPro thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new disconnect and whip.
+
+M Series Condenser Heat Pump 5 Ton 14.3 SEER2 11.7 EER2 R-454b
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+1 Year Labor Warranty
+",$9880.00,$42.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_3e016ff7aa0d4c77803d21a92e4830c3,Silver 2 Ton Split System Gas R-454b,"The AC Pro system provides state of the art heating & air conditioning that won’t break the bank. With its ultra-efficient inverter technology, ultra-quiet sound levels and small size, it’s sure to be a fit for any home. 
+Benefits:
+• Inverter Technology
+• Highly Energy Efficient
+• Increased Comfort Level
+• Space Saving Design
+• Uses Less Space Than a Traditional AC Unit
+• Low Sound Level
+• Goldfin Coil Coating for Extended Protection
+• Peace of Mind Warranty
+Technology Compressor 
+The Condensing Units and Heat Pumps are capable of regulating the compressor motor speed to quickly adjust and maintain a precise temperature at a lower compressor speed while making the unit more energy efficient.
+Has Efficiency Ratings up to 19 SEER2
+Seasonal Energy Efficiency Ratio (SEER) and the updated SEER2 are standards used to measure the energy efficiency of air conditioners and heat pumps—the higher the rating, the more efficient the system and the lower the energy costs. SEER2, introduced in 2023, uses stricter testing conditions to better reflect real-world performance. 
+Increased Comfort Level 
+With the Inverter Technology Compressor adjusting to maintain temperature at a lower operating speed there are no Spikes or dips in temperatures while also reducing humidity in the space. All resulting in an Increased Comfort level and efficiencies.
+We Know Your Space is Valuable 
+The space saving design is about half the size or less than a traditional style condensing and will occupy less space.
+Sound Level as Low as 60db
+System Includes:
+AC Pro A-Series Ultra Low NOx Gas Furnace 80% Single Stage 40,000 BTU 
+Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high/low voltage electrical with new pigtail and existing 24v wiring. Sediment trap w/gas flex included. reconnect vent pipe using new single/double wall when needed.
+AC Pro 2 Ton Evaporator Coil R454B
+Reconnect primary and secondary drains with Safe-T-Switch included. All seems Sealed with Rolled mastic tape and/or mastic if needed.
+AC Pro X-Series Condenser Air Conditioning 2 Ton 16 SEER2 11.7 EER2 R32
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+2 Year Labor Warranty
+",$9930.00,$42.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_ea6dd0794f224522860f8c9767ed5e8a,Silver 3 Ton Split System Gas R-454b,"The AC Pro system provides state of the art heating & air conditioning that won’t break the bank. With its ultra-efficient inverter technology, ultra-quiet sound levels and small size, it’s sure to be a fit for any home. 
+Benefits:
+• Inverter Technology
+• Highly Energy Efficient
+• Increased Comfort Level
+• Space Saving Design
+• Uses Less Space Than a Traditional AC Unit
+• Low Sound Level
+• Goldfin Coil Coating for Extended Protection
+• Peace of Mind Warranty
+Technology Compressor 
+The Condensing Units and Heat Pumps are capable of regulating the compressor motor speed to quickly adjust and maintain a precise temperature at a lower compressor speed while making the unit more energy efficient.
+Has Efficiency Ratings up to 19 SEER2
+Seasonal Energy Efficiency Ratio (SEER) and the updated SEER2 are standards used to measure the energy efficiency of air conditioners and heat pumps—the higher the rating, the more efficient the system and the lower the energy costs. SEER2, introduced in 2023, uses stricter testing conditions to better reflect real-world performance. 
+Increased Comfort Level 
+With the Inverter Technology Compressor adjusting to maintain temperature at a lower operating speed there are no Spikes or dips in temperatures while also reducing humidity in the space. All resulting in an Increased Comfort level and efficiencies.
+We Know Your Space is Valuable 
+The space saving design is about half the size or less than a traditional style condensing and will occupy less space.
+Sound Level as Low as 60db
+System Includes:
+AC Pro A-Series Ultra Low NOx Gas Furnace 80% Single Stage 40,000 BTU 
+Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high/low voltage electrical with new pigtail and existing 24v wiring. Sediment trap w/gas flex included. reconnect vent pipe using new single/double wall when needed.
+AC Pro 3 Ton Evaporator Coil R454B
+Reconnect primary and secondary drains with Safe-T-Switch included. All seems Sealed with Rolled mastic tape and/or mastic if needed.
+AC Pro X-Series Condenser Air Conditioning 3 Ton 16 SEER2 11.7 EER2 R32
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+2 Year Labor Warranty
+",$10361.00,$42.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_7452e9c35ee4463f8b38a1a65e622dd1,Silver 4 Ton Split System Gas R-454b,"The AC Pro system provides state of the art heating & air conditioning that won’t break the bank. With its ultra-efficient inverter technology, ultra-quiet sound levels and small size, it’s sure to be a fit for any home. 
+Benefits:
+• Inverter Technology
+• Highly Energy Efficient
+• Increased Comfort Level
+• Space Saving Design
+• Uses Less Space Than a Traditional AC Unit
+• Low Sound Level
+• Goldfin Coil Coating for Extended Protection
+• Peace of Mind Warranty
+Technology Compressor 
+The Condensing Units and Heat Pumps are capable of regulating the compressor motor speed to quickly adjust and maintain a precise temperature at a lower compressor speed while making the unit more energy efficient.
+Has Efficiency Ratings up to 19 SEER2
+Seasonal Energy Efficiency Ratio (SEER) and the updated SEER2 are standards used to measure the energy efficiency of air conditioners and heat pumps—the higher the rating, the more efficient the system and the lower the energy costs. SEER2, introduced in 2023, uses stricter testing conditions to better reflect real-world performance. 
+Increased Comfort Level 
+With the Inverter Technology Compressor adjusting to maintain temperature at a lower operating speed there are no Spikes or dips in temperatures while also reducing humidity in the space. All resulting in an Increased Comfort level and efficiencies.
+We Know Your Space is Valuable 
+The space saving design is about half the size or less than a traditional style condensing and will occupy less space.
+Sound Level as Low as 60db
+System Includes:
+AC Pro A-Series Ultra Low NOx Gas Furnace 80% Single Stage 80,000 BTU 
+Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high/low voltage electrical with new pigtail and existing 24v wiring. Sediment trap w/gas flex included. reconnect vent pipe using new single/double wall when needed.
+AC Pro 4 Ton Evaporator Coil R454B
+Reconnect primary and secondary drains with Safe-T-Switch included. All seems Sealed with Rolled mastic tape and/or mastic if needed.
+AC Pro X-Series Condenser Air Conditioning 4 Ton 16.5 SEER2 10 EER2 R32
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+2 Year Labor Warranty
+",$12139.00,$42.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_3d77362c384f43a0966bdf81b0799276,Silver 5 Ton Split System Gas R-454b,"The AC Pro system provides state of the art heating & air conditioning that won’t break the bank. With its ultra-efficient inverter technology, ultra-quiet sound levels and small size, it’s sure to be a fit for any home. 
+Benefits:
+• Inverter Technology
+• Highly Energy Efficient
+• Increased Comfort Level
+• Space Saving Design
+• Uses Less Space Than a Traditional AC Unit
+• Low Sound Level
+• Goldfin Coil Coating for Extended Protection
+• Peace of Mind Warranty
+Technology Compressor 
+The Condensing Units and Heat Pumps are capable of regulating the compressor motor speed to quickly adjust and maintain a precise temperature at a lower compressor speed while making the unit more energy efficient.
+Has Efficiency Ratings up to 19 SEER2
+Seasonal Energy Efficiency Ratio (SEER) and the updated SEER2 are standards used to measure the energy efficiency of air conditioners and heat pumps—the higher the rating, the more efficient the system and the lower the energy costs. SEER2, introduced in 2023, uses stricter testing conditions to better reflect real-world performance. 
+Increased Comfort Level 
+With the Inverter Technology Compressor adjusting to maintain temperature at a lower operating speed there are no Spikes or dips in temperatures while also reducing humidity in the space. All resulting in an Increased Comfort level and efficiencies.
+We Know Your Space is Valuable 
+The space saving design is about half the size or less than a traditional style condensing and will occupy less space.
+Sound Level as Low as 60db
+System Includes:
+AC Pro A-Series Ultra Low NOx Gas Furnace 80% Single Stage 100,000 BTU 
+Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high/low voltage electrical with new pigtail and existing 24v wiring. Sediment trap w/gas flex included. reconnect vent pipe using new single/double wall when needed.
+AC Pro 5 Ton Evaporator Coil R454B
+Reconnect primary and secondary drains with Safe-T-Switch included. All seems Sealed with Rolled mastic tape and/or mastic if needed.
+AC Pro X-Series Condenser Air Conditioning 5 Ton 16.5 SEER2 10 EER2 R32
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+2 Year Labor Warranty
+",$12432.00,$42.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_de75de5aebba4cb1a1980ec84f7397ce,Gold 2 Ton Split System Dual Fuel R-454b,"This system is configured as a 2-stage heating and 2-stage cooling dual fuel system.
+
+The A Series A80US2V furnace is an 80% AFUE, two-stage gas furnace with a variable-speed ECM blower motor. It provides primary gas heat during colder outdoor conditions and delivers enhanced airflow control for improved comfort, humidity management, and energy efficiency.
+
+The Z Series SPHP-Z heat pump condenser provides two-stage cooling during summer operation and two-stage heat pump heating during mild to moderate outdoor temperatures.
+
+Dual Fuel Operation
+
+In this dual fuel configuration:
+
+The heat pump operates as the primary heat source during mild weather for maximum energy efficiency.
+
+When outdoor temperatures drop below the programmed balance point, the system automatically transitions to gas furnace heating for reliable, high-capacity warmth.
+
+The system uses staged operation to optimize comfort, reduce temperature swings, and improve overall efficiency.
+
+Key Benefits
+
+Two-stage heating and cooling for improved comfort
+
+Variable-speed airflow for better temperature consistency
+
+Automatic fuel switching for energy savings
+
+Reduced operating costs compared to straight gas systems
+
+Improved humidity control in cooling mode",$12022.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_940813fc7b7a4e58b2d1c22f6e849c97,Gold 3 Ton Split System Dual Fuel R-454b,"This system is configured as a 2-stage heating and 2-stage cooling dual fuel system.
+
+The A Series A80US2V furnace is an 80% AFUE, two-stage gas furnace with a variable-speed ECM blower motor. It provides primary gas heat during colder outdoor conditions and delivers enhanced airflow control for improved comfort, humidity management, and energy efficiency.
+
+The Z Series SPHP-Z heat pump condenser provides two-stage cooling during summer operation and two-stage heat pump heating during mild to moderate outdoor temperatures.
+
+Dual Fuel Operation
+
+In this dual fuel configuration:
+
+The heat pump operates as the primary heat source during mild weather for maximum energy efficiency.
+
+When outdoor temperatures drop below the programmed balance point, the system automatically transitions to gas furnace heating for reliable, high-capacity warmth.
+
+The system uses staged operation to optimize comfort, reduce temperature swings, and improve overall efficiency.
+
+Key Benefits
+
+Two-stage heating and cooling for improved comfort
+
+Variable-speed airflow for better temperature consistency
+
+Automatic fuel switching for energy savings
+
+Reduced operating costs compared to straight gas systems
+
+Improved humidity control in cooling mode",$12812.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_a3c31cac2ed246c3af4044f82211a5d1,Gold 4 Ton Split System Dual Fuel R-454b,"This system is configured as a 2-stage heating and 2-stage cooling dual fuel system.
+
+The A Series A80US2V furnace is an 80% AFUE, two-stage gas furnace with a variable-speed ECM blower motor. It provides primary gas heat during colder outdoor conditions and delivers enhanced airflow control for improved comfort, humidity management, and energy efficiency.
+
+The Z Series SPHP-Z heat pump condenser provides two-stage cooling during summer operation and two-stage heat pump heating during mild to moderate outdoor temperatures.
+
+Dual Fuel Operation
+
+In this dual fuel configuration:
+
+The heat pump operates as the primary heat source during mild weather for maximum energy efficiency.
+
+When outdoor temperatures drop below the programmed balance point, the system automatically transitions to gas furnace heating for reliable, high-capacity warmth.
+
+The system uses staged operation to optimize comfort, reduce temperature swings, and improve overall efficiency.
+
+Key Benefits
+
+Two-stage heating and cooling for improved comfort
+
+Variable-speed airflow for better temperature consistency
+
+Automatic fuel switching for energy savings
+
+Reduced operating costs compared to straight gas systems
+
+Improved humidity control in cooling mode",$13950.00,$42.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_5e111b30945a4c4faf42f78966a5598d,Gold 5 Ton Split System Dual Fuel R-454b,"This system is configured as a 2-stage heating and 2-stage cooling dual fuel system.
+
+The A Series A80US2V furnace is an 80% AFUE, two-stage gas furnace with a variable-speed ECM blower motor. It provides primary gas heat during colder outdoor conditions and delivers enhanced airflow control for improved comfort, humidity management, and energy efficiency.
+
+The Z Series SPHP-Z SEER2:17.5 EER2:12 heat pump condenser provides two-stage cooling during summer operation and two-stage heat pump heating during mild to moderate outdoor temperatures.
+
+Dual Fuel Operation
+
+In this dual fuel configuration:
+
+The heat pump operates as the primary heat source during mild weather for maximum energy efficiency.
+
+When outdoor temperatures drop below the programmed balance point, the system automatically transitions to gas furnace heating for reliable, high-capacity warmth.
+
+The system uses staged operation to optimize comfort, reduce temperature swings, and improve overall efficiency.
+
+Key Benefits
+
+Two-stage heating and cooling for improved comfort
+
+Variable-speed airflow for better temperature consistency
+
+Automatic fuel switching for energy savings
+
+Reduced operating costs compared to straight gas systems
+
+Improved humidity control in cooling mode",$14988.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_572bf35f1f0e45dfae6cd113e11af35b,Contactor Replacement 2 pole/1.5),"Removed and replaced the failed contactor in the outdoor unit. The contactor is the electrical switch that allows power to flow to the compressor and fan motor when the thermostat calls for heating or cooling. The original contactor showed signs of wear from normal operation (pitted/burned contacts), which can cause the system to not start, short cycle, or stay running.
+
+Installed a new properly rated contactor, secured all electrical connections, and tested system operation. Verified the unit starts and shuts down properly and is operating as designed.
+",$364.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_eac3429bd3f046a8a83e33c92dc3b2fa,Full HVAC Preventative Maintenance ,"Maintenance Service – Complete inspection and maintenance of heating and air conditioning systems, including filter check/replacement, thermostat calibration, electrical connection inspection, condenser and evaporator coil inspection, refrigerant level check (A/C), burner and heat exchanger inspection (heater), safety control testing, system performance testing, and operational verification.",$120.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_bf5aaecf8857432e8696897e008b038a,Schrader Replacement,Replacement of a leaky Schrader with a Schrader removal tool. ,$90.00,$0.00,false,Each,"",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_5da8ae72a2ab4e71a4265d8e5f201d45,Bronze 5 Ton Dual Fuel Split System,"This system is configured as a single stage heating and cooling dual fuel system.
+
+The A Series 80G1UH furnace is an 80% AFUE, single stage gas furnace with a constant torque ECM blower motor. It provides primary gas heat during colder outdoor conditions and delivers enhanced airflow control for improved comfort, humidity management, and energy efficiency.
+
+The M Series SPHP-M heat pump condenser provides cooling during summer operation and heat pump heating during mild to moderate outdoor temperatures.
+
+Dual Fuel Operation
+
+In this dual fuel configuration:
+
+The heat pump operates as the primary heat source during mild weather for maximum energy efficiency.
+
+When outdoor temperatures drop below the programmed balance point, the system automatically transitions to gas furnace heating for reliable, high-capacity warmth.
+
+1 Year labor warranty
+10 Year Manufacture Warranty",$11490.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_37dae4748c444841ac200e5587ab6df6,Silver 5 Ton Dual Fuel Split System,"The AC Pro system provides state of the art heating & air conditioning that won’t break the bank. With its ultra-efficient inverter technology, ultra-quiet sound levels and small size, it’s sure to be a fit for any home. 
+Benefits:
+• Inverter Technology
+• Highly Energy Efficient
+• Increased Comfort Level
+• Space Saving Design
+• Uses Less Space Than a Traditional AC Unit
+• Low Sound Level
+• Goldfin Coil Coating for Extended Protection
+• Peace of Mind Warranty
+Technology Compressor 
+The Condensing Units and Heat Pumps are capable of regulating the compressor motor speed to quickly adjust and maintain a precise temperature at a lower compressor speed while making the unit more energy efficient.
+Has Efficiency Ratings up to 19 SEER2
+Seasonal Energy Efficiency Ratio (SEER) and the updated SEER2 are standards used to measure the energy efficiency of air conditioners and heat pumps—the higher the rating, the more efficient the system and the lower the energy costs. SEER2, introduced in 2023, uses stricter testing conditions to better reflect real-world performance. 
+Increased Comfort Level 
+With the Inverter Technology Compressor adjusting to maintain temperature at a lower operating speed there are no Spikes or dips in temperatures while also reducing humidity in the space. All resulting in an Increased Comfort level and efficiencies.
+We Know Your Space is Valuable 
+The space saving design is about half the size or less than a traditional style condensing and will occupy less space.
+Sound Level as Low as 60db
+System Includes:
+AC Pro A-Series Ultra Low NOx Gas Furnace 80% Single Stage 100,000 BTU 
+Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high/low voltage electrical with new pigtail and existing 24v wiring. Sediment trap w/gas flex included. reconnect vent pipe using new single/double wall when needed.
+AC Pro 5 Ton Evaporator Coil R454B
+Reconnect primary and secondary drains with Safe-T-Switch included. All seems Sealed with Rolled mastic tape and/or mastic if needed.
+AC Pro XB-Series Heat Pump Condenser 5 Ton 16.5 SEER2 10 EER2 R32
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+2 Year Labor Warranty
+",$13493.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Condenser & Evaporator Coil,olit_238f48b463fc4a6c97b38dc44a07faa8,Bronze 4 Ton Condenser and Evaporator Coil,"ENJOY DEPENDABLE COMFORT AT A VALUE THAT MAKES SENSE
+When you need reliable cooling without delay, choosing an AC Pro M-Series unit is an easy and confident decision. Designed with durable materials and built for long lasting performance, these systems deliver the comfort your home needs—day after day, season after season.
+THE PRACTICAL, EVERYDAY COOLING SOLUTION
+The AC Pro M-Series offers efficient, dependable
+performance with SEER2 ratings from 13.8 to 16,
+making it a smart choice for homeowners looking for
+comfort at an affordable price.
+WHY CHOOSE THE M-SERIES?
+• 10-year limited warranty on compressor and parts provides long-term peace of mind.
+• 100% factory run-tested to ensure consistent performance and reliable operation.
+• Permanently lubricated condenser fan motor requires no annual maintenance.
+• Heavy-duty, single-stage scroll compressor delivers dependable cooling you can count on for years.
+EFFICIENCY THAT WORKS FOR YOUR HOME AND BUDGET
+While SEER2 ratings vary by model, every M-Series unit is
+engineered to deliver dependable cooling with less energy than
+outdated systems—helping lower utility bills and improve everyday
+comfort. Upgrading to an AC Pro M-Series system means
+investing in a cooling solution that works hard, lasts long, and
+keeps your home comfortable through the hottest days—without
+stretching your budget
+System Includes:
+AC Pro 4 Ton Evaporator Coil R454B
+Reconnect primary and secondary drains with Safe-T-Switch included. All seems Sealed with Rolled mastic tape and/or mastic if needed.
+AC Pro M-Series Condenser Air Conditioning 4 Ton 14.3 SEER2 11.7 EER2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+1 Year Labor Warranty",$7760.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Booking,olit_a309f3ad1d614f3881e7c51bdcdb0f3a,Free Estimate,"Receive a professional assessment of your project at no cost. Our free estimate provides detailed insights into the work needed, recommended solutions, and transparent pricing, helping you make informed decisions before any commitment.",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,IAQ,olit_e83104e8c3f7439d817dfbf9129ef442,iWave-R Residential Air Purifier,"Self-cleaning design.UL and cUL approved. For duct systems up to 6 tons (2400 CFM).
+Three year limited warranty.
+",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Other System Installations,olit_8b8b4ed327ff48d19733fad44d3bafee,York 3 Ton Dual Pack,"Removal of existing HVAC package unit (if applicable) and installation of new York 3-ton heat pump package unit. Scope of work includes setting the unit on existing or new pad/curb, reconnecting supply and return ductwork, and sealing all connections to ensure proper airflow and efficiency.
+
+Electrical connections will be completed, including disconnect, whip, and low-voltage thermostat wiring. Refrigerant circuit will be factory-sealed (package unit), with verification of proper charge and system operation. Condensate drain will be connected and tested for proper drainage.
+
+System startup includes full operational testing in heating and cooling modes, thermostat calibration, and verification of airflow, temperature split, and electrical performance. All work performed in accordance with local codes and manufacturer specifications.",$7600.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Other System Installations,olit_d0fcca5cbbd145d785988999f4351f91,Bill Lewis Special,"Installation of 3 & 4 ton Z-Series heat pump split systems. Upgraded thermostats include WiFi and 4” media filters. Both systems will be suspended with hungrite racking systems and reuse original ducting. Condensation lines and stat wires will be reconnected with a larger drain pan. Ducting will be reconnected and extended if needed. 
+System Includes:
+Z-Series Air Handler Multi Position 3 & 4 Ton 115/208/230V 17” & 21.5"" wide R454B
+System includes Upgraded touchscreen communicating 2H 2C thermostat reconnected with existing 24v wires. Reconnect primary and secondary drains with Safe-T-Switch included. Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage electrical with new pigtail and/or disconnect.
+Z-Series Condenser Heat Pump 3 & 4 Ton 17.5 SEER2 12 EER2 9.5 HSPF2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+Warranty
+10 years Compressor/Parts
+2 Year Labor Warranty
+",$16500.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Mini Split,olit_3202f5d75bbd42f5a298627209e309d1,"H Series 12,000 BTU Mini Split","Installation of a H-Series high wall Mini Split Cassette and Condenser. Includes running condensation drain lines, pulling power to the condenser, line set, communication wires and all other parts used for installation.
+1 year warranty
+10 year manufacture parts warranty
+ ",$4664.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Mini Split,olit_338595d780174ccc8890e3f27a89b915,"D-Series Mini-Split Condenser 18,000 BTU Single Zone","Enjoy energy efficient comfort year round with the single zone D-Series mini split. Ideal for precise temperature control in one area, this system offers quiet operation, reliable performance, and lower utility costs for your home. 
+Installation includes:
+D-Series Mini-Split Condenser 18,000 BTU Up to 20 SEER2 Up to 12.0 EER2 Up to 8.5 HSPF2 Single Zone R32
+D-Series Mini-Split Air Handler Wall Mounted 18,000 BTU 20 SEER2 12.0 EER2 Single Zone 230V WiFi Ready R32
+
+1 Year Labor Warranty
+10 Year Parts Warranty",$3600.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Mini Split,olit_0325264a22e4461aac7c665ed2abc628,"AC Pro J Series 12,000 BTU 21.3 SEER2 10.8 EER","Installation of a J-Series Wall Mount Mini Split Cassette and Condenser. Includes running condensation drain lines, pulling power to the condenser, line set, communication wires and all other parts used for installation.
+1 year warranty
+10 year manufacture parts warranty",$4153.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heat Pump Package Units,olit_ead086d9e746414e95c124bdc25ac1ee,Gold 3 Ton Heat Pump Package Unit,"The AC Pro system provides state of the art heating & air conditioning that won’t break the bank. With its ultra-efficient inverter technology, ultra-quiet sound levels and small size, it’s sure to be a fit for any home. Talk to your contractor about what options are available to best suit your needs.
+Benefits:
+• Inverter Technology
+• Highly Energy Efficient
+• Increased Comfort Level
+• Low Sound Level
+• Goldfin Coil Coating for Extended Protection Technology Compressor The Condensing Units and Heat Pumps are capable of regulating the compressor motor speed to quickly adjust and maintain a precise temperature at a lower compressor speed while making the unit more
+energy efficient. Has Efficiency Ratings up to 19 SEER2 Seasonal Energy Efficiency Ratio (SEER) and the updated SEER2. Increased Comfort Level With the Inverter Technology Compressor adjusting to maintain temperature at a lower operating speed there are no Spikes or dips in temperatures while also reducing humidity in the space. All resulting in an Increased Comfort level and efficiencies.
+Sound Level as Low as 60db
+Includes:
+X-Series Inverter Driven Packaged Heat Pump 3 Ton 18 SEER2 11.2 EER2 8.5 HSPF2 installed with new Curb, whip, disconnect and crane included.
+
+Warranty : 10 years Compressor/Parts
+                    3 Year Labor Warranty",$14460.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heat Pump Package Units,olit_8d94c36e13884d1fa1bd7898d01fa8fa,Silver 3 Ton Heat Pump Package Unit,"Our Silver 3 Ton Package Unit offers reliable, energy-efficient heating and cooling in one convenient system. Ideal for medium-sized homes, it provides year-round comfort, improved indoor air quality, and dependable performance you can trust.
+System Includes:
+A-Series Packaged Heat Pump 3 Ton 13.4 SEER2 10.6 EER2 6.7 HSPF2 installed with a new curb, whip, disconnect, and all other related materials.
+ Warranty:
+10 Year Manufacture Warranty
+2 Year labor warranty",$13240.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heat Pump Package Units,olit_0b3f3eaa8ec74e58a0d5508661e738ed,Bronze 3 Ton Heat Pump Package Unit,"ENJOY DEPENDABLE COMFORT AT A VALUE THAT MAKES SENSE
+When you need reliable cooling without delay, choosing an AC Pro M-Series unit is an easy and confident decision. Designed with durable materials and built for long-lasting performance, these systems deliver the
+comfort your home needs—day after day, season after
+season.
+THE PRACTICAL, EVERYDAY COOLING SOLUTION
+The AC Pro M-Series offers efficient, dependable performance with SEER2 ratings from 13.8 to 16, making it a smart choice for homeowners looking for comfort at an affordable price.
+WHY CHOOSE THE M-SERIES?
+• Entry-level efficiency with SEER2 ratings from 13.8–16 helps reduce energy use compared to older systems.
+• 10-year limited warranty on compressor and parts provides long-term peace of mind.
+• 100% factory run-tested to ensure consistent performance and reliable operation.
+• Permanently lubricated condenser fan motor requires no annual maintenance.
+• Heavy-duty, single-stage scroll compressor delivers dependable cooling you can count on for years.
+EFFICIENCY THAT WORKS FOR YOUR HOME AND BUDGET
+While SEER2 ratings vary by model, every M-Series unit is
+engineered to deliver dependable cooling with less energy than
+outdated systems—helping lower utility bills and improve everyday
+comfort. Upgrading to an AC Pro M-Series system means
+investing in a cooling solution that works hard, lasts long, and
+keeps your home comfortable through the hottest days—without
+stretching your budget.
+System Includes:
+M-Series Packaged Heat Pump 3 Ton 13.4 SEER2 11 EER2 6.7 HSPF2 fully installed with curb, whip, disconnect, and any other materials needed to complete the job.
+
+10 Year Manufacture warranty
+1 Year Labor Warranty  ",$11780.00,$42.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Ducting,olit_a384b20239e54779a448f984a85d0c6d,3 Ton Ducting System,"Upgrade your home's comfort with a 3 Ton Ducting System. Designed for efficient airflow and even temperature throughout your space, this system supports reliable heating and cooling, improves air quality, and maximizes your HVAC system’s performance and energy savings.",$3500.00,$42.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,HCPA,olit_4942ebf3f6d54790a67e4fc88eb26488,Service Fee,"",$0.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,HCPA,olit_cfef4be30faf418c84d626fd7be9a2e4,Service Call Fee,"",$79.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,HCPA,olit_815146208cc84becae176e6b6a9241e3,Free Estimate,"",$0.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_93bf0136f492435ba0f37d67116ab6ff,Silver X-Series Condenser,"Complete installation of an X-Series Condenser Air Conditioning 2-3 Ton 16 SEER2 11.7 EER2 Inverter R32
+The Condensing Units are capable of regulating the compressor motor speed to quickly adjust and maintain a precise temperature at a lower compressor speed while making the unit more energy efficient. With the Inverter Technology Compressor adjusting to maintain temperature at a lower operating speed there are no Spikes or dips in temperatures while also reducing humidity in the space. All resulting in an Increased
+Comfort level and efficiencies.
+
+10 Year Parts & Compressor Warranty
+2 Year Labor Warranty
+
+",$4710.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Other System Installations,olit_716d7c8769ad43a78db8add940d0114c, York 6.5 Ton 460V Heat Pump Package Unit,"York WP078C00R4AABAA1A1 6.5 Ton, Single Packaged R-454B Heat Pump, Standard Efficiency, Two Stage Cooling, Refrigerant Detection System, 12.2 EER, 460-3-60, 2 HP High Static Belt Drive Blower, Standard 2"" Throwaway Filters, IntelliSpeed control of the VFD based on stages of cooling (Provides Single Zone VAV Fan Operation as defined by ASHRAE 90.1 section 6.4.3.10), Smart Equipment Controller including Discharge Air, Return Air, and Outdoor Air Temperature Sensors., Phase Monitor, Copper tube/aluminum fin condenser coil, Copper tube/aluminum fin evaporator coil, Tool-free maintenance with features like hinged doors for all-access panels, slide-out blower and blower motor tray, Standard Composite, Front Connection Drain Pan",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Other System Installations,olit_1746f2b709fd4d169625040f55b1a33e,York 5 Ton 460V Package Unit," York WN060C00B4AAAAA1A1 5 Ton, Single Packaged R-454B Heat Pump, Single Stage Cooling, Refrigerant Detection System, 10.2 EER2 / 13.4 SEER2, 460-3-60, 1.5 HP Standard Static Belt Drive Blower, Indoor Fan Motor w/VFD, 1"" Throwaway Filters, Smart Equipment Controller including Discharge Air, Return Air, and Outdoor Air Temperature Sensors., Copper Tube/Aluminum Fin Condenser Coil, Copper Tube/Aluminum Fin Evaporator Coil, Galvanized Steel Drain Pan, Standard Access Doors",$11000.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_60d3c8044d6d4dd29966674fd54c937f,Dual System Preventative Maintenance ,Run diagnostics on 2 HVAC systems. Wash systems and check electrical components to ensure systems are running per manufacturer specifications.,$120.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Ducting,olit_192e9cd118674adb9f6127ce85cc7e9e,Return Air Add-On,"Add return for an HVAC system. Includes return box, fixed return register, and ducting.",$400.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,IAQ,olit_d2cce72f616d469e961c0f11ad035139,AprilAire Filter Box,"",$260.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_5ce54d85bb714714b6e8a9afa47ea1b8,AC Pro B Series 2 Ton Heat Pump Split System w/ Core FAU R-454b,"The B-Series Inverter Condensers deliver a perfect balance of affordability, efficiency, and durability. Designed with energy savings in mind, these units provide improved efficiency compared to older equipment, helping you reduce energy costs. Built with corrosion resistant materials, they ensure longlasting performance and reliability. Plus, with sound levels as low as 61-65dB—comparable to a normal conversation—you can enjoy a quieter, more comfortable home. The B-Series is an excellent choice for those seeking dependable cooling without compromising on performance. ENERGY SAVINGS: Offers efficiency that can save money compared to older equipment. Inverter driven condensers adjust their speed based on demand, using only the necessary energy to maintain a stable temperature versus Traditional systems operate in an on/off manner, meaning they run at full power until the set temperature is reached, then turn off, cycling repeatedly. DURABLE CONSTRUCTION: Designed with corrosion-resistant materials for long lasting use. 
+",$8600.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_354031b18f824963881a05140799fc03,AC Pro B-Series 2 Ton Gas Split System R-454b,"
+
+
+
+A-Series Ultra Low NOx Gas Furnace 80% Single Stage 40,000 BTU Non-Variable Upflow/Horizontal 14.5"" wide",$9984.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Ducting,olit_6b38015bc940427797b499305a45d17f,2 Ton Ducting System,2 ton ducting system consisting of 7 supply runs and 1 return. High flow bar type grills included,$3600.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,IAQ,olit_4316891c6fd6473b972cd7f424d22618,Honeywell 4” Media,Honeywell 4” media cabinet with filter. Includes attaching to plenum and to furnace. All joints will have airtight seal. ,$325.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Mini Split,olit_5cf5568819004b0394c444177db8053b,"AC Pro J Series Mini Split 24,000 BTU","Experience efficient, quiet cooling and heating with the AC Pro J Series Mini Split 24,000 BTU. Perfect for large rooms or additions, this system provides reliable comfort, energy savings, and precise temperature control year-round for your home.
+Installation includes running condensation drain lines, pulling power to the condenser, line set, communication wires and all other parts used for installation. 
+SEER2:18.7 
+HSPF2:9.3 
+EER2:10
+AHRI:216497912
+1 year warranty 
+10 year manufacture parts warranty",$4533.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Thermostats and Controls,olit_203b23d0d81b462e967829d24099cd86,Honeywell Dehumidifier Paired with S1200 Thermostat and EIM Board,"DHM065R4000 model rated for up to 1800 sq ft. paired with the S1200 thermostat and EIM board. Includes return and supply sensors, room sensors plugged into the EIM board for advanced system and humidity control. The Honeywell Home ElitePRO S1200 is a premium smart thermostat featuring a 5-inch customizable color touchscreen, smart radar occupancy detection, and video streaming capabilities. It allows users to see and speak to visitors directly from the device by connecting to Wi-Fi video doorbells (like Ring or First Alert).Key Features HVAC Compatibility: Supports up to 4H/2C (Heat Pump) or 3H/3C (Conventional) systems. Video Intercom: Compatible with Ring and First Alert video doorbells to display camera feeds and enable two-way talk at the wall. Indoor Air Quality (IAQ): Monitors indoor humidity, VOCs, and estimated \(CO_{2}\).Smart Away: Uses a built-in radar sensor for occupancy tracking to save energy when no one is home.
+",$6000.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Custom Services,olit_5eb52cdc157e493386ec284cd17988e7,Protective Extreme Coating Side Discharge Condenser Complete Coil and Cabinet Coating Single Fan,"EXTREME Coat - Includes all coils, condenser internals, complete interior of all airstream sections (clear only). Exterior cabinet including a primer.",$1000.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Thermostats and Controls,olit_3a534fdac4ed45058cfa0c10084fc3a3,Honeywell ElitePRO S1200 Smart Thermostat,"The Honeywell Home ElitePRO S1200 is a premium smart thermostat featuring a 5-inch customizable color touchscreen, smart radar occupancy detection, and video streaming capabilities. It allows users to see and speak to visitors directly from the device by connecting to Wi-Fi video doorbells (like Ring or First Alert).Key Features HVAC Compatibility: Supports up to 4H/2C (Heat Pump) or 3H/3C (Conventional) systems. Video Intercom: Compatible with Ring and First Alert video doorbells to display camera feeds and enable two-way talk at the wall. Indoor Air Quality (IAQ): Monitors indoor humidity, VOCs, and estimated \(CO_{2}\).Smart Away: Uses a built-in radar sensor for occupancy tracking to save energy when no one is home.",$480.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heat Pump Package Units,olit_6645105c163943fd921fc402cd0e33f3,Gold 4 Ton Heat Pump Package Unit,"The AC Pro system provides state of the art heating & air conditioning that won’t break the bank. With its ultra-efficient inverter technology, ultra-quiet sound levels and small size, it’s sure to be a fit for any home. Talk to your contractor about what options are available to best suit your needs.
+Benefits:
+• Inverter Technology
+• Highly Energy Efficient
+• Increased Comfort Level
+• Low Sound Level
+• Goldfin Coil Coating for Extended Protection Technology Compressor The Condensing Units and Heat Pumps are capable of regulating the compressor motor speed to quickly adjust and maintain a precise temperature at a lower compressor speed while making the unit more
+energy efficient. Has Efficiency Ratings up to 19 SEER2 Seasonal Energy Efficiency Ratio (SEER) and the updated SEER2. Increased Comfort Level With the Inverter Technology Compressor adjusting to maintain temperature at a lower operating speed there are no Spikes or dips in temperatures while also reducing humidity in the space. All resulting in an Increased Comfort level and efficiencies.
+Sound Level as Low as 60db
+Includes:
+X-Series Inverter Driven Packaged Heat Pump 4 Ton 18 SEER2 11.2 EER2 8.5 HSPF2 installed with new Curb, whip, disconnect and crane included.
+
+Warranty : 10 years Compressor/Parts
+                    3 Year Labor Warranty",$15310.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Exhaust Ventilation ,olit_cc4e677ebb434c118f72188b454b80ec,Centrifugal Direct Drive Downblast Exhaust Ventilators,Centrifugal Direct Drive Downblast Exhaust Ventilators with new flashing and CFM knob to adjust airflow.,$5500.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Mini Split,olit_29fd4453930449b482e63813f3c2bc8d,AC Pro D-Series Multi-Zone System,"Complete installation of an AC Pro D-Series Multi-Zone System with combination 12k+9k+9k wall mounted air handlers with a 24,000 BTU condenser. All air handlers include remote control and condensation lines. Condenser includes disconnect, whip, fuses and composite pad.
+1 year labor warranty
+10 year manufacture parts warranty",$9100.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Commercial Heat Pump Package units,olit_0ddbc6b0f0a340e692a7832baf17e54d,Allied Commercial Packaged Heat Pump 7.5 Ton ,"High-efficiency Allied Commercial 7.5-ton packaged heat pump provides reliable heating and cooling for large homes or buildings. Features advanced two-stage operation and eco-friendly refrigerant to ensure comfort, energy savings, and consistent indoor climate year-round.
+Consists of one two-stage scroll compressor and one single-stage scroll compressor.
+System Installation Includes:
+Allied Commercial Packaged Unit14.1 IEER 11 EER 460V Three Phase Two Stage R454B MFG #: ZHD092S5TNG
+Flat Roof Curb with 8"" knockouts, and lined plenums",$19570.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Commercial Heat Pump Package units,olit_ae81b3e29e0b4c0799cc302190e9a33b,Allied Commercial Package Unit High Performance Economizer Multi Position,"The Allied Commercial High Performance Economizer is an advanced ventilation and energy-saving accessory designed for compatible commercial package units. This multi-position economizer automatically introduces filtered outside air when outdoor conditions are favorable, reducing mechanical cooling demand and lowering energy costs. Engineered for flexible installation, it supports multiple mounting positions to accommodate various rooftop package unit configurations. Features include modulating dampers, integrated fresh air control, and improved indoor air quality through enhanced ventilation management. Ideal for commercial applications requiring efficient temperature control, energy savings, and code-compliant outside air ventilation.",$3600.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Mini Split,olit_613252302d024d2ab881910ae820aa5d,"J-Series Mini Split 18,000 BTU","AC Pro mini-split systems deliver flexible comfort without bulky ductwork. Compact indoor units in each room provide precise, customizable temperature control—perfect for garages, home gyms, or spaces where central systems aren’t practical. Some models can also connect to short duct runs for added versatility.
+System Includes:
+J-Series Mini Split Condenser 18,000 BTU 19.2 SEER2 10.8 EER2 9.6 HSPF2 Single Zone R454B
+J-Series Mini-Split Air Handler Wall Mounted 18,000 BTU
+All power will be pulled to a fusible disconnect, set on a composite pad and furnished with a line set cover.",$3900.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_69300ffed66c44d88eb2cfc9d23789fd,Compressor Swap-out (Warranty),"Removed and replaced failed compressor under manufacturer warranty. Recovered refrigerant in accordance with EPA guidelines, removed defective compressor, installed new manufacturer-approved warranty compressor, replaced filter drier, pressure tested refrigeration circuit, pulled system into deep vacuum, and recharged system to manufacturer specifications. Performed electrical and operational testing to verify proper system performance, refrigerant pressures, temperature split, and overall operation. Warranty covers compressor part only; labor, refrigerant, materials, and additional repairs may not be included unless otherwise specified.",$1200.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_05e9dfc45be7483993f55db9df66bee4,Compressor Change Out (Warranty),"Removed and replaced failed compressor under manufacturer warranty. Recovered refrigerant in accordance with EPA guidelines, removed defective compressor, installed new manufacturer-approved warranty compressor, replaced filter drier, pressure tested refrigeration circuit, pulled system into deep vacuum, and recharged system to manufacturer specifications. Performed electrical and operational testing to verify proper system performance, refrigerant pressures, temperature split, and overall operation. Warranty covers compressor part only; labor, refrigerant, materials, and additional repairs may not be included unless otherwise specified.",$1200.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_16a4282b40004d87b0e3d8e3b22e2a20,Evaporator Coil Replacement 4Ton,"Replacement of a 4 ton evaporator coil. Includes reconnection of primary drain plus secondary safe-t-switch, vacuum the line set below 500 microns and pressure test with nitrogen. 
+10 year manufacture warranty
+1 year labor warranty",$3600.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Commercial Heat Pump Package units,olit_7f82fd485c874c2faf73fb305cdcb58d,Daikin SmartSource Heat Pump Compact ,"The Daikin SmartSource Heat Pump Compact is a high-efficiency unit installed to provide reliable heating and cooling for your office. Its compact design saves space while delivering energy savings, consistent comfort, and quiet operation throughout the year.
+Installation includes:
+Daikin SmartSource model# WSCH024 suspended with Unistrut and all-thread. New water lines specific with 6 gpm flow rate. Power will be re-run to the appropriate location. New plenum with reattachment of ducting.
+1 Year Manufacture Warranty
+1 Year Labor Warranty",$12230.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heat Pump Package Units,olit_c02a36c734914ff2bc6f4a5cb19e8ca1,New Curb/Roof-In,"Installation of a new roof curb to support and properly seal rooftop equipment, ensuring a secure fit and preventing leaks. This service enhances weather protection and extends the lifespan of your roof by maintaining its structural integrity. New roofing with paper to be installed around package unit to ensure no leaks will occur",$1360.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Heat Pump Split Systems,olit_2a41b45581774535927c6027b982e57d,AC Pro 5 Ton B-Series Heat Pump Split System R-454b,"The B-Series Inverter Condensers deliver a perfect balance of affordability, efficiency, and durability. Designed with energy savings in mind, these units provide improved efficiency compared to older equipment, helping you reduce energy costs. Built with corrosion resistant materials, they ensure longlasting performance and reliability. Plus, with sound levels as low as 61-65dB—comparable to a normal conversation—you can enjoy a quieter, more comfortable home. The B-Series is an excellent choice for those seeking dependable cooling without compromising on performance. ENERGY SAVINGS: Offers efficiency that can save money compared to older equipment. Inverter driven condensers adjust their speed based on demand, using only the necessary energy to maintain a stable temperature versus Traditional systems operate in an on/off manner, meaning they run at full power until the set temperature is reached, then turn off, cycling repeatedly. DURABLE CONSTRUCTION: Designed with corrosion-resistant materials for long lasting use.
+System Includes:
+B-Series Heat Pump Condenser 5 Ton 17.5 SEER2 11.3 EER2 9 HSPF2 208/230V Single Phase Variable R454B
+AC Pro #: 85978    MFG #: SPHP-B-60VBB
+B-Series Air Handler Multi Position 5 Ton 208/230V 22"" wide ECM Motor R454B
+AC Pro #: 85982    MFG #: AIRH-B-60ME2BB
+",$9000.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,olit_54b53cd2063841c3bcaf3f07a8b7ee08,Commercial Preventative Maintenance,"Keep your business comfortable and efficient with Commercial Preventative Maintenance. Regular service extends equipment life, reduces breakdowns, improves air quality, and ensures reliable heating and cooling for your employees and customers year-round.",$120.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Other System Installations,olit_7e084423eb514ae6b7b3d195003e0f90,Bard 3 Ton Heat Pump System,"Installed a Bard W36HFA05MP4 3.0-ton wall-mount heat pump system utilizing environmentally friendly R-454B refrigerant. This commercial-grade HVAC system provides reliable heating and cooling performance while meeting current low-GWP refrigerant standards. Installation includes proper mounting, electrical connections, refrigerant circuit verification, condensate management, airflow adjustment, thermostat integration, and system commissioning. All refrigerant, and operational components are tested to verify safe operation, correct refrigerant charge, proper airflow, and manufacturer performance specifications. The system is designed to deliver dependable year-round comfort, energy-efficient operation, and long-term reliability for commercial and light commercial applications.",$15544.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Commercial Gas Package Unit,olit_d44d84b818c149bf8ef00932c59ddf5c,Carrier 6 Ton RTU R454b,"Full installation of a Carrier 6-ton packaged gas/electric rooftop unit (Model 48FEDM07A2A5-0A0A0) designed for dependable commercial heating and cooling performance. This self-contained rooftop HVAC system combines high-efficiency air conditioning with gas heating to provide year-round climate control for commercial buildings. Installation includes rooftop placement, curb attachment, electrical connections, gas piping, condensate drainage, ductwork connections, thermostat integration, refrigerant circuit verification, and complete system commissioning.
+
+All electrical, gas, and refrigeration components are inspected and tested to verify safe operation, proper airflow, correct refrigerant charge, heating performance, and cooling capacity in accordance with manufacturer specifications. The system is engineered to deliver reliable comfort, energy-efficient operation, and long-term durability for retail, office, warehouse, and other light commercial applications.",$13860.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_8276b6c60ec3464081def71b2de0daa7,Carrier Commercial Blower Assembly,"Replace the commercial indoor blower assembly on a Carrier 48TMD007---501-- rooftop unit. Service included removal of the existing blower assembly, inspection of the blower housing, wheel, shaft, bearings, pulleys, and drive components, and installation of a new OEM-compatible blower assembly. The blower motor was transferred or replaced as required, belt alignment and tension were adjusted, and all mounting hardware was secured.
+
+Following installation, the blower rotation, motor amperage, airflow, belt tracking, vibration, and overall system operation were tested to verify proper performance. The unit was returned to normal operation, providing reliable airflow, improved system efficiency, and dependable heating and cooling performance for the commercial HVAC system.",$3632.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Commercial Heat Pump Package units,olit_6c4e450b04ed44419e439f2bf3f15493,Carrier 4 Ton Heat Pump RTU,"Installation of a Carrier 4-ton packaged heat pump rooftop unit (Model 50FEQA05A2A5-0A0A0) designed to provide energy-efficient commercial heating and cooling in a single self-contained rooftop package. Operating on 208/230V, 3-phase, 60 Hz power, this commercial HVAC system delivers reliable year-round comfort for retail, office, industrial, educational, and other light commercial facilities.
+
+Installation includes rooftop placement and securement, curb connection, supply and return duct connections, electrical wiring, thermostat and control integration, condensate drainage, refrigerant circuit verification, airflow adjustment, and complete system startup and commissioning. All electrical, refrigeration, and control components are inspected and tested to verify proper airflow, correct refrigerant charge, heating and cooling performance, and safe operation in accordance with Carrier's installation specifications.
+
+The completed installation provides dependable climate control, improved indoor comfort, energy-efficient operation, and long-term reliability while meeting current commercial HVAC performance standards.
+",$12044.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Ducting,olit_02c58512bac6431db446923499bc8ba9,4 Ton Ducting System,"Installation of a 4 Ton ducting system to efficiently distribute heated or cooled air throughout your home, ensuring optimal comfort, improved air flow, and consistent temperature control for spaces served by your HVAC system.
+System includes 12 supply Duct runs and 2 returns.",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_23ecc27422d4454786cf4d59f71d4e53,R-410a per Lb,System recharge per manufacturer spec,$90.00,$0.00,false,,"",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Booking,olit_ec878319fab94852862cb51472c5139a,HVAC System Inspection,"Comprehensive inspection of your heating and cooling system to ensure safe, efficient operation. Identifies potential issues early, helps prevent costly breakdowns, and maintains optimal indoor comfort and air quality throughout the year.",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Ducting,olit_b4c1a2e937f649b7b5b0e4e6d2074c60,ZoneFirst 2Heat/2 Cool Zone Control w? Bypass Eliminator and Plenum Sensor,Universal Zone Control Kit 2-3 Zone 2 Heat/2 Cool 24V with Bypass Eliminator & Zone Plenum Sensor Plug-in-Play,$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Ducting,olit_1a759a62e3ff4c7e9032a6320b176ebf,"ZoneFirst 8"" Zone Damper Automatic Power Close/Spring Return ","Spiral formed duct and round single blade damper Gasket seal for low leakage. 24V AC Motor, 8W Power Closed (30 Sec.) Spring Return Open (5 Sec). ",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_5a3c166880624d79bb312f7e921f754c,Condensation Drain Cleared,Cleared blockage from the HVAC condensate drain line to restore proper drainage and prevent water backup. Flushed and verified the drain line was flowing properly upon completion.,$220.00,$0.00,false,,"",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_f29ef7af232047328f1c0bd32c6d29ec,Warranty Blower Motor,Includes installation and paperwork for warranty ,$300.00,$0.00,false,,"",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_d21475fa3ce646bba4a183c7bfb69804,220V HVAC Fuse Replacement ,"Diagnosed HVAC system for electrical fault and identified a failed 220V system fuse. Removed and replaced the defective fuse with a properly rated replacement. Inspected fuse holder, wiring, and electrical connections for visible signs of damage or overheating. Restored power to the HVAC system and tested system operation to verify proper electrical function and reliable equipment operation.",$50.00,$0.00,false,,"",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_8dc5c125dd48498d9eaed94c744d6fb2,Silver 5 Ton Condenser and Evaporator Coil,"The AC Pro system provides state of the art heating & air conditioning that won’t break the bank. With its ultra-efficient inverter technology, ultra-quiet sound levels and small size, it’s sure to be a fit for any home. 
+Benefits:
+• Inverter Technology
+• Highly Energy Efficient
+• Increased Comfort Level
+• Space Saving Design
+• Uses Less Space Than a Traditional AC Unit
+• Low Sound Level
+• Goldfin Coil Coating for Extended Protection
+• Peace of Mind Warranty
+Technology Compressor 
+The Condensing Units and Heat Pumps are capable of regulating the compressor motor speed to quickly adjust and maintain a precise temperature at a lower compressor speed while making the unit more energy efficient.
+Has Efficiency Ratings up to 19 SEER2
+Seasonal Energy Efficiency Ratio (SEER) and the updated SEER2 are standards used to measure the energy efficiency of air conditioners and heat pumps—the higher the rating, the more efficient the system and the lower the energy costs. SEER2, introduced in 2023, uses stricter testing conditions to better reflect real-world performance. 
+Increased Comfort Level 
+With the Inverter Technology Compressor adjusting to maintain temperature at a lower operating speed there are no Spikes or dips in temperatures while also reducing humidity in the space. All resulting in an Increased Comfort level and efficiencies.
+We Know Your Space is Valuable 
+The space saving design is about half the size or less than a traditional style condensing and will occupy less space.
+Sound Level as Low as 60db
+System Includes:
+AC Pro 5 Ton Evaporator Coil R454B
+Reconnect primary and secondary drains with Safe-T-Switch included. All seems Sealed with Rolled mastic tape and/or mastic if needed.
+AC Pro X-Series Condenser Air Conditioning 5 Ton 16.5 SEER2 10 EER2 R32
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+3 Year Labor Warranty
+",$9546.00,$0.00,false,,"",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,AC Pro Gas Split Systems ,olit_734345581b0f4657b33d477f08351cf1,Bronze 5 Ton Condenser and Evaporator Coil,"ENJOY DEPENDABLE COMFORT AT A VALUE THAT MAKES SENSE
+When you need reliable cooling without delay, choosing an AC Pro M-Series unit is an easy and confident decision. Designed with durable materials and built for long lasting performance, these systems deliver the comfort your home needs—day after day, season after season.
+THE PRACTICAL, EVERYDAY COOLING SOLUTION
+The AC Pro M-Series offers efficient, dependable
+performance with SEER2 ratings from 13.8 to 16,
+making it a smart choice for homeowners looking for
+comfort at an affordable price.
+WHY CHOOSE THE M-SERIES?
+• 10-year limited warranty on compressor and parts provides long-term peace of mind.
+• 100% factory run-tested to ensure consistent performance and reliable operation.
+• Permanently lubricated condenser fan motor requires no annual maintenance.
+• Heavy-duty, single-stage scroll compressor delivers dependable cooling you can count on for years.
+EFFICIENCY THAT WORKS FOR YOUR HOME AND BUDGET
+While SEER2 ratings vary by model, every M-Series unit is
+engineered to deliver dependable cooling with less energy than
+outdated systems—helping lower utility bills and improve everyday
+comfort. Upgrading to an AC Pro M-Series system means
+investing in a cooling solution that works hard, lasts long, and
+keeps your home comfortable through the hottest days—without
+stretching your budget
+System Includes:
+AC Pro 5 Ton Evaporator Coil R454B
+Reconnect primary and secondary drains with Safe-T-Switch included. All seems Sealed with Rolled mastic tape and/or mastic if needed.
+AC Pro M-Series Condenser Air Conditioning 5 Ton 13.8 SEER2 11.2 EER2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+1 Year Labor Warranty",$8694.00,$0.00,false,,"",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heat Pump Package Units,olit_ddfdd5ad52dd4a3abc9fec61a720b682,Silver Package Unit,"Our Silver 5 Ton Package Unit offers reliable, energy-efficient heating and cooling in one convenient system. Ideal for medium-sized homes, it provides year-round comfort, improved indoor air quality, and dependable performance you can trust.
+System Includes:
+A-Series Packaged Heat Pump 5 Ton 13.4 SEER2 10.6 EER2 6.7 HSPF2 208/230V Single Phase Single Stage R454B 
+installed with a new curb, whip, disconnect, and all other related materials.
+Warranty:
+10 Year Manufacture Warranty
+1 Year labor warranty",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heat Pump Package Units,olit_67c5cca1c7d241d18e2e54e482c642ab,Silver 4 Ton,"Our Silver 4 Ton Package Unit offers reliable, energy-efficient heating and cooling in one convenient system. Ideal for medium-sized homes, it provides year-round comfort, improved indoor air quality, and dependable performance you can trust.
+System Includes:
+A-Series Packaged Heat Pump 4 Ton 13.4 SEER2 10.6 EER2 6.7 HSPF2 208/230V Single Phase Single Stage R454B
+installed with a new curb, whip, disconnect, and all other related materials.
+Warranty:
+10 Year Manufacture Warranty
+1 Year labor warranty",$0.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,olit_fc2ff6a6a7744408aa6d6b60251c4e03,Akita Prevanative Maintenance,"Scheduled preventive maintenance for your Akita system to ensure optimal performance, extend equipment lifespan, and reduce the risk of unexpected breakdowns. Regular service helps maintain efficiency and provides peace of mind for your home.",$59.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Custom Services,olit_8802b033b752436c8515ee7c74c1f8f7,HERS/Permits,"Includes required HERS (Home Energy Rating System) testing and obtaining necessary permits to ensure your project meets energy efficiency standards and complies with local building codes, providing peace of mind and smooth project approval.",$600.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,olit_1d17324c298245d5b4e931c6ba1b3e53,Multi-System Maintenance SPG,"Comprehensive inspection of your heating and cooling system to ensure safe, efficient operation. Identifies potential issues early, helps prevent costly breakdowns, and maintains optimal indoor comfort and air quality throughout the year.
+Includes:
+- Checking all belts and lubricants 
+- Testing all electrical components
+- Inspecting for any loose connections
+- Testing all capacitors live and shut off
+- Washing all condensers  inside and out
+- Checking all amp drawls to prevent future down time
+- Inspecting filters to ensure proper airflow
+- Checking refrigerant charges to maximize output
+- Delta-T- return and supply air differential.
+
+Condensers-18
+
+Air handlers-21
+
+Mini splits-12",$1800.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Maintenance,olit_f8a551485d0f4558a693bed8e034f311,Multi System Maintenance YAAM,"Comprehensive inspection of your heating and cooling system to ensure safe, efficient operation. Identifies potential issues early, helps prevent costly breakdowns, and maintains optimal indoor comfort and air quality throughout the year.
+Includes:
+- Checking all belts and lubricants 
+- Testing all electrical components
+- Inspecting for any loose connections
+- Testing all capacitors live and shut off
+- Washing all condensers  inside and out
+- Checking all amp drawls to prevent future down time
+- Inspecting filters to ensure proper airflow
+- Checking refrigerant charges to maximize output
+- Delta-T- return and supply air differential.
+
+Condensers-21
+
+Air handlers-21
+
+Mini splits-4",$1800.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Exhaust,olit_3897efe0bd174627ad416f22464e38bc,IF36 Heavy Duty Exhaust Fan,"The IF36 Heavy Duty Exhaust Fan is a powerful ventilation unit installed to efficiently remove heat and odors from your space. It helps maintain healthy air quality, prevent mold, and protect building components by promoting proper airflow.
+Installation Includes:
+- Reframing of wall for fitment of fan. 
+- Cutout stucco to match frame.
+- Install new fan per manufacture specifications.
+- Seal around exhaust fan frame to keep water seal.
+- Foam seal interior frame to maintain seal.",$2800.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Heat Pump Package Units,olit_6980864a23f844b6bbfff1ed8a7de834,Bronze 4 Ton Heat Pump Package Unit,"System Includes: M-Series Packaged Heat Pump 4 Ton 13.4 SEER2 11 EER2 6.7 HSPF2 208/230V Single Phase Single Stage R454B fully installed with curb, whip, disconnect, and any other materials needed to complete the job. Includes crane services and removal of the old unit.
+5 Year Manufacture warranty 
+1 Year Labor Warranty
+
+System does not include an economizer and uses standard fused disconnect without lever.to add these items would be subject to change order.",$9360.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Ducting,olit_11dc6d19115945429ee001d405de0e9e,5 Ton Ducting System,"Installation of a 5 Ton Ducting System ensures efficient airflow throughout your home, supporting your HVAC system’s capacity for optimal heating and cooling. Proper ductwork helps maintain consistent comfort and improves overall energy efficiency.
+Includes new return and supply plenums, 13 runs of supply ducting, and new high flow bar type grills",$5200.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_fca151925f7d454c9149767919f0c6b4,Evaporator Coil Replacement 3 Ton,"Replacement of a 3 ton evaporator coil. Includes reconnection of primary drain plus secondary safe-t-switch, vacuum the line set below 500 microns and pressure test with nitrogen. 10 year manufacture warranty 1 year labor warranty",$3600.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_f5ce86aab2694cbea0848cf782d75da6,Relay (N/O),"Supplied and installed a Normally Open (N/O) relay, an essential electrical component that allows circuits to be safely controlled remotely. This relay ensures reliable power switching, improving system performance and protecting electrical equipment.",$366.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_f64457a3363d430f986a6f28b4792b09,600V Time Delay Fuse,"A 600V Time Delay Fuse is supplied and installed to protect your electrical system from overloads and short circuits. Its design allows for brief power surges without tripping, ensuring both safety and uninterrupted operation of your equipment.",$79.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_510400d76265409d9be44cdcf133ee9a,Sensi Touch ll Thermostat,"Installation of the Sensi Touch II Thermostat, a user-friendly smart device that allows precise temperature control, energy savings, and remote access through your smartphone. Enhances comfort and efficiency in your home’s heating and cooling system.",$329.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_2d70a1224b32470082bac742922bd9fd,Blower Wheel OEM,"Replacement OEM blower wheel, a critical component that circulates air through your HVAC system. Installing this genuine part ensures proper airflow, system efficiency, and reliable comfort throughout your home. Essential for optimal heating and cooling.",$560.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Custom Services,olit_39f1b5235cb4434eb08a206e171fd9e0,System Re-Installation,"Reinstalling furnace only including reconnecting primary and/or secondary drains, gas flex, thermostat wires and sealing any connections.",$550.00,$0.00,false,,"",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_eaa1479923714789839860a96216c90d,H-Series Multi-Zone Mini Split 36K,"H-Series Mini Split Condenser 36,000 BTU 20 SEER2 11.7 EER2 9.2 HSPF2 Multi Zone R454B
+
+H-Series Mini-Split Air Handler 1 Way Ceiling Cassette 18,000 BTU 22.2 SEER2 12.5 EER2 Single/Multi Zone WiFi Optional R454B
+
+H-Series Mini-Split Air Handler 1 Way Ceiling Cassette 12,000 BTU 22.1 SEER2 12.3 EER2 Single/Multi Zone WiFi Optional R454B
+
+H-Series Mini-Split Air Handler Wall Mounted 9,000 BTU 25.8 SEER2 14.9 EER2 Single/Multi Zone 230V WiFi Optional R454B
+- Can be swapped out with H-Series Mini-Split Air Handler 1 Way Ceiling Cassette 9,000 BTU 22.1 SEER2 14.4 EER2 Single/Multi Zone if able to fit room no extra cost.
+
+All drains will be drained to exterior alley with 3/4 PVC pipe. No line sets are to exceed 50' and will be covered by line set covers. All lines will be pressure tested and vacuumed to below 500 microns.
+",$13617.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_3c8dc6661b174608a839b3526ca6b9ec,HERS+Permits,"HERS testing 475x3=1425
+Permit:200
+Business license: 225",$1850.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,American Standard Heat Pump Split Systems,olit_df7f389a1d1b490fa7523d86b8f6ce7b,American Standard 3 Ton Low Profile Silver 16 Heat Pump,"Upgrade your home comfort with the American Standard 3 Ton Low Profile Silver 16 Heat Pump. Enjoy energy-efficient heating and cooling, reliable year-round performance, and a space-saving design—perfect for maximizing comfort and lowering utility costs.
+Features 16 SEER2, HSPF 8.10 and a slimline designed to fit in almost any application.
+
+",$12416.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,American Standard Heat Pump Split Systems,olit_219cb18285064f86bf0cdac03655fb85,American Standard 5 Ton Low Profile Silver 16 Heat Pump,"Upgrade your home comfort with the American Standard 3 Ton Low Profile Silver 16 Heat Pump. Enjoy energy-efficient heating and cooling, reliable year-round performance, and a space-saving design—perfect for maximizing comfort and lowering utility costs.
+Features 16 SEER2, HSPF 8.10 and a slimline designed to fit in almost any application.
+
+",$14249.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,American Standard Gas Split Systems,olit_85cbfc5223d44331bdc35c87b67f7c73,American Standard 2 Ton Silver14 Gas Split System,"High-efficiency heating and cooling system designed to deliver reliable comfort and energy savings. The Silver 14 Gas Split System ensures consistent indoor temperatures and dependable performance, making it an essential upgrade for your home’s climate control.
+System includes:
+American Standard Ultra Low NOx Gas Furnace 80% Single Stage 60,000 BTU 
+Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high/low voltage electrical with new pigtail and existing 24v wiring. Sediment trap w/gas flex included. reconnect vent pipe using new single/double wall when needed.
+American Standard 2 Ton Evaporator Coil R454B
+Reconnect primary and secondary drains with Safe-T-Switch included. All seems Sealed with Rolled mastic tape and/or mastic if needed.
+American Standard Condenser Air Conditioning 2 Ton 14.3 SEER2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+1 Year Labor Warranty",$9366.00,$0.00,false,"","",true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Ducting,olit_4d5970245bfe46d1ae7543b732e5ca9b,5 Ton Ducting System,"Installation of a 5 Ton Ducting System ensures efficient airflow throughout your home, supporting your HVAC system’s capacity for optimal heating and cooling. Proper ductwork helps maintain consistent comfort and improves overall energy efficiency.
+Includes new return and supply plenums, 13 runs of supply ducting, and new high flow bar type grills",$4050.00,$0.00,false,,,true
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,American Standard Gas Split Systems,olit_9f56021713354428b02d128a3f57129e,American Standard 5 Ton Silver 16 Gas Split System,"High-efficiency heating and cooling system designed to deliver reliable comfort and energy savings. The Silver 14 Gas Split System ensures consistent indoor temperatures and dependable performance, making it an essential upgrade for your home’s climate control.
+System includes:
+American Standard Ultra Low NOx Gas Furnace 80% Single Stage 100,000 BTU 
+Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high/low voltage electrical with new pigtail and existing 24v wiring. Sediment trap w/gas flex included. reconnect vent pipe using new single/double wall when needed.
+American Standard 5 Ton Evaporator Coil R454B
+Reconnect primary and secondary drains with Safe-T-Switch included. All seems Sealed with Rolled mastic tape and/or mastic if needed.
+American Standard Condenser Air Conditioning 5 Ton 16 SEER2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+3 Year Labor Warranty",$11705.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,American Standard Gas Split Systems,olit_f984a44c328f4c53aa11ad26d9ce61cb,American Standard 2 Ton Split with Haier Condenser,"A 2-ton American Standard split system with a Haier condenser helps keep your home comfortable with dependable heating and cooling. Professional installation includes connecting and setting up the matched equipment for reliable operation, improved comfort, and efficient performance. 
+System Includes:
+American Standard L8V1A040U3VSBA 40K 80% Furnace
+New sediment trap, gas flex, and ball valve included. New pigtail installed, reconnection of 24v wires wired to new Honeywell Focuspro thermostat. Filter rack included on all upflow installations.
+American Standard ADP Evaporator coil
+Includes safety switch and reconnection of primary and any secondary drains. All connections between furnace and plenum will be sealed with mastic tape to make air tight connections. Secondary drain pan included on all horizontal installations.
+Haier QS15H24HA5 2 Ton Condenser
+Slim design condenser fits almost anywhere. Haier 2 ton 16 SEER2 Heat Pump inverter system comes with composite pad, new whip and disconnect. System will be pressure tested and vacuumed to below 500 microns.",$8796.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,American Standard Heat Pump Split Systems,olit_30f574bab70744058ad01a87f506891e,First Co 2 Ton Soffit Mount With American Standard Condenser,"High-efficiency heating and cooling system designed to deliver reliable comfort and energy savings. The American Standard Silver 14 Heat Pump with a First Co. Soffit mount Split System ensures consistent indoor temperatures and dependable performance, making it an essential upgrade for your home’s climate control.
+System includes:
+First Co 19HXS0002UZP 18,000 btu 230v Soffit Mount Air Handler 
+Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage 22v electrical with a switch and existing 24v wiring reconnected per manufacture spec. Reconnect primary and secondary drains.
+American Standard Condenser Air Conditioning 2 Ton 14.3 SEER2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+1 Year Labor Warranty
+",$9124.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,American Standard Heat Pump Split Systems,olit_ab83afaa32934e6899bcb9b8586577d6,First Co 2 Ton Soffit Mount With Ameristar Condenser,"High-efficiency heating and cooling system designed to deliver reliable comfort and energy savings. The Ameristar 14 SEER2 Heat Pump with a First Co. Soffit mount Split System ensures consistent indoor temperatures and dependable performance, making it an essential upgrade for your home’s climate control.
+System includes:
+First Co 19HXS0002UZP 18,000 btu 230v Soffit Mount Air Handler 
+Reconnect supply and returns sealed with rolled mastic and/or mastic. Reconnect high voltage 22v electrical with a switch and existing 24v wiring reconnected per manufacture spec. Reconnect primary and secondary drains.
+Ameristar A5HP4024A1000A 2 Ton Condenser 14.3 SEER2 R454B
+New disconnect, whip and condenser pad included. Braze system, pressure test up to 300 psig, and vacuum to below 500 microns.
+
+10 years Compressor/Parts Warranty
+1 Year Labor Warranty
+",$8352.00,$42.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,American Standard Gas Split Systems,olit_42edb02a032445bbaff3552a944d94a8,American Standard 2 Ton Silver 14 Gas Split System,"A 2-ton American Standard split system helps keep your home comfortable with dependable heating and cooling. Professional installation includes connecting and setting up the matched equipment for reliable operation, improved comfort, and efficient performance. 
+System Includes:
+American Standard L8V1A040U3VSBA 40K 80% Furnace
+New sediment trap, gas flex, and ball valve included. New pigtail installed, reconnection of 24v wires wired to new Honeywell Focuspro thermostat. Filter rack included on all upflow installations.
+American Standard ADP Evaporator coil
+Includes safety switch and reconnection of primary and any secondary drains. All connections between furnace and plenum will be sealed with mastic tape to make air tight connections. Secondary drain pan included on all horizontal installations.
+American Standard 2 Ton Condenser Silver 14 SEER
+American Standard Silver 14 condenser fits almost anywhere. American Standard 2 ton 14 SEER2  system comes with composite pad, new whip and disconnect. System will be pressure tested and vacuumed to below 500 microns.",$9466.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Commercial Heat Pump Package units,olit_3254b0c7c04d4bbc840d3eb593a2272d,Carrier 6 Ton Commercial Package Unit," Carrier 6 Ton GE RTU, 208/230V-3-60 - (48FEDM07A2A5-0A0A0) Direct Fit to 48TMD007 – No Curb Adapter Required
+1 Year Warranty",$13860.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Air Conditioning,olit_efb33f9be438441e9c3d27ba72fc28d0,Commercial Belt Replacement,"Commercial Belt Replacement restores reliable airflow and equipment operation by replacing worn, cracked, or slipping belts. Proper belt tension helps reduce strain on motors and pulleys, improve efficiency, and prevent unexpected downtime. Our technician checks the drive components and confirms smooth operation after installation.",$160.00,$0.00,false,"","",false
+Heating & Air Conditioning,ind_b7d828eaa0a9422fb4d526f7cfc75520,Mini Split,olit_3603cbc434724e39934d0dafa2358b3f,"Cooper & Hunter 12,000 BTU Single Zone Mini Split R-454B","Cooper and Hunter CH-RLS12MIA-115VI 12,000BTU Mini Split Air Handler 115V 21.2 SEER2 R-454B
+Air handler will be leveled and mounted with new line set cover, and new condensation pump.  
+
+Cooper and Hunter CH-RLS12MIA-115VO 12,000BTU Mini Split Condenser 115V 21.2 SEER2 R-454B 
+Condenser comes with condenser pad, electrical disconnect, and whip.
+
+10 Year Manufacture Warranty
+1 Year Labor Warranty",$4854.00,$0.00,false,,,true
