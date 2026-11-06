@@ -40,13 +40,13 @@
   const styles = `
     @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap');
     :host{--navy:#0F2440;--deep:#0A1A30;--orange:#F5821F;--orange-dark:#D96D0E;--cyan:#5BC6E8;--ink:#16283E;--muted:#5C7590;--line:#D7DFE8;display:block;font-family:Barlow,Arial,sans-serif;color:var(--ink);font-size:16px}
-    *{box-sizing:border-box}.shell{max-width:980px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 24px 70px rgba(6,18,34,.18);overflow:hidden;border:1px solid #e3eaf0}.top{background:var(--navy);padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}.logo{height:54px;width:auto;display:block}.trust{color:#c7d6e6;font-size:13px;text-align:right;line-height:1.45}.trust strong{color:#fff;display:block}.progress{height:5px;background:#dfe7ee}.progress span{display:block;height:100%;background:var(--orange);transition:width .3s ease}.body{padding:44px 48px 48px;min-height:510px}.eyebrow{color:var(--orange);font-weight:700;text-transform:uppercase;letter-spacing:1.8px;font-size:13px;margin-bottom:9px}h2,h3{font-family:'Barlow Condensed',Arial,sans-serif;color:var(--navy);text-transform:uppercase;letter-spacing:.3px}h2{font-size:38px;line-height:1.05;margin:0 0 9px}h3{font-size:28px;margin:8px 0 12px}.subtitle{color:var(--muted);font-size:16px;margin:0 0 28px}.options{display:grid;grid-template-columns:1fr 1fr;gap:13px}.option{appearance:none;width:100%;font:inherit;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:18px 44px 18px 18px;cursor:pointer;position:relative;color:var(--ink);transition:.15s}.option:hover,.option:focus{border-color:var(--cyan);box-shadow:0 5px 16px rgba(15,36,64,.09);outline:none;transform:translateY(-1px)}.option.selected{border-color:var(--orange);background:#fff8f2}.option strong{display:block;color:var(--navy);font-size:17px;margin-bottom:4px}.option small{display:block;color:var(--muted);font-size:13.5px;line-height:1.35}.option.coming-soon{background:#f6f8fb;color:#6d7f93}.option.coming-soon strong{color:#6d7f93}.badge{display:inline-block;margin-top:8px;background:#e7edf4;color:#5c7590;font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;border-radius:999px;padding:4px 8px}.features{margin:8px 0 0;padding-left:18px}.features li{margin:4px 0;color:var(--ink)}.arrow{position:absolute;right:17px;top:18px;color:var(--orange);font-size:22px}.nav{display:flex;justify-content:space-between;align-items:center;margin-top:30px}.back{border:0;background:none;color:var(--muted);font:600 15px Barlow,Arial;cursor:pointer;padding:10px 0}.back:hover{color:var(--navy)}.ton-block{margin:0 0 22px}.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px;align-items:stretch}.tier{border:1.5px solid var(--line);border-radius:12px;padding:18px;background:#fff;display:flex;flex-direction:column;gap:8px;height:100%}.tier-bronze{border-color:#A56B3C;background:#FBF6F1}.tier-silver{border-color:#B7C0C8;background:#F4F6F8}.tier-gold{border-color:#C6A15B;background:#FFF8EC}.tier-kicker{font-family:'Barlow Condensed',Arial,sans-serif;font-size:28px;letter-spacing:.4px;text-transform:uppercase;line-height:1}.tier-bronze .tier-kicker,.tier-bronze .money{color:#7A4E24}.tier-silver .tier-kicker,.tier-silver .money{color:#5C6770}.tier-gold .tier-kicker,.tier-gold .money{color:#8A6110}.series{margin:0;font-weight:700;color:var(--navy)}.benefit,.addon-lines{margin:0;color:var(--muted);font-size:13.5px;line-height:1.45}.price-row{display:flex;justify-content:space-between;gap:12px;font-size:14px}.price-row.total{border-top:1px solid var(--line);padding-top:8px;font-weight:700;color:var(--navy);margin-top:auto}.addon-lines{padding-left:16px}.result{background:linear-gradient(135deg,var(--deep),var(--navy));border-radius:12px;padding:28px;color:#fff;margin:0 0 22px}.result p{color:#c7d6e6;margin:0;line-height:1.5}.notice{font-size:12.5px;color:var(--muted);line-height:1.45;margin:12px 0 24px}.ryan-review{margin:0 0 22px;padding:12px 14px;border:1.5px dashed #b45309;background:#fff7ed;border-radius:8px}.ryan-review-label{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;font-weight:700;letter-spacing:.04em;color:#9a3412;margin:0 0 6px}.ryan-review p{margin:0;font-size:13.5px;line-height:1.45;color:#7c2d12}.lead{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-weight:600;color:var(--navy);font-size:14px}.field input,.field textarea{width:100%;font:15px Barlow,Arial;border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--ink);outline:none}.field input:focus,.field textarea:focus{border-color:var(--cyan)}.field textarea{min-height:82px;resize:vertical}.submit{grid-column:1/-1;border:0;border-radius:9px;padding:15px 22px;background:var(--orange);color:#fff;font:700 16px Barlow,Arial;cursor:pointer;box-shadow:0 5px 16px rgba(245,130,31,.32)}.submit:hover{background:var(--orange-dark)}.submit:disabled{opacity:.65;cursor:wait}.error{grid-column:1/-1;color:#b42318;font-size:14px}.call{display:block;text-align:center;text-decoration:none}.cat{grid-column:1/-1;margin:8px 0 0;color:var(--navy);font-weight:700}@media(max-width:650px){.top{padding:16px 18px}.logo{height:43px}.trust{display:none}.body{padding:30px 20px 34px;min-height:0}h2{font-size:32px}.options,.lead,.tiers{grid-template-columns:1fr}.field.full,.submit{grid-column:auto}}h3.ton-heading{text-transform:none;font-family:Barlow,Arial,sans-serif;font-size:18px;font-weight:600;letter-spacing:0;line-height:1.35;margin:0 0 12px}.product-name{margin:0;font-weight:700;color:var(--navy);font-size:16px;line-height:1.35}.error{background:#fef3f2;border:1px solid #fecdca;border-radius:8px;padding:10px 12px;line-height:1.45}.cat{margin:18px 0 0}.cat-label{font-family:'Barlow Condensed',Arial,sans-serif;font-size:26px;letter-spacing:.3px;text-transform:uppercase;line-height:1}.cat-note{margin:6px 0 0;color:var(--muted);font-size:14.5px;line-height:1.45;font-weight:400;max-width:68ch}.addon-desc{display:block;color:var(--ink);font-size:13.5px;line-height:1.4;margin-top:2px}.addon-price{display:block;margin-top:6px;font-weight:600;color:var(--navy)}
+    *{box-sizing:border-box}.shell{max-width:980px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 24px 70px rgba(6,18,34,.18);overflow:hidden;border:1px solid #e3eaf0}.top{background:var(--navy);padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}.logo{height:54px;width:auto;display:block}.trust{color:#c7d6e6;font-size:13px;text-align:right;line-height:1.45}.trust strong{color:#fff;display:block}.progress{height:5px;background:#dfe7ee}.progress span{display:block;height:100%;background:var(--orange);transition:width .3s ease}.body{padding:44px 48px 48px;min-height:510px}.eyebrow{color:var(--orange);font-weight:700;text-transform:uppercase;letter-spacing:1.8px;font-size:13px;margin-bottom:9px}h2,h3{font-family:'Barlow Condensed',Arial,sans-serif;color:var(--navy);text-transform:uppercase;letter-spacing:.3px}h2{font-size:38px;line-height:1.05;margin:0 0 9px}h3{font-size:28px;margin:8px 0 12px}.subtitle{color:var(--muted);font-size:16px;margin:0 0 28px}.options{display:grid;grid-template-columns:1fr 1fr;gap:13px}.option{appearance:none;width:100%;font:inherit;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:18px 44px 18px 18px;cursor:pointer;position:relative;color:var(--ink);transition:.15s}.option:hover,.option:focus{border-color:var(--cyan);box-shadow:0 5px 16px rgba(15,36,64,.09);outline:none;transform:translateY(-1px)}.option.selected{border-color:var(--orange);background:#fff8f2}.option strong{display:block;color:var(--navy);font-size:17px;margin-bottom:4px}.option small{display:block;color:var(--muted);font-size:13.5px;line-height:1.35}.option.coming-soon{background:#f6f8fb;color:#6d7f93}.option.coming-soon strong{color:#6d7f93}.badge{display:inline-block;margin-top:8px;background:#e7edf4;color:#5c7590;font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;border-radius:999px;padding:4px 8px}.features{margin:8px 0 0;padding-left:18px}.features li{margin:4px 0;color:var(--ink)}.arrow{position:absolute;right:17px;top:18px;color:var(--orange);font-size:22px}.nav{display:flex;justify-content:space-between;align-items:center;margin-top:30px}.back{border:0;background:none;color:var(--muted);font:600 15px Barlow,Arial;cursor:pointer;padding:10px 0}.back:hover{color:var(--navy)}.ton-block{margin:0 0 22px}.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px;align-items:stretch}.tier{border:1.5px solid var(--line);border-radius:12px;padding:18px;background:#fff;display:flex;flex-direction:column;gap:8px;height:100%}.tier-bronze{border-color:#A56B3C;background:#FBF6F1}.tier-silver{border-color:#B7C0C8;background:#F4F6F8}.tier-gold{border-color:#C6A15B;background:#FFF8EC}.tier-kicker{font-family:'Barlow Condensed',Arial,sans-serif;font-size:28px;letter-spacing:.4px;text-transform:uppercase;line-height:1}.tier-bronze .tier-kicker,.tier-bronze .money{color:#7A4E24}.tier-silver .tier-kicker,.tier-silver .money{color:#5C6770}.tier-gold .tier-kicker,.tier-gold .money{color:#8A6110}.series{margin:0;font-weight:700;color:var(--navy)}.benefit,.addon-lines{margin:0;color:var(--muted);font-size:13.5px;line-height:1.45}.price-row{display:flex;justify-content:space-between;gap:12px;font-size:14px}.price-row.total{border-top:1px solid var(--line);padding-top:8px;font-weight:700;color:var(--navy);margin-top:auto}.addon-lines{padding-left:16px}.result{background:linear-gradient(135deg,var(--deep),var(--navy));border-radius:12px;padding:28px;color:#fff;margin:0 0 22px}.result p{color:#c7d6e6;margin:0;line-height:1.5}.notice{font-size:12.5px;color:var(--muted);line-height:1.45;margin:12px 0 24px}.option.premium{background:linear-gradient(180deg,#0F2440 0%,#17365f 100%);border-color:#C6A15B;color:#fff;box-shadow:0 12px 28px rgba(15,36,64,.28)}.option.premium strong{color:#fff;font-size:20px}.option.premium small,.option.premium .features li{color:#d5e2ef}.option.premium .arrow{color:#e7c56a}.option.premium:hover,.option.premium:focus{border-color:#e7c56a;box-shadow:0 14px 30px rgba(15,36,64,.32)}.option.premium .badge{background:#e7c56a;color:#1a1408}.premium-kicker{display:inline-block;margin:0 0 6px;background:#e7c56a;color:#1a1408;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:4px 8px}.qty{display:flex;align-items:center;gap:10px;margin-top:10px}.qty button{width:36px;height:36px;border-radius:8px;border:1.5px solid var(--line);background:#fff;color:var(--navy);font:700 20px Barlow,Arial;cursor:pointer;padding:0}.qty button:hover{border-color:var(--orange)}.qty strong{min-width:1.5ch;font-size:18px;color:var(--navy)}.disclaimer{margin:16px 0 8px;padding:14px 16px;border:2px solid #8A6110;background:#FFF8EC;border-radius:10px}.disclaimer strong{display:block;color:var(--navy);font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}.disclaimer p{margin:0;color:#3d4f63;font-size:14.5px;line-height:1.5}.price-row{align-items:baseline}.price-row>span{white-space:nowrap}.price-row .money{text-align:right}.tier-note{margin:0 0 12px;color:#7A4E24;font-size:14px;line-height:1.45}.lead{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-weight:600;color:var(--navy);font-size:14px}.field input,.field textarea{width:100%;font:15px Barlow,Arial;border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--ink);outline:none}.field input:focus,.field textarea:focus{border-color:var(--cyan)}.field textarea{min-height:82px;resize:vertical}.submit{grid-column:1/-1;border:0;border-radius:9px;padding:15px 22px;background:var(--orange);color:#fff;font:700 16px Barlow,Arial;cursor:pointer;box-shadow:0 5px 16px rgba(245,130,31,.32)}.submit:hover{background:var(--orange-dark)}.submit:disabled{opacity:.65;cursor:wait}.error{grid-column:1/-1;color:#b42318;font-size:14px}.call{display:block;text-align:center;text-decoration:none}.cat{grid-column:1/-1;margin:8px 0 0;color:var(--navy);font-weight:700}@media(max-width:650px){.top{padding:16px 18px}.logo{height:43px}.trust{display:none}.body{padding:30px 20px 34px;min-height:0}h2{font-size:32px}.options,.lead,.tiers{grid-template-columns:1fr}.field.full,.submit{grid-column:auto}}h3.ton-heading{text-transform:none;font-family:Barlow,Arial,sans-serif;font-size:18px;font-weight:600;letter-spacing:0;line-height:1.35;margin:0 0 12px}.product-name{margin:0;font-weight:700;color:var(--navy);font-size:16px;line-height:1.35}.error{background:#fef3f2;border:1px solid #fecdca;border-radius:8px;padding:10px 12px;line-height:1.45}.cat{margin:18px 0 0}.cat-label{font-family:'Barlow Condensed',Arial,sans-serif;font-size:26px;letter-spacing:.3px;text-transform:uppercase;line-height:1}.cat-note{margin:6px 0 0;color:var(--muted);font-size:14.5px;line-height:1.45;font-weight:400;max-width:68ch}.addon-desc{display:block;color:var(--ink);font-size:13.5px;line-height:1.4;margin-top:2px}.addon-price{display:block;margin-top:6px;font-weight:600;color:var(--navy)}
   `;
 
   const leadCopy = {
     commercial: 'Commercial estimates are coming soon. Share your phone and email and Ryan will follow up. There is no price on this path.',
     repair: 'A repair needs an on-site visit, so this form does not build an estimate. Ryan will contact you.',
-    'american-standard': 'American Standard is call for quote until that equipment can be priced. Your answers are summarized below for Ryan.',
+    'american-standard': 'American Standard is the Premium Line. It is call for quote until that equipment can be priced. Share how to reach you and Infinity Air will follow up.',
     'mini-split': 'The price book does not list Bronze, Silver, and Gold mini-split tiers. Ryan will quote the rooms you selected.',
     'unpriced-system': 'This system does not have Bronze, Silver, and Gold rows in the price book yet. Ryan will follow up.',
     'no-ton': 'The size guide did not land on a tonnage in the price book. Ryan will follow up.',
@@ -97,14 +97,9 @@
     renderCards(list, question);
   }
 
-  function reviewCallout(text) {
-    if (!text || !state.config || state.config.showRyanReviewCallouts === false) return '';
-    return `<aside class="ryan-review"><div class="ryan-review-label">REVIEW: FOR RYAN, NOT CUSTOMER COPY</div><p>${escapeHtml(text)}</p></aside>`;
-  }
-
-  function sizingReviewText(extra) {
-    const note = (state.config && (state.config.sizingReviewNote || state.config.notice)) || '';
-    return [note, extra].filter(Boolean).join(' ');
+  function disclaimerMarkup() {
+    const text = (state.config && state.config.quoteDisclaimer) || 'This is not a binding quote and it is not a contract. Infinity Air confirms the final price in writing after an on-site visit.';
+    return `<aside class="disclaimer"><strong>Not a binding quote</strong><p>${escapeHtml(text)}</p></aside>`;
   }
 
   function sizeDescription(option) {
@@ -117,22 +112,18 @@
 
   function renderCards(list, question) {
     const subtitle = question.subtitle;
-    const sizingNote = question.key === 'homeSize' && state.answers.zip ? (() => {
-      const climate = flow.climateForZip(state.answers.zip, state.config);
-      const applied = `${climate.listed ? '' : 'This ZIP is not on the confirmed list, so the inland guide is used. '}${climate.id === 'coastal' ? 'Coastal guide: 500 sq. ft. per ton.' : 'Inland guide: 400 sq. ft. per ton.'} Ryan still needs to confirm these ZIPs.`;
-      return sizingReviewText(applied);
-    })() : '';
     const options = question.options(state.answers).map(option => {
       const meta = option[3] || {};
       const description = question.key === 'homeSize' ? sizeDescription(option) : (option[2] || '');
       const features = (meta.features || []).map(feature => `<li>${escapeHtml(feature)}</li>`).join('');
-      return `<button class="option ${state.answers[question.key] === option[0] ? 'selected' : ''} ${meta.muted ? 'coming-soon' : ''}" data-value="${escapeHtml(option[0])}"><strong>${escapeHtml(option[1])}</strong>${description ? `<small>${escapeHtml(description)}</small>` : ''}${features ? `<ul class="features">${features}</ul>` : ''}${meta.badge ? `<span class="badge">${escapeHtml(meta.badge)}</span>` : ''}<span class="arrow">›</span></button>`;
+      const className = ['option', state.answers[question.key] === option[0] ? 'selected' : '', meta.muted ? 'coming-soon' : '', meta.premium ? 'premium' : ''].filter(Boolean).join(' ');
+      const kicker = meta.kicker ? `<span class="premium-kicker">${escapeHtml(meta.kicker)}</span>` : '';
+      return `<button class="${className}" data-value="${escapeHtml(option[0])}">${kicker}<strong>${escapeHtml(option[1])}</strong>${description ? `<small>${escapeHtml(description)}</small>` : ''}${features ? `<ul class="features">${features}</ul>` : ''}${meta.badge ? `<span class="badge">${escapeHtml(meta.badge)}</span>` : ''}<span class="arrow">›</span></button>`;
     }).join('');
     shell((state.step / list.length) * 100, `
       <div class="eyebrow">${escapeHtml(question.eyebrow)} · Step ${state.step + 1} of ${list.length}</div>
       <h2>${escapeHtml(question.title)}</h2>
       <p class="subtitle">${escapeHtml(subtitle)}</p>
-      ${reviewCallout(sizingNote)}
       <div class="options">${options}</div>
       <div class="nav">${state.step ? '<button class="back" type="button">← Back</button>' : '<span></span>'}</div>`);
     root.querySelectorAll('.option').forEach(element => element.addEventListener('click', () => advance(question.key, element.dataset.value)));
@@ -140,11 +131,10 @@
   }
 
   function renderZip(list, question) {
-    const climate = state.answers.zip ? flow.climateForZip(state.answers.zip, state.config) : null;
     shell((state.step / list.length) * 100, `
       <div class="eyebrow">${escapeHtml(question.eyebrow)} · Step ${state.step + 1} of ${list.length}</div>
       <h2>${escapeHtml(question.title)}</h2>
-      ${reviewCallout(sizingReviewText([question.subtitle, climate ? `${climate.listed ? '' : 'This ZIP is not on the list yet, so the inland guide is used. '}${climate.id === 'coastal' ? 'Coastal guide: 500 sq. ft. per ton.' : 'Inland guide: 400 sq. ft. per ton.'} Ryan still needs to confirm these ZIPs.` : ''].filter(Boolean).join(' ')))}
+      <p class="subtitle">${escapeHtml(question.subtitle)}</p>
       <form class="lead">
         <div class="field full"><label for="ia-zip-code">ZIP code</label><input id="ia-zip-code" name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="10" placeholder="91761" value="${escapeHtml(state.answers.zip || '')}" required></div>
         <div class="error" hidden></div>
@@ -168,7 +158,8 @@
   function renderAddons(list, question) {
     state.answers.addons = flow.applicableAddonIds(state.items, state.config, state.answers);
     const selected = new Set(state.answers.addons);
-    const visibleItems = question.items().filter(item => flow.addonAppliesToAnswers(item, state.items, state.config, state.answers));
+    const visibleItems = question.items(state.answers).filter(item => item.quantityAddon || flow.addonAppliesToAnswers(item, state.items, state.config, state.answers));
+    const runs = flow.ductRunCount(state.answers, state.config);
     let category = '';
     const cards = visibleItems.map(item => {
       const copy = flow.addonCopy(item, state.config);
@@ -176,7 +167,13 @@
         ? `<div class="cat"><div class="cat-label">${escapeHtml(copy.categoryLabel)}</div>${copy.categoryNote ? `<p class="cat-note">${escapeHtml(copy.categoryNote)}</p>` : ''}</div>`
         : '';
       category = item.category;
-      return `${heading}<button class="option ${selected.has(item.uuid) ? 'selected' : ''}" type="button" data-value="${escapeHtml(item.uuid)}"><strong>${escapeHtml(flow.customerText(item.name))}</strong><small class="addon-desc">${escapeHtml(copy.description)}</small><small class="addon-price">${escapeHtml(priceText(item.price))}</small></button>`;
+      if (item.quantityAddon) {
+        const selectedClass = runs > 0 ? 'selected' : '';
+        const extended = runs > 0 ? ` · ${runs} ${runs === 1 ? 'run' : 'runs'} · ${model.money(item.price * runs)}` : '';
+        return `${heading}<div class="option ${selectedClass}"><strong>${escapeHtml(item.name)}</strong><small class="addon-desc">${escapeHtml(copy.description)}</small><small class="addon-price">${escapeHtml(model.money(item.price))} per run${escapeHtml(extended)}</small><div class="qty"><button type="button" data-qty="-1" aria-label="Fewer duct runs">−</button><strong>${runs}</strong><button type="button" data-qty="1" aria-label="More duct runs">+</button></div></div>`;
+      }
+      const priceLabel = item.priceFrom && item.price > 0 ? `from ${model.money(item.price)}` : priceText(item.price);
+      return `${heading}<button class="option ${selected.has(item.uuid) ? 'selected' : ''}" type="button" data-value="${escapeHtml(item.uuid)}"><strong>${escapeHtml(flow.customerText(item.name))}</strong><small class="addon-desc">${escapeHtml(copy.description)}</small><small class="addon-price">${escapeHtml(priceLabel)}</small></button>`;
     }).join('');
     shell((state.step / list.length) * 100, `
       <div class="eyebrow">${escapeHtml(question.eyebrow)} · Step ${state.step + 1} of ${list.length}</div>
@@ -185,11 +182,17 @@
       <div class="options">${cards}</div>
       <button class="submit" type="button" style="margin-top:18px">Continue</button>
       <div class="nav"><button class="back" type="button">← Back</button></div>`);
-    root.querySelectorAll('.option').forEach(element => element.addEventListener('click', () => {
+    root.querySelectorAll('.option[data-value]').forEach(element => element.addEventListener('click', () => {
       const id = element.dataset.value;
       const current = new Set(state.answers.addons || []);
       if (current.has(id)) current.delete(id); else current.add(id);
       state.answers.addons = [...current];
+      renderAddons(list, question);
+    }));
+    root.querySelectorAll('[data-qty]').forEach(element => element.addEventListener('click', () => {
+      const max = (state.config.ductworkPerRun && state.config.ductworkPerRun.maxRuns) || 20;
+      const next = Math.max(0, Math.min(max, runs + Number(element.dataset.qty)));
+      state.answers.ductRuns = next;
       renderAddons(list, question);
     }));
     root.querySelector('.submit').addEventListener('click', () => advance('addons', state.answers.addons || []));
@@ -197,11 +200,11 @@
   }
 
   function tierCard(tier) {
-    const addonList = tier.addons.map(addon => `<li>${escapeHtml(addon.name)}: ${escapeHtml(priceText(addon.price))}</li>`).join('');
+    const addonList = tier.addons.map(addon => `<li>${escapeHtml(addon.displayName || addon.name)}: ${escapeHtml(addon.lineLabel || priceText(addon.price))}</li>`).join('');
     const addonRow = tier.addonsSubtotal
-      ? `<div class="price-row"><span>Add-ons</span><strong class="money">${tier.addonsSubtotal.callForQuote ? 'Call for quote' : escapeHtml(model.money(tier.addonsSubtotal.amount))}</strong></div>${addonList ? `<ul class="addon-lines">${addonList}</ul>` : ''}`
+      ? `<div class="price-row"><span>Add-ons</span><strong class="money">${escapeHtml(tier.addonsSubtotal.label || priceText(tier.addonsSubtotal.amount))}</strong></div>${addonList ? `<ul class="addon-lines">${addonList}</ul>` : ''}`
       : '';
-    return `<article class="tier tier-${escapeHtml(tier.tier)}"><div class="tier-kicker">${escapeHtml(tier.label)}</div>${tier.systemName ? `<p class="product-name">${escapeHtml(tier.systemName)}</p>` : ''}<p class="series">${escapeHtml(tier.series)}</p><p class="benefit">${escapeHtml(tier.benefit)}</p><div class="price-row"><span>System</span><strong class="money">${escapeHtml(priceText(tier.systemPrice))}</strong></div>${addonRow}<div class="price-row total"><span>Total</span><strong class="money">${escapeHtml(priceText(tier.total))}</strong></div></article>`;
+    return `<article class="tier tier-${escapeHtml(tier.tier)}"><div class="tier-kicker">${escapeHtml(tier.label)}</div>${tier.systemName ? `<p class="product-name">${escapeHtml(tier.systemName)}</p>` : ''}<p class="series">${escapeHtml(tier.series)}</p><p class="benefit">${escapeHtml(tier.benefit)}</p><div class="price-row"><span>System</span><strong class="money">${escapeHtml(priceText(tier.systemPrice))}</strong></div>${addonRow}<div class="price-row total"><span>Total</span><strong class="money">${escapeHtml(tier.totalLabel || priceText(tier.total))}</strong></div></article>`;
   }
 
   function leadFields(buttonLabel) {
@@ -228,12 +231,9 @@
   }
 
   function pricedResultsMarkup(quote) {
-    const climate = quote.climate;
-    const tiers = quote.groups.map(group => `<section class="ton-block"><h3 class="ton-heading">${escapeHtml(flow.tonHeading(group.tons))}</h3><div class="tiers">${group.tiers.map(tierCard).join('')}</div></section>`).join('');
+    const tiers = quote.groups.map(group => `<section class="ton-block"><h3 class="ton-heading">${escapeHtml(flow.tonHeading(group.tons))}</h3>${group.priceOrderNote ? `<p class="tier-note">${escapeHtml(group.priceOrderNote)}</p>` : ''}<div class="tiers">${group.tiers.map(tierCard).join('')}</div></section>`).join('');
     return `${tiers}
-      ${climate ? reviewCallout(sizingReviewText(`${climate.listed ? '' : 'This ZIP is not on the confirmed list. '}${climate.id === 'coastal' ? 'Coastal' : 'Inland'} sizing uses ${climate.sqftPerTon} sq. ft. per ton and only whole tons.`)) : ''}
-      ${reviewCallout(state.config && state.config.tierReviewNote)}
-      <p class="notice">Call for an official quote. These are planning prices from the price book, not a binding quote. A missing price is shown as Call for quote instead of a zero.</p>`;
+      ${disclaimerMarkup()}`;
   }
 
   function renderPricedResults(firstName, preview) {
@@ -257,6 +257,7 @@
         <div class="eyebrow">Your details</div>
         <h2>Where should we send your options?</h2>
         <p class="subtitle">Tell us how to reach you. Bronze, Silver, and Gold prices are shown after this is sent.</p>
+        ${disclaimerMarkup()}
         ${leadFields('Send and see my options')}
         <div class="nav"><button class="back" type="button">← Change answers</button></div>`);
       wireLeadForm();

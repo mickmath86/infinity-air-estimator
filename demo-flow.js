@@ -145,11 +145,86 @@
   }
 
   function addonItems(items, config) {
-    const categories = new Set((config.addonCategories || []).map(category => category.toLowerCase()));
-    return items
-      .filter(item => categories.has(String(item.category || '').toLowerCase()) && !item.commercial)
-      .slice()
-      .sort((left, right) => left.category.localeCompare(right.category) || left.name.localeCompare(right.name) || String(left.uuid).localeCompare(String(right.uuid)));
+    const pool = (items || []).filter(item => lib().isCustomerAddonCandidate(item, config));
+    return lib().standardizeDuplicateOptions(pool).items;
+  }
+
+  function ductworkOffer(config) {
+    const spec = config && config.ductworkPerRun;
+    const unitPrice = spec ? Number(spec.pricePerRun) : 0;
+    if (!spec || !(unitPrice > 0)) return null;
+    return {
+      uuid: spec.id || 'ductwork-per-run',
+      category: 'Ducting',
+      name: spec.name || 'Ductwork',
+      description: spec.description || 'Extra duct runs. Each run is priced separately.',
+      price: unitPrice,
+      unitPrice,
+      quantityAddon: true,
+      synthetic: true,
+      tonnage: null,
+      priceFrom: false
+    };
+  }
+
+  function ductRunCount(answers, config) {
+    const spec = config && config.ductworkPerRun;
+    const max = spec && spec.maxRuns > 0 ? Math.floor(spec.maxRuns) : 20;
+    const value = Number(answers && answers.ductRuns);
+    if (!Number.isFinite(value) || value <= 0) return 0;
+    return Math.min(max, Math.floor(value));
+  }
+
+  function offersDuctworkRuns(config, answers) {
+    if (!ductworkOffer(config)) return false;
+    if (!answers || answers.projectType !== 'replacement') return false;
+    if (answers.systemFamily === 'mini-split') return false;
+    return true;
+  }
+
+  function ductworkSelection(config, answers) {
+    if (!offersDuctworkRuns(config, answers)) return null;
+    const quantity = ductRunCount(answers, config);
+    if (quantity < 1) return null;
+    const offer = ductworkOffer(config);
+    return { ...offer, quantity, unitPrice: offer.unitPrice, price: offer.unitPrice * quantity };
+  }
+
+  function addonStepItems(items, config, answers) {
+    const book = addonItems(items, config);
+    if (!offersDuctworkRuns(config, answers)) return book;
+    return [ductworkOffer(config)].concat(book);
+  }
+
+  function mixedTotalLabel(amount, callForQuote, fromPrice) {
+    const money = lib().money;
+    const known = amount > 0 ? amount : 0;
+    if (callForQuote && known > 0) return `at least ${money(known)} plus call for quote`;
+    if (callForQuote || !(known > 0)) return 'Call for quote';
+    if (fromPrice) return `from ${money(known)}`;
+    return money(known);
+  }
+
+  // Bronze, Silver, Gold stay the tier names. When Silver costs more than the matching Gold,
+  // that ton is ordered from the lower price to the higher price so the middle card is not the expensive one.
+  function orderTierCards(tiers) {
+    const list = (tiers || []).slice();
+    const silver = list.find(tier => tier.tier === 'silver');
+    const gold = list.find(tier => tier.tier === 'gold');
+    const inverted = Boolean(silver && gold && silver.systemPrice > 0 && gold.systemPrice > 0 && silver.systemPrice > gold.systemPrice);
+    if (!inverted) return { tiers: list, priceOrderNote: '', silverAboveGold: false };
+    const rank = { bronze: 0, silver: 1, gold: 2 };
+    const ordered = list.slice().sort((left, right) => {
+      const leftPrice = left.systemPrice > 0 ? left.systemPrice : Number.POSITIVE_INFINITY;
+      const rightPrice = right.systemPrice > 0 ? right.systemPrice : Number.POSITIVE_INFINITY;
+      if (leftPrice !== rightPrice) return leftPrice - rightPrice;
+      return (rank[left.tier] ?? 9) - (rank[right.tier] ?? 9);
+    });
+    return {
+      tiers: ordered,
+      silverAboveGold: true,
+      priceOrderNote: 'Shown from the lower price to the higher price. For this size the Silver system costs more than the Gold system, so the cards are not in Bronze, Silver, Gold order.'
+    };
   }
 
   function selectedRange(config, answers) {
@@ -211,6 +286,7 @@
   }
 
   function addonDescription(item, config) {
+    if (item && item.synthetic && item.description) return item.description;
     const byId = (config && config.addonDescriptions) || {};
     if (item && byId[item.uuid]) return byId[item.uuid];
     const name = String(item && item.name || '').toLowerCase();
@@ -249,11 +325,14 @@
   function pruneAddonAnswers(items, config, answers) {
     const next = { ...(answers || {}) };
     next.addons = applicableAddonIds(items, config, next);
+    if (offersDuctworkRuns(config, next)) next.ductRuns = ductRunCount(next, config);
+    else delete next.ductRuns;
     return next;
   }
 
   function answersAfterChange(items, config, answers, key, value) {
     const nextAnswers = { ...(answers || {}) };
+    const ductRuns = nextAnswers.ductRuns;
     if (Array.isArray(nextAnswers.addons)) nextAnswers.addons = nextAnswers.addons.slice();
     nextAnswers[key] = value;
     const questions = visibleQuestions(items, config, nextAnswers);
@@ -266,6 +345,7 @@
     if (!Array.isArray(nextAnswers.addons)) nextAnswers.addons = [];
     if (!keep.has('addons')) nextAnswers.addons = [];
     else nextAnswers.addons = applicableAddonIds(items, config, nextAnswers);
+    if (keep.has('addons') && offersDuctworkRuns(config, nextAnswers)) nextAnswers.ductRuns = ductRunCount({ ductRuns }, config);
     return nextAnswers;
   }
 
@@ -304,7 +384,7 @@
         summaryLabel: 'ZIP code',
         eyebrow: 'Location',
         title: 'What is the home’s ZIP code?',
-        subtitle: 'ZIP chooses the sizing guide: 500 sq. ft. per ton near the Orange County coast, 400 inland. The ZIP list is a first pass until Ryan confirms it.',
+        subtitle: 'Your ZIP sets a starting size: about 500 sq. ft. per ton near the Orange County coast, and about 400 inland. Infinity Air confirms the size on site.',
         when: answers => answers.propertyType === 'residential' && answers.projectType === 'replacement'
       },
       {
@@ -364,9 +444,9 @@
         summaryLabel: 'Add-ons',
         eyebrow: 'Add-ons',
         title: 'Any add-ons or extras?',
-        subtitle: 'Choose any that fit this home. Each one has a short description. A selected add-on is added to Bronze, Silver, and Gold. A blank price becomes Call for quote.',
-        when: answers => answers.projectType === 'replacement' && addons.length > 0,
-        items: () => addons
+        subtitle: 'Choose any that fit this home. Ductwork is priced per run. A blank price becomes Call for quote. When the book lists the same add-on more than once, one starting price is shown.',
+        when: answers => answers.projectType === 'replacement' && (addons.length > 0 || offersDuctworkRuns(config, answers)),
+        items: answers => addonStepItems(items, config, answers)
       },
       {
         key: 'brand',
@@ -374,11 +454,16 @@
         summaryLabel: 'Equipment preference',
         eyebrow: 'Equipment',
         title: 'Which equipment do you want to compare?',
-        subtitle: 'The value line can show Bronze, Silver, and Gold from the price book. American Standard is call for quote until the dealer flag is turned on.',
+        subtitle: 'AC Pro (Value Line) can show Bronze, Silver, and Gold from the price book. American Standard is the Premium Line and stays call for quote until it can be priced.',
         when: answers => answers.projectType === 'replacement' && isTieredFamily(answers.systemFamily),
         options: () => [
-          ['value', config.valueLineLabel || 'Value line', 'Mid-tier equipment with strong efficiency for the price.', { features: config.valueLineFeatures || [] }],
-          ['american-standard', 'American Standard', config.americanStandardPricesEnabled ? 'Premium equipment, priced from the price book.' : 'Premium equipment. Call for quote.', { features: config.americanStandardFeatures || [], badge: config.americanStandardPricesEnabled ? '' : 'Call for quote' }]
+          ['value', config.valueLineLabel || 'AC Pro (Value Line)', 'Mid-tier equipment with strong efficiency for the price.', { features: config.valueLineFeatures || [] }],
+          ['american-standard', 'American Standard', config.americanStandardPricesEnabled ? 'Premium equipment, priced from the price book.' : 'Premium equipment. Call for a quote.', {
+            features: config.americanStandardFeatures || [],
+            kicker: config.premiumLineLabel || 'Premium Line',
+            badge: config.americanStandardPricesEnabled ? (config.premiumLineLabel || 'Premium Line') : 'Call for quote',
+            premium: true
+          }]
         ]
       }
     ];
@@ -395,16 +480,42 @@
     const described = describeSystem(source, tier, family, config);
     const systemPrice = source && source.price > 0 ? source.price : null;
     const applicable = selectedAddons.filter(item => addonApplies(item, tons));
-    const lines = applicable.map(item => ({
-      uuid: item.uuid,
-      name: customerText(item.name),
-      price: item.price > 0 ? item.price : null,
-      callForQuote: !(item.price > 0)
-    }));
+    const lines = applicable.map(item => {
+      const quantity = item.quantityAddon ? (item.quantity > 0 ? item.quantity : 0) : 1;
+      const unitPrice = item.quantityAddon
+        ? (item.unitPrice > 0 ? item.unitPrice : null)
+        : (item.price > 0 ? item.price : null);
+      const extended = unitPrice > 0 && quantity > 0 ? unitPrice * quantity : null;
+      const baseName = customerText(item.name);
+      let lineLabel = 'Call for quote';
+      if (extended > 0 && item.quantityAddon && quantity > 1) lineLabel = `${quantity} × ${model.money(unitPrice)}`;
+      else if (extended > 0 && item.priceFrom) lineLabel = `from ${model.money(extended)}`;
+      else if (extended > 0) lineLabel = model.money(extended);
+      return {
+        uuid: item.uuid,
+        name: baseName,
+        displayName: item.quantityAddon && quantity > 1 ? `${baseName} (${quantity} runs)` : baseName,
+        price: extended,
+        unitPrice: unitPrice > 0 ? unitPrice : null,
+        quantity: quantity > 0 ? quantity : 1,
+        priceFrom: Boolean(item.priceFrom),
+        quantityAddon: Boolean(item.quantityAddon),
+        lineLabel,
+        callForQuote: !(extended > 0)
+      };
+    });
     const knownAddons = lines.filter(line => line.price > 0).reduce((sum, line) => sum + line.price, 0);
     const addonQuote = lines.some(line => line.callForQuote);
-    const addonsSubtotal = lines.length ? { amount: knownAddons, callForQuote: addonQuote } : null;
-    const total = systemPrice > 0 && !addonQuote ? systemPrice + knownAddons : null;
+    const addonFrom = lines.some(line => line.priceFrom);
+    const addonsSubtotal = lines.length ? {
+      amount: knownAddons,
+      callForQuote: addonQuote,
+      priceFrom: addonFrom,
+      label: mixedTotalLabel(knownAddons, addonQuote, addonFrom)
+    } : null;
+    const knownTotal = (systemPrice > 0 ? systemPrice : 0) + knownAddons;
+    const needsQuote = !(systemPrice > 0) || addonQuote;
+    const total = !needsQuote && knownTotal > 0 ? knownTotal : null;
     return {
       tier,
       label: tierLabel(config, tier, family),
@@ -416,7 +527,9 @@
       addons: lines,
       addonsSubtotal,
       total,
-      callForQuote: !(total > 0),
+      knownTotal: knownTotal > 0 ? knownTotal : null,
+      totalLabel: mixedTotalLabel(knownTotal, needsQuote, addonFrom && !needsQuote),
+      callForQuote: needsQuote,
       warnings: model.matchTiers(items, { family, brand, tons }).warnings.filter(warning => warning.message.includes(tier))
     };
   }
@@ -434,8 +547,16 @@
           priceUnit: 'dollars'
         }];
         for (const addon of tier.addons) {
-          if (!(addon.price > 0)) continue;
-          lineItems.push({ name: addon.name, description: 'Price-book add-on', quantity: 1, unitPrice: addon.price, priceUnit: 'dollars' });
+          if (!(addon.unitPrice > 0) || !(addon.quantity > 0) || addon.callForQuote) continue;
+          lineItems.push({
+            name: addon.quantityAddon ? 'Ductwork' : addon.name,
+            description: addon.priceFrom
+              ? 'Starting price. The price book lists more than one row for this item.'
+              : (addon.quantityAddon ? 'Priced per duct run.' : 'Price-book add-on'),
+            quantity: addon.quantity,
+            unitPrice: addon.unitPrice,
+            priceUnit: 'dollars'
+          });
         }
         packages.push({ name: `${tier.label} ${group.tons} ton`, lineItems });
       }
@@ -454,14 +575,17 @@
     const sizing = recommendedTons(items, config, { ...responses, brand: responses.brand || 'value' });
     if (!sizing.tons.length) return { ...leadResult('no-ton'), climate: sizing.climate };
     const selected = addonItems(items, config).filter(item => (responses.addons || []).includes(item.uuid));
+    const ductLine = ductworkSelection(config, responses);
+    const selectedWithDuct = ductLine ? selected.concat([ductLine]) : selected;
     const warnings = [];
     const groups = sizing.tons.map(tons => {
       const tiers = TIER_ORDER.map(tier => {
-        const card = buildTier(items, config, responses.systemFamily, brand, tons, tier, selected);
+        const card = buildTier(items, config, responses.systemFamily, brand, tons, tier, selectedWithDuct);
         warnings.push(...card.warnings);
         return card;
       });
-      return { tons, tiers };
+      const ordered = orderTierCards(tiers);
+      return { tons, tiers: ordered.tiers, priceOrderNote: ordered.priceOrderNote, silverAboveGold: ordered.silverAboveGold };
     });
     const packages = hcpPackages(groups);
     return {
@@ -495,12 +619,17 @@
         const names = applicableAddonIds(items, config, completed)
           .map(id => addonItems(items, config).find(item => item.uuid === id))
           .filter(Boolean)
-          .map(item => customerText(item.name));
+          .map(item => customerText(item.priceFrom ? `${item.name} from ${lib().money(item.price)}` : item.name));
+        const runs = offersDuctworkRuns(config, completed) ? ductRunCount(completed, config) : 0;
+        if (runs > 0) {
+          const unit = config.ductworkPerRun.pricePerRun;
+          names.unshift(`Ductwork: ${runs} ${runs === 1 ? 'run' : 'runs'} at ${lib().money(unit)} per run`);
+        }
         if (names.length) lines.push(`Add-ons: ${names.join('; ')}`);
         continue;
       }
       if (question.key === 'brand') {
-        lines.push(`Equipment: ${value === 'american-standard' ? 'American Standard' : (config.valueLineLabel || 'Value line')}`);
+        lines.push(`Equipment: ${value === 'american-standard' ? 'American Standard (Premium Line)' : (config.valueLineLabel || 'AC Pro (Value Line)')}`);
         continue;
       }
       lines.push(`${question.summaryLabel}: ${question.kind === 'zip' ? value : optionLabel(question, completed, value)}`);
@@ -508,10 +637,10 @@
     if (proposal && proposal.climate) {
       lines.push(`Sizing guide: ${proposal.climate.sqftPerTon} sq. ft. per ton (${proposal.climate.id}${proposal.climate.listed ? '' : ', ZIP not on the list'})`);
     }
-    if (config.sizingReviewNote) lines.push(config.sizingReviewNote);
     if (proposal && proposal.tons && proposal.tons.length) lines.push(`Whole tons offered: ${proposal.tons.join(' and ')}`);
     for (const group of (proposal && proposal.groups) || []) {
-      lines.push(`${group.tons} ton options: ${group.tiers.map(tier => `${tier.label} ${tier.callForQuote ? 'call for quote' : lib().money(tier.total)}`).join('; ')}`);
+      lines.push(`${group.tons} ton options: ${group.tiers.map(tier => `${tier.label} ${tier.totalLabel || (tier.callForQuote ? 'call for quote' : lib().money(tier.total))}`).join('; ')}`);
+      if (group.priceOrderNote) lines.push(group.priceOrderNote);
     }
     return lines.join('\n');
   }
@@ -528,6 +657,12 @@
     clampTons,
     catalogBrand,
     addonItems,
+    addonStepItems,
+    ductRunCount,
+    ductworkOffer,
+    offersDuctworkRuns,
+    mixedTotalLabel,
+    orderTierCards,
     addonCopy,
     addonAppliesToAnswers,
     applicableAddonIds,

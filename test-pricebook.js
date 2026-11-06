@@ -2,7 +2,7 @@ const assert = require('node:assert/strict');
 const fs = require('fs');
 const path = require('path');
 const { handlePricebook, CACHE_CONTROL, DOCUMENTED_PRICEBOOK_SHEET_URL, readSnapshot } = require('./api/pricebook');
-const { loadPricebook, parseCsv, normalizePricebook, publicItem } = require('./estimator-model');
+const { loadPricebook, parseCsv, normalizePricebook, publicItem, parsePrice } = require('./estimator-model');
 const config = require('./data/demo-config.js');
 
 const silent = { warn() {}, log() {} };
@@ -55,7 +55,11 @@ function mockRes() {
   assert.deepEqual(fetchOptions, { redirect: 'follow' });
   assert.equal(fromSheet.source, 'sheet');
   assert.equal(fromSheet.fetchedAt, '2026-10-30T20:00:00.000Z');
-  assert.equal(fromSheet.config.valueLineLabel, 'Value line');
+  assert.equal(fromSheet.config.valueLineLabel, 'AC Pro (Value Line)');
+  assert.equal(parsePrice('$5,100.00'), 5100);
+  assert.equal(parsePrice('$4,050.00'), 4050);
+  assert.equal(parsePrice('$5,200.00'), 5200);
+  assert.equal(parsePrice('$700.00'), 700);
   assert.ok(fromSheet.items.some(item => item.name === marker));
   assert.equal(fromSheet.items.some(item => item.name === 'Bill Lewis Special'), false);
   assert.equal(JSON.stringify(fromSheet).includes('42.5'), false);
@@ -130,9 +134,15 @@ function mockRes() {
   assert.match(res.headers['cache-control'], /stale-while-revalidate=300/);
   assert.equal(res.body.source, 'snapshot');
   assert.equal(res.body.config.goldGasTierLabel, 'Gold');
-  assert.equal(res.body.config.showRyanReviewCallouts, true);
-  assert.match(res.body.config.sizingReviewNote, /first pass pending Ryan's confirmation/);
-  assert.match(res.body.config.notice, /first pass pending Ryan's confirmation/);
+  assert.equal(res.body.config.showRyanReviewCallouts, false);
+  assert.equal(res.body.config.sizingReviewNote, undefined);
+  assert.equal(res.body.config.tierReviewNote, undefined);
+  assert.equal(res.body.config.notice, undefined);
+  assert.equal(/pending Ryan|FOR RYAN/i.test(JSON.stringify(res.body.config)), false);
+  assert.equal(res.body.config.valueLineLabel, 'AC Pro (Value Line)');
+  assert.equal(res.body.config.ductworkPerRun.pricePerRun, 450);
+  assert.match(res.body.config.quoteDisclaimer, /not a binding quote/i);
+  assert.match(res.body.config.quoteDisclaimer, /not a contract/i);
   assert.equal(JSON.stringify(res.body).includes('"cost"'), false);
 
   const denied = mockRes();
