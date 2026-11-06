@@ -3,17 +3,13 @@
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (root) root.InfinityAirDemoConfig = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
-  // UNCONFIRMED first pass for Ryan Villa. Edit the ZIP lists and the two
-  // sq-ft-per-ton numbers. Prices do not live in this file.
   // Coastal = Orange County near the beach, 500 sq. ft. per ton.
   // Inland = Riverside / San Bernardino (and the default for any ZIP not listed), 400 sq. ft. per ton.
   // One whole ton per answer, taken from the top of the square-footage range and rounded up.
   // If that ton is not in the price book, the next larger offered ton is used, or the largest offered ton when the home is bigger than the book. No half tons.
+  // Internal review notes are not part of this config. Customers do not see them.
   return {
-    unconfirmed: true,
-    showRyanReviewCallouts: true,
-    sizingReviewNote: 'The 500 sq ft per ton near the Orange County coast / 400 sq ft per ton inland rule and the ZIP list are a first pass pending Ryan\'s confirmation.',
-    notice: 'UNCONFIRMED sizing guide for Ryan Villa. Coastal Orange County beach ZIPs use 500 sq. ft. per ton. Inland Riverside and San Bernardino ZIPs use 400 sq. ft. per ton. Any ZIP not listed uses the inland guide. The 500 sq ft per ton near the Orange County coast / 400 sq ft per ton inland rule and the ZIP list are a first pass pending Ryan\'s confirmation.',
+    showRyanReviewCallouts: false,
     coastalSqftPerTon: 500,
     inlandSqftPerTon: 400,
     coastalZips: [
@@ -46,8 +42,8 @@
       { id: '2500-3000', label: '2,500–3,000 sq. ft.', low: 2500, high: 3000 },
       { id: 'over-3000', label: 'Over 3,000 sq. ft.', low: 3000, high: 3600 }
     ],
-    // Customer-facing name for the mid-tier equipment. Do not put the house brand on tier cards.
-    valueLineLabel: 'Value line',
+    // Customer-facing name for the mid-tier equipment. Tier cards still omit this brand from the system name.
+    valueLineLabel: 'AC Pro (Value Line)',
     valueLineFeatures: [
       'A practical system that still feels like a real upgrade',
       'Equipment that both heats and cools the home',
@@ -59,8 +55,9 @@
       'Made so routine upkeep is simpler',
       'The higher-end choice when you want the finest comfort we offer'
     ],
-    // Flip to true after Ryan is an authorized dealer (expected January) to price this line from the book.
+    // American Standard is the Premium Line. It stays call for quote until the dealer flag is turned on (expected January).
     americanStandardPricesEnabled: false,
+    premiumLineLabel: 'Premium Line',
     tierLabels: { bronze: 'Bronze', silver: 'Silver', gold: 'Gold' },
     // Price-book wording today is the tier word Gold. Change this one string if the gas tier should say Dual fuel.
     goldGasTierLabel: 'Gold',
@@ -79,8 +76,20 @@
         gasBenefit: 'A dual fuel system: a heat pump handles mild days, and a gas furnace takes over when it gets cold, so you get efficient cooling and dependable heat. It runs in stages rather than only at full power, which feels steadier in the home. Infinity Air installs it, and labor is included in this price.'
       }
     },
-    tierReviewNote: 'Ryan: exact efficiency ratings and warranty lengths differ by model in the price book. Sample rows mention about 13.8–16 SEER2 and a 10-year parts warranty on a bronze model, about 17.7 SEER2 on a silver model, and about 19 SEER2 with a 2-year labor warranty on a gold heat pump. Customer cards stay general until you confirm one wording for every size.',
+    quoteDisclaimer: 'This is not a binding quote and it is not a contract. These figures are planning prices from the current price book so you can compare options. They do not reserve equipment, start the work, or lock in a price. Infinity Air confirms the final price in writing after an on-site visit, once the home, the equipment, permits, and the scope are known. A price that is not in the book is shown as Call for quote. When a call-for-quote item is included, the total shows the known amount and says it is at least that amount plus a call for quote.',
     addonCategories: ['Ducting', 'IAQ', 'Thermostats and Controls'],
+    // Zone-control and damper rows stay in the price book but are not offered to customers.
+    hiddenAddonKeywords: ['zonefirst', 'zone control', 'zone damper', 'damper'],
+    // A duct-cleaning row is offered when its name contains one of these phrases. Missing rows are skipped.
+    ductCleaningKeywords: ['duct cleaning', 'duct clean'],
+    // Per-run ductwork is not a price-book row yet. Move pricePerRun onto the sheet when that row exists.
+    ductworkPerRun: {
+      id: 'ductwork-per-run',
+      name: 'Ductwork',
+      description: 'Extra duct runs for supply or return air. Choose how many runs this home needs. The price is per run.',
+      pricePerRun: 450,
+      maxRuns: 20
+    },
     // Customer-facing category headings. Keys are the price-book category names.
     addonCategoryLabels: {
       Ducting: 'Ductwork',
@@ -92,7 +101,7 @@
       IAQ: 'Indoor air quality means how clean the air inside your home is. These add-ons filter or clean the air that moves through your heating and cooling system.'
     },
     // Short card copy keyed by the price-book item id (uuid column). No prices and no ratings.
-    // Ryan can edit these strings. A missing id uses the first matching addonDescriptionFallbacks rule.
+    // A missing id uses the first matching addonDescriptionFallbacks rule.
     addonDescriptions: {
       olit_6b38015bc940427797b499305a45d17f: 'New ducts sized for a 2-ton system, including supply runs and a return.',
       olit_ba1fdfffb7314e19aa6b8a5cd6ea5a58: 'New ducts sized for a 3-ton system, with supply runs and a return.',

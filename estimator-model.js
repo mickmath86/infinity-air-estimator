@@ -43,6 +43,7 @@
   }
 
   function parsePrice(value) {
+    // The live sheet sends prices with a dollar sign and thousands separators, for example "$5,100.00".
     const text = String(value ?? '').trim();
     if (!text) return null;
     const normalized = text.replace(/[$,\s]/g, '');
@@ -557,6 +558,139 @@
     return lines.join('\n');
   }
 
+  // Customer add-ons collapse to one option. The shown price is the lowest price above zero.
+  // When those positive prices differ, the card says "from $X". A zero or blank row does not lower it.
+  // "Duct system" and "ducting system" are the same item, so ton-sized duct packages collapse too.
+  const DUPLICATE_PRICE_RULE = 'lowest-positive-from';
+
+  function addonMatchName(name) {
+    return String(name || '').toLowerCase().replace(/\s+/g, ' ').trim().replace(/\bducting\b/g, 'duct');
+  }
+
+  function addonDuplicateKey(item) {
+    const name = addonMatchName(item.name);
+    if (name.includes('duct clean')) return `duct-cleaning|${name}`;
+    return `${String(item.category || '').toLowerCase().trim()}|${name}`;
+  }
+
+  function hiddenAddonKeywords(config) {
+    return ((config && config.hiddenAddonKeywords) || ['zonefirst', 'zone control', 'zone damper', 'damper'])
+      .map(keyword => String(keyword).toLowerCase());
+  }
+
+  function ductCleaningKeywords(config) {
+    return ((config && config.ductCleaningKeywords) || ['duct cleaning', 'duct clean'])
+      .map(keyword => String(keyword).toLowerCase());
+  }
+
+  function isHiddenAddon(item, config) {
+    const name = String(item && item.name || '').toLowerCase();
+    if (/\bzone\b/.test(name)) return true;
+    return hiddenAddonKeywords(config).some(keyword => keyword && name.includes(keyword));
+  }
+
+  function isDuctCleaningItem(item, config) {
+    const name = String(item && item.name || '').toLowerCase();
+    return ductCleaningKeywords(config).some(keyword => keyword && name.includes(keyword));
+  }
+
+  function isCustomerAddonCandidate(item, config) {
+    if (!item || item.commercial || isHiddenAddon(item, config)) return false;
+    const category = String(item.category || '').toLowerCase();
+    const categories = ((config && config.addonCategories) || ['Ducting', 'IAQ', 'Thermostats and Controls'])
+      .map(entry => String(entry).toLowerCase());
+    if (categories.includes(category)) return true;
+    return isDuctCleaningItem(item, config);
+  }
+
+  function shownDuplicatePrice(group) {
+    const ordered = group.slice().sort((left, right) => String(left.uuid).localeCompare(String(right.uuid)));
+    const priced = ordered.filter(item => item.price > 0);
+    const prices = [...new Set(priced.map(item => item.price))].sort((left, right) => left - right);
+    const price = prices.length ? prices[0] : null;
+    const chosen = (priced.length ? priced.filter(item => item.price === price) : ordered)[0];
+    return {
+      price,
+      priceFrom: prices.length > 1,
+      shownUuid: chosen ? chosen.uuid : '',
+      shownName: chosen ? chosen.name : '',
+      prices
+    };
+  }
+
+  function standardizeDuplicateOptions(items) {
+    const groups = new Map();
+    for (const item of items || []) {
+      const key = addonDuplicateKey(item);
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(item);
+    }
+    const resolutions = [];
+    const standardized = [];
+    for (const group of groups.values()) {
+      const shown = shownDuplicatePrice(group);
+      if (group.length > 1) {
+        resolutions.push({
+          category: group[0].category,
+          name: shown.shownName,
+          names: [...new Set(group.map(item => item.name))],
+          price: shown.price,
+          priceFrom: shown.priceFrom,
+          shownUuid: shown.shownUuid,
+          rule: DUPLICATE_PRICE_RULE,
+          items: group.map(item => ({
+            uuid: item.uuid,
+            name: item.name,
+            price: item.price,
+            shown: item.uuid === shown.shownUuid
+          }))
+        });
+      }
+      const chosen = group.find(item => item.uuid === shown.shownUuid) || group[0];
+      standardized.push({
+        ...chosen,
+        name: chosen.name,
+        price: shown.price,
+        priceFrom: shown.priceFrom,
+        duplicateCount: group.length
+      });
+    }
+    const byLabel = (left, right) => String(left.category).localeCompare(String(right.category))
+      || String(left.name).localeCompare(String(right.name))
+      || String(left.uuid || left.shownUuid).localeCompare(String(right.uuid || right.shownUuid));
+    standardized.sort(byLabel);
+    resolutions.sort(byLabel);
+    return { items: standardized, resolutions };
+  }
+
+  function silverAboveGoldFindings(items) {
+    const brandsByFamily = new Map();
+    for (const item of items) {
+      if (!item.tierCandidate || !item.family || !item.brand || !TIERED_FAMILIES.includes(item.family)) continue;
+      if (!brandsByFamily.has(item.family)) brandsByFamily.set(item.family, new Set());
+      brandsByFamily.get(item.family).add(item.brand);
+    }
+    const findings = [];
+    for (const [family, brands] of brandsByFamily) {
+      for (const brand of [...brands].sort()) {
+        for (let tons = 1; tons <= 10; tons += 1) {
+          const matched = matchTiers(items, { family, brand, tons });
+          const silver = matched.tiers.find(tier => tier.tier === 'silver');
+          const gold = matched.tiers.find(tier => tier.tier === 'gold');
+          if (!silver || !gold || !(silver.price > 0) || !(gold.price > 0) || silver.price <= gold.price) continue;
+          findings.push({
+            family,
+            brand,
+            tons,
+            silver: { uuid: silver.uuid, name: silver.name, price: silver.price },
+            gold: { uuid: gold.uuid, name: gold.name, price: gold.price }
+          });
+        }
+      }
+    }
+    return findings;
+  }
+
   function duplicateNameGroups(items) {
     const groups = new Map();
     for (const item of items) {
@@ -614,7 +748,7 @@
     return conflicts;
   }
 
-  function dataQuality(items) {
+  function dataQuality(items, config) {
     const zeroPrice = items.filter(item => !(item.price > 0)).map(item => ({
       uuid: item.uuid,
       category: item.category,
@@ -628,12 +762,16 @@
       price: item.price,
       reason: item.commercial ? 'commercial' : item.componentOnly ? 'component' : item.family ? 'no-bronze-silver-gold-tier' : 'not-a-questionnaire-item'
     }));
+    const addonPool = items.filter(item => isCustomerAddonCandidate(item, config));
     return {
       rows: items.length,
       priced: items.filter(item => item.price > 0).length,
       zeroPrice,
       duplicateNames: duplicateNameGroups(items),
+      addonDuplicateResolutions: standardizeDuplicateOptions(addonPool).resolutions,
+      duplicatePriceRule: DUPLICATE_PRICE_RULE,
       tierConflicts: tierConflicts(items),
+      silverAboveGold: silverAboveGoldFindings(items),
       unmapped
     };
   }
@@ -646,7 +784,9 @@
       `Priced rows (shown to customers): ${quality.priced}`,
       `Zero or blank price (call for quote, never shown as $0): ${quality.zeroPrice.length}`,
       `Duplicate names: ${quality.duplicateNames.length}`,
+      `Add-on duplicates collapsed for customers: ${(quality.addonDuplicateResolutions || []).length}`,
       `Overlapping Bronze/Silver/Gold matches: ${quality.tierConflicts.length}`,
+      `Silver priced above matching Gold: ${(quality.silverAboveGold || []).length}`,
       `Unmapped priced rows: ${quality.unmapped.length}`,
       ''
     ];
@@ -654,10 +794,19 @@
     if (!quality.zeroPrice.length) lines.push('  None');
     for (const item of quality.zeroPrice) lines.push(`  ${item.price === null ? 'blank' : item.price}  ${item.category}  |  ${item.name}  |  ${item.uuid}`);
     lines.push('', 'Duplicate names');
+    lines.push('  Customer add-ons collapse to one option. The shown price is the lowest price above zero. When the positive prices differ, the card says "from $X". A zero or blank row does not lower that price. "Duct system" and "ducting system" are treated as the same item.');
     if (!quality.duplicateNames.length) lines.push('  None');
     for (const group of quality.duplicateNames) {
       lines.push(`  ${group.differentPrices ? 'DIFFERENT PRICES' : 'same price'}  ${group.category}  |  ${group.name}`);
       for (const item of group.items) lines.push(`    ${item.price}  ${item.uuid}`);
+    }
+    lines.push('', 'Add-on duplicates shown to customers');
+    const resolutions = quality.addonDuplicateResolutions || [];
+    if (!resolutions.length) lines.push('  None');
+    for (const group of resolutions) {
+      const label = group.priceFrom ? `FROM ${group.price}` : `ONE PRICE ${group.price == null ? 'call for quote' : group.price}`;
+      lines.push(`  ${label}  ${group.category}  |  ${group.names.join(' / ')}  |  shown ${group.shownUuid}`);
+      for (const item of group.items) lines.push(`    ${item.shown ? 'SHOWN' : 'hidden'}  ${item.price}  ${item.name}  |  ${item.uuid}`);
     }
     lines.push('', 'Overlapping tier matches');
     if (!quality.tierConflicts.length) lines.push('  None');
@@ -665,10 +814,17 @@
       lines.push(`  ${conflict.differentPrices ? 'DIFFERENT PRICES' : 'same price'}  ${conflict.brand}  ${conflict.tier}  ${conflict.family}`);
       for (const item of conflict.items) lines.push(`    ${item.price}  ${item.tonnage.min}-${item.tonnage.max} ton  ${item.name}  |  ${item.uuid}`);
     }
+    lines.push('', 'Silver priced above the matching Gold');
+    lines.push('  Compared for each family, brand, and whole ton, using the same row the questionnaire would pick. When this happens, that ton\'s cards are ordered from the lower price to the higher price so Silver is not shown as the middle step.');
+    const inversions = quality.silverAboveGold || [];
+    if (!inversions.length) lines.push('  None');
+    for (const flag of inversions) {
+      lines.push(`  ${flag.brand}  ${flag.family}  ${flag.tons} ton  Silver ${flag.silver.price} (${flag.silver.name})  above Gold ${flag.gold.price} (${flag.gold.name})`);
+    }
     lines.push('', 'Unmapped priced rows');
     if (!quality.unmapped.length) lines.push('  None');
     for (const item of quality.unmapped) lines.push(`  ${item.reason}  ${item.price}  ${item.category}  |  ${item.name}  |  ${item.uuid}`);
-    lines.push('', 'Home size is not in this price book. Tons come from data/demo-config.js (500 sq. ft. per ton near the Orange County coast, 400 inland). The 500 sq ft per ton near the Orange County coast / 400 sq ft per ton inland rule and the ZIP list are a first pass pending Ryan\'s confirmation.');
+    lines.push('', 'Home size is not in this price book. Tons come from data/demo-config.js (500 sq. ft. per ton near the Orange County coast, 400 inland).');
     return lines.join('\n');
   }
 
@@ -772,8 +928,8 @@
       items = normalizePricebook(parseCsv(snapshotCsv));
     }
     const quality = dataQuality(items);
-    if (quality.zeroPrice.length || quality.duplicateNames.length || quality.tierConflicts.length) {
-      logger.warn(`Price book data quality from ${source}: ${quality.zeroPrice.length} zero-price rows are call-for-quote only, ${quality.duplicateNames.length} duplicate names, ${quality.tierConflicts.length} overlapping tiers.`);
+    if (quality.zeroPrice.length || quality.duplicateNames.length || quality.tierConflicts.length || quality.silverAboveGold.length) {
+      logger.warn(`Price book data quality from ${source}: ${quality.zeroPrice.length} zero-price rows are call-for-quote only, ${quality.duplicateNames.length} duplicate names, ${quality.addonDuplicateResolutions.length} collapsed add-on options, ${quality.tierConflicts.length} overlapping tiers, ${quality.silverAboveGold.length} Silver options priced above Gold.`);
     }
     const fetchedAt = now().toISOString();
     logger.log(`Price book served from ${source} at ${fetchedAt} (${pricedItems(items).length} priced rows, ${items.length - pricedItems(items).length} unpriced rows kept for call-for-quote).`);
@@ -837,6 +993,12 @@
     selectionSummary,
     dataQuality,
     formatQualityReport,
+    standardizeDuplicateOptions,
+    isCustomerAddonCandidate,
+    isDuctCleaningItem,
+    isHiddenAddon,
+    silverAboveGoldFindings,
+    DUPLICATE_PRICE_RULE,
     usableCsv,
     spreadsheetIdFromUrl,
     parseSizeMapCsv,
