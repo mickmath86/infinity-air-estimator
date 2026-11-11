@@ -21,7 +21,7 @@ Screens, in order:
 7. **System age.** Recorded for Ryan. It does not change the price.
 8. **Add-ons.** Multi-select rows from the price-book categories Ducting, IAQ, and Thermostats and Controls, plus a duct-cleaning row from any category when its name matches `ductCleaningKeywords`. Zone-control and damper rows (ZoneFirst and anything whose name matches `hiddenAddonKeywords`, including a standalone “zone”) are left out. Only rows that fit the chosen ton are shown. Ductwork is an extra quantity row, priced per run from `ductworkPerRun.pricePerRun` in `data/demo-config.js` ($450 until that price moves to the sheet). It is not offered for a ductless mini-split. A chosen add-on is priced onto each Bronze, Silver, and Gold card. A zero or blank price is Call for quote, never $0. Going back and changing ZIP, system type, or home size drops an add-on that no longer fits, including from the summary and the Housecall Pro payload. The duct-run count is kept when the add-on step is still in the flow, and cleared when the project leaves replacement or becomes a mini-split. Card descriptions and the IAQ heading live in `data/demo-config.js` (`addonDescriptions`, keyed by price-book item id, with keyword and category fallbacks). If the price book has no duct-cleaning row, that add-on is simply absent.
 9. **Equipment preference.** Two cards. The value line label is `valueLineLabel` in `data/demo-config.js`: **AC Pro (Value Line)**. American Standard is the **Premium Line**. Its card uses a dark navy and gold treatment and a Premium Line kicker. It stays call for quote until `americanStandardPricesEnabled` is set to `true`. The value line is the mid-tier book used for Bronze, Silver, and Gold. Tier cards still do not print the AC Pro name on the system itself.
-10. **Contact, then the proposal.** The customer-info form comes first, with the not-a-binding-quote disclaimer. Bronze, Silver, and Gold cards are shown only after the lead is sent. A failed submit stays on the form, shows an error, and can be tried again. The same `/api/create-housecall-estimate` request creates the Housecall Pro estimate and sends the GHL webhook. The value line then shows one color-coded set for that ton, with a series name (for example M series or Z series inverter), the system price, the add-on subtotal, and the total. Cards stay in Bronze, Silver, Gold order unless the Silver system costs more than the matching Gold system. In that case that ton is ordered from the lower price to the higher price, and a note says why. Gas Gold keeps the tier label `Gold` until `goldGasTierLabel` is edited. A firm total is the sum of the shown prices. If any selected line is call for quote and there is a known dollar amount, the total reads **at least $X plus call for quote**. If nothing has a price, the total is Call for quote. A Housecall option is created only when the tier has a firm total, so a call-for-quote tier is described in the note instead of sent as a priced option. The disclaimer on the results is `quoteDisclaimer` in `data/demo-config.js`. Commercial, repair, mini-split, and American Standard stop on the contact form and still capture the lead. There is no price to reveal on those paths.
+10. **Contact, then the proposal.** The customer-info form comes first, with the not-a-binding-quote disclaimer. Email is required on the priced path, because the Bronze, Silver, and Gold estimates are emailed (see HighLevel estimates below). It stays optional on the Contact Ryan paths. Bronze, Silver, and Gold cards are shown only after the lead is sent. A failed submit stays on the form, shows an error, and can be tried again. The same `/api/create-housecall-estimate` request creates the Housecall Pro estimate and sends the GHL webhook. The value line then shows one color-coded set for that ton, with a series name (for example M series or Z series inverter), the system price, the add-on subtotal, and the total. Cards stay in Bronze, Silver, Gold order unless the Silver system costs more than the matching Gold system. In that case that ton is ordered from the lower price to the higher price, and a note says why. Gas Gold keeps the tier label `Gold` until `goldGasTierLabel` is edited. A firm total is the sum of the shown prices. If any selected line is call for quote and there is a known dollar amount, the total reads **at least $X plus call for quote**. If nothing has a price, the total is Call for quote. A Housecall option is created only when the tier has a firm total, so a call-for-quote tier is described in the note instead of sent as a priced option. The disclaimer on the results is `quoteDisclaimer` in `data/demo-config.js`. Commercial, repair, mini-split, and American Standard stop on the contact form and still capture the lead. There is no price to reveal on those paths.
 
 ## Price book
 
@@ -81,10 +81,58 @@ Required Vercel environment variables:
 - `HOUSECALL_PRO_API_KEY`
 - `GHL_WEBHOOK_URL`
 
+The HighLevel estimate variables are listed in the next section.
+
+## HighLevel estimates and the combined email
+
+HighLevel's Send Estimate workflow action only builds an estimate from a fixed template, so it cannot carry the priced options from the questionnaire. Instead, `/api/create-housecall-estimate` creates them through the HighLevel API (`lib/ghl-estimates.js`):
+
+1. Upserts the HighLevel contact (`POST /contacts/upsert`, tag `estimator-quote`).
+2. Creates one HighLevel estimate per priced tier (`POST /invoices/estimate`), with the same line items as the Housecall Pro options, in dollars. The three are created in parallel.
+3. Marks each one sent with `action: send_manually` (`POST /invoices/estimate/{id}/send`). HighLevel does not email them one at a time. This only happens when `GHL_USER_ID` is set. Without it the estimates stay as drafts.
+4. Sends the existing `GHL_WEBHOOK_URL` payload with the estimate links added, so one workflow email can present all three.
+5. Creates the Housecall Pro customer and estimate, unchanged.
+
+A HighLevel failure never blocks the lead. The webhook still fires with `ghl_estimate_status` set to `failed` or `partial`, and Housecall Pro still runs. Estimates are created for any tier with a system price, when the customer gave an email address. If a tier's add-ons include a call-for-quote item, the HighLevel estimate still goes out with the known lines, and its terms say the call-for-quote items are priced separately. Housecall Pro still gets only firm totals. Repair, commercial, mini-split, and American Standard leads, or a missing email, report `skipped`.
+
+Fields added to the webhook payload:
+
+| Field | Example |
+|---|---|
+| `ghl_estimate_status` | `created`, `partial`, `failed`, or `skipped` |
+| `ghl_estimate_reason` | `no-email`, `not-configured`, or the failed operation |
+| `ghl_contact_id` | HighLevel contact ID |
+| `bronze_estimate_url`, `silver_estimate_url`, `gold_estimate_url` | Customer link to each estimate |
+| `bronze_estimate_total`, `silver_estimate_total`, `gold_estimate_total` | `$9,272` |
+| `bronze_estimate_name`, `silver_estimate_name`, `gold_estimate_name` | `Bronze 3 ton` |
+| `bronze_estimate_id`, `silver_estimate_id`, `gold_estimate_id` | HighLevel estimate ID |
+| `ghl_estimates` | The same data as an array |
+
+When the price book returns more than one ton, there is one estimate per tier and ton. The flat fields hold the first one per tier.
+
+Environment variables (Vercel, Production and Preview):
+
+- `GHL_PRIVATE_TOKEN` — sub-account Private Integration token with `contacts.write`, `invoices/estimate.write`, and `invoices/estimate.readonly`
+- `GHL_LOCATION_ID` — the Infinity Air sub-account ID
+- `GHL_USER_ID` — the HighLevel user the estimates are sent from (needed to mark them sent)
+- `GHL_ESTIMATE_URL_TEMPLATE` — the customer estimate link with `{id}` where the estimate ID goes. HighLevel's API does not return this link, so copy one from a real estimate (Payments → Estimates → Copy link) and replace the ID with `{id}`.
+- Optional: `GHL_ESTIMATE_NAME_PREFIX` (default `Infinity Air`; the estimate name is `<prefix> – Bronze 3 ton`, cut to HighLevel's 40-character limit), `GHL_API_VERSION` (default `2021-07-28`), `GHL_ESTIMATE_EXPIRY_DAYS` (default `30`), `GHL_BUSINESS_NAME`, `GHL_BUSINESS_PHONE`, `GHL_BUSINESS_LOGO_URL` (defaults to the Infinity Air logo), `GHL_ESTIMATE_NUMBER_PREFIX` (default `EST-`, up to 10 characters; without it HighLevel shows the number as `undefined1`), `GHL_BUSINESS_WEBSITE`, `GHL_ESTIMATE_TERMS` (defaults to `quoteDisclaimer` from `data/demo-config.js`, the same text shown on the quiz results; an estimate whose tier had call-for-quote add-ons also says those items are not included)
+
+If `GHL_PRIVATE_TOKEN` or `GHL_LOCATION_ID` is missing, no HighLevel estimates are created and everything else works as before.
+
+### The workflow email
+
+In the workflow that already listens on `GHL_WEBHOOK_URL` (Inbound Webhook trigger):
+
+1. Add an If/Else on `{{inboundWebhookRequest.ghl_estimate_status}}` is `created`.
+2. On that branch, add one Send Email with three buttons, linking to `{{inboundWebhookRequest.bronze_estimate_url}}`, `{{inboundWebhookRequest.silver_estimate_url}}`, and `{{inboundWebhookRequest.gold_estimate_url}}`, each next to its `_estimate_total`.
+3. On the other branch, keep the plain follow-up email or an internal alert.
+
 ## Scripts
 
 ```bash
 node test-questionnaire.js
+node test-ghl-estimates.js
 node test-pricebook.js
 node test-hcp-line-items.js
 node test-housecall-api.js

@@ -207,12 +207,12 @@
     return `<article class="tier tier-${escapeHtml(tier.tier)}"><div class="tier-kicker">${escapeHtml(tier.label)}</div>${tier.systemName ? `<p class="product-name">${escapeHtml(tier.systemName)}</p>` : ''}<p class="series">${escapeHtml(tier.series)}</p><p class="benefit">${escapeHtml(tier.benefit)}</p><div class="price-row"><span>System</span><strong class="money">${escapeHtml(priceText(tier.systemPrice))}</strong></div>${addonRow}<div class="price-row total"><span>Total</span><strong class="money">${escapeHtml(tier.totalLabel || priceText(tier.total))}</strong></div></article>`;
   }
 
-  function leadFields(buttonLabel) {
+  function leadFields(buttonLabel, { emailRequired = false } = {}) {
     return `<form class="lead">
       <div class="field"><label for="ia-first-name">First name *</label><input id="ia-first-name" name="firstName" autocomplete="given-name" required></div>
       <div class="field"><label for="ia-last-name">Last name *</label><input id="ia-last-name" name="lastName" autocomplete="family-name" required></div>
       <div class="field"><label for="ia-phone">Phone *</label><input id="ia-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(909) 555-1234" maxlength="14" required></div>
-      <div class="field"><label for="ia-email">Email</label><input id="ia-email" name="email" type="email" autocomplete="email"></div>
+      <div class="field"><label for="ia-email">Email${emailRequired ? ' *' : ''}</label><input id="ia-email" name="email" type="email" autocomplete="email"${emailRequired ? ' required' : ''}></div>
       <div class="field full"><label for="ia-address">Street address</label><input id="ia-address" name="address" autocomplete="address-line1"></div>
       <div class="field"><label for="ia-city">City</label><input id="ia-city" name="city" autocomplete="address-level2"></div>
       <div class="field"><label for="ia-state">State</label><input id="ia-state" name="state" autocomplete="address-level1" maxlength="2" placeholder="CA"></div>
@@ -236,12 +236,15 @@
       ${disclaimerMarkup()}`;
   }
 
-  function renderPricedResults(firstName, preview) {
+  function renderPricedResults(firstName, preview, emailedTo, debugNote) {
     const quote = proposal();
+    const emailNote = emailedTo ? `<p class="notice">We also emailed your Bronze, Silver, and Gold estimates to ${escapeHtml(emailedTo)}.</p>` : '';
     shell(100, `
       <div class="eyebrow">Request received</div>
       <h2>Thank you, ${escapeHtml(firstName)}.</h2>
       <p class="subtitle">${preview ? 'Preview only. Nothing was sent to Infinity Air. These are the options for the answers you entered.' : 'Ryan has your options. Prices come from the current price book. Labor is included. Call for an official quote before work begins.'}</p>
+      ${emailNote}
+      ${debugNote ? `<p class="notice">${escapeHtml(debugNote)}</p>` : ''}
       ${pricedResultsMarkup(quote)}
       <a class="submit call" href="tel:+19099752391">Call ${escapeHtml(configAttr.phone)}</a>
       <div class="nav"><button class="back" type="button">← Change answers</button></div>`);
@@ -258,7 +261,7 @@
         <h2>Where should we send your options?</h2>
         <p class="subtitle">Tell us how to reach you. Bronze, Silver, and Gold prices are shown after this is sent.</p>
         ${disclaimerMarkup()}
-        ${leadFields('Send and see my options')}
+        ${leadFields('Send and see my options', { emailRequired: true })}
         <div class="nav"><button class="back" type="button">← Change answers</button></div>`);
       wireLeadForm();
       return;
@@ -373,6 +376,17 @@
       },
       hcp_line_items: hcpLineItems,
       hcp_line_items_json: JSON.stringify(hcpLineItems),
+      // One HighLevel estimate per tier: the system and priced add-ons, with the tier attached.
+      // Unlike hcp_line_items this keeps a tier that has call-for-quote add-ons.
+      estimate_options: (quote.estimatePackages || []).length
+        ? model.buildHcpOptions(quote.estimatePackages).map((option, index) => ({
+          tier: quote.estimatePackages[index].tier,
+          label: quote.estimatePackages[index].label,
+          tons: quote.estimatePackages[index].tons,
+          callForQuote: quote.estimatePackages[index].callForQuote,
+          ...option
+        }))
+        : [],
       selection_summary: flow.selectionSummary(state.items, state.config, state.answers, quote)
     };
     error.hidden = true;
@@ -380,6 +394,8 @@
     button.textContent = 'Sending…';
     try {
       let preview = configAttr.preview;
+      let emailedTo = '';
+      let debugNote = '';
       if (!configAttr.preview) {
         const endpoint = configAttr.housecallEndpoint || configAttr.webhookUrl;
         if (!endpoint) throw new Error('No submission endpoint is configured.');
@@ -387,8 +403,13 @@
         const body = await response.json().catch(() => ({}));
         if (!response.ok) throw new Error(body.error || `Submission service returned ${response.status}.`);
         preview = Boolean(body.preview);
+        if (['created', 'partial'].includes(body.ghlEstimateStatus)) emailedTo = data.email;
+        // Add ?debug to the page URL to see what happened with the HighLevel estimates.
+        if (/[?&]debug\b/.test(window.location.search)) {
+          debugNote = `HighLevel estimates: ${body.ghlEstimateStatus || 'no status returned'}${body.ghlEstimateReason ? ` (${body.ghlEstimateReason})` : ''}${body.ghlEstimateError ? `. ${body.ghlEstimateError}` : ''}${(body.ghlEstimates || []).length ? `. Created ${body.ghlEstimates.map(e => e.tier).join(', ')}.` : ''}`;
+        }
       }
-      if (quote.groups && quote.groups.length) renderPricedResults(data.firstName, preview);
+      if (quote.groups && quote.groups.length) renderPricedResults(data.firstName, preview, emailedTo, debugNote);
       else {
         const name = escapeHtml(data.firstName);
         shell(100, `<div class="eyebrow">Request received</div><h2>Thank you, ${name}.</h2><p class="subtitle">${preview ? 'Preview only. Nothing was sent to Infinity Air.' : 'Ryan has your request.'}</p><a class="submit call" href="tel:+19099752391">Call ${escapeHtml(configAttr.phone)}</a>`);

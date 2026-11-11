@@ -1,3 +1,5 @@
+const { ghlConfig, isGhlConfigured, createGhlEstimates, webhookEstimateFields } = require('../lib/ghl-estimates');
+
 const HCP_BASE_URL = 'https://api.housecallpro.com';
 
 function digits(value = '') {
@@ -172,6 +174,25 @@ async function sendGhlWebhook(payload, webhookUrl, fetchImpl = fetch) {
   }
 }
 
+// A HighLevel failure must not lose the lead: the webhook still fires with
+// ghl_estimate_status = 'failed' so the workflow can fall back to a plain follow-up.
+async function createTierEstimates(payload, config, options = {}) {
+  if (!isGhlConfigured(config)) return { status: 'skipped', reason: 'not-configured', contactId: null, estimates: [] };
+  try {
+    return await createGhlEstimates(payload, config, options);
+  } catch (error) {
+    console.error('HighLevel estimates failed.', { operation: error.operation, status: error.status, message: error.message });
+    const partial = error.partial || {};
+    return {
+      status: partial.estimates && partial.estimates.length ? 'partial' : 'failed',
+      reason: error.operation || 'HighLevel estimate creation',
+      error: [error.status && `HighLevel ${error.status}`, error.message].filter(Boolean).join(': '),
+      contactId: partial.contactId || null,
+      estimates: partial.estimates || []
+    };
+  }
+}
+
 function setCors(response) {
   response.setHeader('Access-Control-Allow-Origin', '*');
   response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -188,9 +209,17 @@ async function handler(request, response) {
   try {
     const payload = typeof request.body === 'string' ? JSON.parse(request.body) : request.body;
     validatePayload(payload);
-    await sendGhlWebhook(payload, process.env.GHL_WEBHOOK_URL);
+    const ghl = await createTierEstimates(payload, ghlConfig());
+    await sendGhlWebhook({ ...payload, ...webhookEstimateFields(ghl) }, process.env.GHL_WEBHOOK_URL);
     const result = await createHousecallEstimate(payload, process.env.HOUSECALL_PRO_API_KEY);
-    return response.status(201).json({ ok: true, ...result });
+    return response.status(201).json({
+      ok: true,
+      ...result,
+      ghlEstimateStatus: ghl.status,
+      ghlEstimateReason: ghl.reason || null,
+      ghlEstimateError: ghl.error || null,
+      ghlEstimates: ghl.estimates.map(({ tier, id, url, total }) => ({ tier, id, url, total }))
+    });
   } catch (error) {
     const status = error instanceof SyntaxError || error instanceof TypeError ? 400 : 502;
     if (status === 502) console.error('Estimator integration failed.', { operation: error.operation, status: error.status, message: error.message });
@@ -204,6 +233,7 @@ async function handler(request, response) {
 
 module.exports = handler;
 module.exports.createHousecallEstimate = createHousecallEstimate;
+module.exports.createTierEstimates = createTierEstimates;
 module.exports.completeAddress = completeAddress;
 module.exports.errorMessage = errorMessage;
 module.exports.matchingCustomer = matchingCustomer;
