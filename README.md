@@ -116,7 +116,7 @@ Environment variables (Vercel, Production and Preview):
 - `GHL_LOCATION_ID` — the Infinity Air sub-account ID
 - `GHL_USER_ID` — the HighLevel user the estimates are sent from (needed to mark them sent)
 - `GHL_ESTIMATE_URL_TEMPLATE` — the customer estimate link with `{id}` where the estimate ID goes. HighLevel's API does not return this link, so copy one from a real estimate (Payments → Estimates → Copy link) and replace the ID with `{id}`.
-- Optional: `GHL_API_VERSION` (default `2021-07-28`), `GHL_ESTIMATE_EXPIRY_DAYS` (default `30`), `GHL_BUSINESS_NAME`, `GHL_BUSINESS_PHONE`, `GHL_BUSINESS_LOGO_URL`, `GHL_BUSINESS_WEBSITE`, `GHL_ESTIMATE_TERMS` (defaults to `quoteDisclaimer` from `data/demo-config.js`, the same text shown on the quiz results; an estimate whose tier had call-for-quote add-ons also says those items are not included)
+- Optional: `GHL_ESTIMATE_NAME_PREFIX` (default `Infinity Air`; the estimate name is `<prefix> – Bronze 3 ton`, cut to HighLevel's 40-character limit), `GHL_API_VERSION` (default `2021-07-28`), `GHL_ESTIMATE_EXPIRY_DAYS` (default `30`), `GHL_BUSINESS_NAME`, `GHL_BUSINESS_PHONE`, `GHL_BUSINESS_LOGO_URL`, `GHL_BUSINESS_WEBSITE`, `GHL_ESTIMATE_TERMS` (defaults to `quoteDisclaimer` from `data/demo-config.js`, the same text shown on the quiz results; an estimate whose tier had call-for-quote add-ons also says those items are not included)
 
 If `GHL_PRIVATE_TOKEN` or `GHL_LOCATION_ID` is missing, no HighLevel estimates are created and everything else works as before.
 
