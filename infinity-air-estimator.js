@@ -236,7 +236,7 @@
       ${disclaimerMarkup()}`;
   }
 
-  function renderPricedResults(firstName, preview, emailedTo) {
+  function renderPricedResults(firstName, preview, emailedTo, debugNote) {
     const quote = proposal();
     const emailNote = emailedTo ? `<p class="notice">We also emailed your Bronze, Silver, and Gold estimates to ${escapeHtml(emailedTo)}.</p>` : '';
     shell(100, `
@@ -244,6 +244,7 @@
       <h2>Thank you, ${escapeHtml(firstName)}.</h2>
       <p class="subtitle">${preview ? 'Preview only. Nothing was sent to Infinity Air. These are the options for the answers you entered.' : 'Ryan has your options. Prices come from the current price book. Labor is included. Call for an official quote before work begins.'}</p>
       ${emailNote}
+      ${debugNote ? `<p class="notice">${escapeHtml(debugNote)}</p>` : ''}
       ${pricedResultsMarkup(quote)}
       <a class="submit call" href="tel:+19099752391">Call ${escapeHtml(configAttr.phone)}</a>
       <div class="nav"><button class="back" type="button">← Change answers</button></div>`);
@@ -394,6 +395,7 @@
     try {
       let preview = configAttr.preview;
       let emailedTo = '';
+      let debugNote = '';
       if (!configAttr.preview) {
         const endpoint = configAttr.housecallEndpoint || configAttr.webhookUrl;
         if (!endpoint) throw new Error('No submission endpoint is configured.');
@@ -402,8 +404,12 @@
         if (!response.ok) throw new Error(body.error || `Submission service returned ${response.status}.`);
         preview = Boolean(body.preview);
         if (['created', 'partial'].includes(body.ghlEstimateStatus)) emailedTo = data.email;
+        // Add ?debug to the page URL to see what happened with the HighLevel estimates.
+        if (/[?&]debug\b/.test(window.location.search)) {
+          debugNote = `HighLevel estimates: ${body.ghlEstimateStatus || 'no status returned'}${body.ghlEstimateReason ? ` (${body.ghlEstimateReason})` : ''}${body.ghlEstimateError ? `. ${body.ghlEstimateError}` : ''}${(body.ghlEstimates || []).length ? `. Created ${body.ghlEstimates.map(e => e.tier).join(', ')}.` : ''}`;
+        }
       }
-      if (quote.groups && quote.groups.length) renderPricedResults(data.firstName, preview, emailedTo);
+      if (quote.groups && quote.groups.length) renderPricedResults(data.firstName, preview, emailedTo, debugNote);
       else {
         const name = escapeHtml(data.firstName);
         shell(100, `<div class="eyebrow">Request received</div><h2>Thank you, ${name}.</h2><p class="subtitle">${preview ? 'Preview only. Nothing was sent to Infinity Air.' : 'Ryan has your request.'}</p><a class="submit call" href="tel:+19099752391">Call ${escapeHtml(configAttr.phone)}</a>`);

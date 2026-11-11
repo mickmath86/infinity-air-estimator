@@ -186,6 +186,7 @@ async function createTierEstimates(payload, config, options = {}) {
     return {
       status: partial.estimates && partial.estimates.length ? 'partial' : 'failed',
       reason: error.operation || 'HighLevel estimate creation',
+      error: [error.status && `HighLevel ${error.status}`, error.message].filter(Boolean).join(': '),
       contactId: partial.contactId || null,
       estimates: partial.estimates || []
     };
@@ -215,6 +216,8 @@ async function handler(request, response) {
       ok: true,
       ...result,
       ghlEstimateStatus: ghl.status,
+      ghlEstimateReason: ghl.reason || null,
+      ghlEstimateError: ghl.error || null,
       ghlEstimates: ghl.estimates.map(({ tier, id, url, total }) => ({ tier, id, url, total }))
     });
   } catch (error) {
