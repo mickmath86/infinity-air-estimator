@@ -558,7 +558,7 @@
             priceUnit: 'dollars'
           });
         }
-        packages.push({ name: `${tier.label} ${group.tons} ton`, lineItems });
+        packages.push({ name: `${tier.label} ${group.tons} ton`, tier: tier.tier, label: tier.label, tons: group.tons, lineItems });
       }
     }
     return packages;
