@@ -34,8 +34,21 @@ const options = estimateOptions(payload);
 assert.deepEqual(options.map(option => option.tier).sort(), ['bronze', 'gold', 'silver']);
 assert.ok(options.every(option => option.total > 0));
 
+// A call-for-quote add-on (the $0 Nest row) leaves Housecall Pro without a priced option,
+// but HighLevel still gets all three tiers with the known lines and the call-for-quote note.
+const nest = items.find(item => /nest/i.test(item.name) && !(item.price > 0));
+const cfqQuote = flow.buildProposal(items, demoConfig, { ...answers, addons: [nest.uuid] });
+assert.equal(cfqQuote.packages.length, 0);
+assert.equal(cfqQuote.estimatePackages.length, 3);
+assert.ok(cfqQuote.estimatePackages.every(pkg => pkg.callForQuote && pkg.lineItems.length === 1));
+const cfqOptions = estimateOptions({
+  quote_status: 'lead',
+  estimate_options: model.buildHcpOptions(cfqQuote.estimatePackages).map((option, index) => ({ tier: cfqQuote.estimatePackages[index].tier, callForQuote: cfqQuote.estimatePackages[index].callForQuote, ...option }))
+});
+assert.deepEqual(cfqOptions.map(option => [option.tier, option.callForQuote]).sort(), [['bronze', true], ['gold', true], ['silver', true]]);
+
 // Older payloads without estimate_options still resolve the tier from the option name.
-assert.deepEqual(estimateOptions({ hcp_line_items: hcpLineItems }).map(option => option.tier).sort(), ['bronze', 'gold', 'silver']);
+assert.deepEqual(estimateOptions({ quote_status: 'price', hcp_line_items: hcpLineItems }).map(option => option.tier).sort(), ['bronze', 'gold', 'silver']);
 
 const config = ghlConfig({
   GHL_PRIVATE_TOKEN: 'pit-test',
@@ -57,6 +70,13 @@ assert.equal(body.issueDate, '2026-11-11');
 assert.equal(body.expiryDate, '2026-12-11');
 assert.deepEqual(body.discount, { type: 'fixed', value: 0 });
 assert.equal(body.frequencySettings.enabled, false);
+// Terms reuse the quiz disclaimer, plus a note when call-for-quote items were left off.
+assert.ok(body.termsNotes.startsWith('<p>This is not a binding quote'));
+assert.ok(!body.termsNotes.includes('call-for-quote items you selected'));
+const cfqBody = estimateBody(config, { contactId: 'c1', contact: payload.contact, option: { ...options[0], callForQuote: true }, now });
+assert.ok(cfqBody.termsNotes.includes('call-for-quote items you selected'));
+assert.equal(estimateBody(ghlConfig({ GHL_PRIVATE_TOKEN: 'x', GHL_LOCATION_ID: 'y', GHL_ESTIMATE_TERMS: 'Custom terms' }), { contactId: 'c1', contact: payload.contact, option: options[0], now }).termsNotes, '<p>Custom terms</p>');
+assert.equal(estimateOptions({ estimate_options: [{ ...payload.estimate_options[0], callForQuote: true }] })[0].callForQuote, true);
 // Line items go to HighLevel in dollars, not cents.
 assert.equal(body.items[0].amount, options[0].lineItems[0].unit_price / 100);
 assert.equal(body.items[0].qty, 1);
@@ -103,7 +123,7 @@ assert.equal(body.items[0].qty, 1);
   assert.equal(noEmail.reason, 'no-email');
 
   // Lead-only paths never create estimates.
-  const lead = await createGhlEstimates({ ...payload, quote_status: 'lead' }, config, { fetchImpl, now });
+  const lead = await createGhlEstimates({ ...payload, quote_status: 'lead', estimate_options: [], hcp_line_items: [] }, config, { fetchImpl, now });
   assert.equal(lead.status, 'skipped');
 
   // Without a user ID the estimates are created but left as drafts.

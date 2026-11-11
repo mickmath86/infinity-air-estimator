@@ -375,13 +375,17 @@
       },
       hcp_line_items: hcpLineItems,
       hcp_line_items_json: JSON.stringify(hcpLineItems),
-      // Same priced options with the tier attached, used to create one HighLevel estimate per tier.
-      estimate_options: hcpLineItems.map((option, index) => ({
-        tier: quote.packages[index].tier,
-        label: quote.packages[index].label,
-        tons: quote.packages[index].tons,
-        ...option
-      })),
+      // One HighLevel estimate per tier: the system and priced add-ons, with the tier attached.
+      // Unlike hcp_line_items this keeps a tier that has call-for-quote add-ons.
+      estimate_options: (quote.estimatePackages || []).length
+        ? model.buildHcpOptions(quote.estimatePackages).map((option, index) => ({
+          tier: quote.estimatePackages[index].tier,
+          label: quote.estimatePackages[index].label,
+          tons: quote.estimatePackages[index].tons,
+          callForQuote: quote.estimatePackages[index].callForQuote,
+          ...option
+        }))
+        : [],
       selection_summary: flow.selectionSummary(state.items, state.config, state.answers, quote)
     };
     error.hidden = true;

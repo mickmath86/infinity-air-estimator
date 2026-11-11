@@ -93,7 +93,7 @@ HighLevel's Send Estimate workflow action only builds an estimate from a fixed t
 4. Sends the existing `GHL_WEBHOOK_URL` payload with the estimate links added, so one workflow email can present all three.
 5. Creates the Housecall Pro customer and estimate, unchanged.
 
-A HighLevel failure never blocks the lead. The webhook still fires with `ghl_estimate_status` set to `failed` or `partial`, and Housecall Pro still runs. Estimates are only created for a priced result with an email address. Repair, commercial, mini-split, and American Standard leads, or a missing email, report `skipped`.
+A HighLevel failure never blocks the lead. The webhook still fires with `ghl_estimate_status` set to `failed` or `partial`, and Housecall Pro still runs. Estimates are created for any tier with a system price, when the customer gave an email address. If a tier's add-ons include a call-for-quote item, the HighLevel estimate still goes out with the known lines, and its terms say the call-for-quote items are priced separately. Housecall Pro still gets only firm totals. Repair, commercial, mini-split, and American Standard leads, or a missing email, report `skipped`.
 
 Fields added to the webhook payload:
 
@@ -116,7 +116,7 @@ Environment variables (Vercel, Production and Preview):
 - `GHL_LOCATION_ID` — the Infinity Air sub-account ID
 - `GHL_USER_ID` — the HighLevel user the estimates are sent from (needed to mark them sent)
 - `GHL_ESTIMATE_URL_TEMPLATE` — the customer estimate link with `{id}` where the estimate ID goes. HighLevel's API does not return this link, so copy one from a real estimate (Payments → Estimates → Copy link) and replace the ID with `{id}`.
-- Optional: `GHL_API_VERSION` (default `2021-07-28`), `GHL_ESTIMATE_EXPIRY_DAYS` (default `30`), `GHL_BUSINESS_NAME`, `GHL_BUSINESS_PHONE`, `GHL_BUSINESS_LOGO_URL`, `GHL_BUSINESS_WEBSITE`, `GHL_ESTIMATE_TERMS`
+- Optional: `GHL_API_VERSION` (default `2021-07-28`), `GHL_ESTIMATE_EXPIRY_DAYS` (default `30`), `GHL_BUSINESS_NAME`, `GHL_BUSINESS_PHONE`, `GHL_BUSINESS_LOGO_URL`, `GHL_BUSINESS_WEBSITE`, `GHL_ESTIMATE_TERMS` (defaults to `quoteDisclaimer` from `data/demo-config.js`, the same text shown on the quiz results; an estimate whose tier had call-for-quote add-ons also says those items are not included)
 
 If `GHL_PRIVATE_TOKEN` or `GHL_LOCATION_ID` is missing, no HighLevel estimates are created and everything else works as before.
 

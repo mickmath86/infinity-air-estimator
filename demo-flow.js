@@ -534,11 +534,15 @@
     };
   }
 
-  function hcpPackages(groups) {
+  // Housecall Pro gets a tier only with a firm total. HighLevel estimates (allowCallForQuote)
+  // also get a tier whose add-ons include call-for-quote items: the known lines are priced
+  // and the estimate terms say the rest is quoted separately.
+  function hcpPackages(groups, { allowCallForQuote = false } = {}) {
     const packages = [];
     for (const group of groups) {
       for (const tier of group.tiers) {
-        if (!(tier.total > 0) || !(tier.systemPrice > 0)) continue;
+        if (!(tier.systemPrice > 0)) continue;
+        if (!(tier.total > 0) && !(allowCallForQuote && tier.callForQuote)) continue;
         const lineItems = [{
           name: tier.systemName || tier.series,
           description: [tier.series, tier.benefit].filter(Boolean).join('. '),
@@ -558,7 +562,7 @@
             priceUnit: 'dollars'
           });
         }
-        packages.push({ name: `${tier.label} ${group.tons} ton`, tier: tier.tier, label: tier.label, tons: group.tons, lineItems });
+        packages.push({ name: `${tier.label} ${group.tons} ton`, tier: tier.tier, label: tier.label, tons: group.tons, callForQuote: Boolean(tier.callForQuote), lineItems });
       }
     }
     return packages;
@@ -593,6 +597,7 @@
       reason: packages.length ? 'tiers' : 'no-priced-tier',
       groups,
       packages,
+      estimatePackages: hcpPackages(groups, { allowCallForQuote: true }),
       warnings,
       climate: sizing.climate,
       tons: sizing.tons
