@@ -61,6 +61,10 @@ assert.equal(isGhlConfigured(ghlConfig({})), false);
 
 const now = new Date('2026-11-11T12:00:00Z');
 const body = estimateBody(config, { contactId: 'c1', contact: payload.contact, option: options[0], now });
+assert.equal(estimateBody(ghlConfig({}), { contactId: 'c1', contact: payload.contact, option: options[0], now }).businessDetails.logoUrl, 'https://files.leadconnectorhq.com/file/6af4ad1e1dee4a7aa10df6dc/logo.png');
+assert.equal(ghlConfig({ GHL_BUSINESS_LOGO_URL: ' "https://example.com/l.png" ' }).business.logoUrl, 'https://example.com/l.png');
+assert.equal(body.estimateNumberPrefix, 'EST-');
+assert.equal(estimateBody(ghlConfig({ GHL_ESTIMATE_NUMBER_PREFIX: 'IA-' }), { contactId: 'c1', contact: payload.contact, option: options[0], now }).estimateNumberPrefix, 'IA-');
 assert.equal(body.altId, 'loc123');
 assert.equal(body.name, 'Infinity Air – Bronze 3 ton');
 assert.ok(options.every(option => estimateBody(config, { contactId: 'c1', contact: payload.contact, option, now }).name.length <= 40));
